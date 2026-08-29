@@ -1,0 +1,20 @@
+{
+  "name": "horwang-m1-ai-exam-master",
+  "version": "2.0.0",
+  "description": "Horwang M.1 AI Exam Master & Collaborative Study Club (GenAI powered)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "serve": "python -m http.server 8080"
+  },
+  "keywords": [
+    "horwang",
+    "exam-simulation",
+    "gemini-ai",
+    "study-club",
+    "omr-sheet",
+    "education"
+  ],
+  "author": "Horwang Prep Team",
+  "license": "MIT"
+}

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🦉 Horwang M.1 Hero - ฝึกทำข้อสอบเข้า ม.1 หอวัง (สำหรับ ป.5)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            horwang: {
+              maroon: '#7B001C',
+              darkMaroon: '#520013',
+              lightMaroon: '#A30026',
+              gold: '#F5B01D',
+              lightGold: '#FDE68A',
+              navy: '#0F172A',
+              mint: '#10B981',
+              sky: '#0EA5E9',
+              coral: '#F97316',
+              purple: '#8B5CF6',
+              rose: '#F43F5E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Kid-Friendly CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Canvas Confetti for Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Chart.js for Progress Dashboard -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- KaTeX for Math & Science formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="if(window.renderMathInBody) renderMathInBody(document.body);"></script>
+
+  <!-- Modular Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/data/questions-db.js"></script>
+  <script src="js/data/algorithmic-generator.js"></script>
+  <script src="js/data/mega-bank-engine.js"></script>
+  <script src="js/modules/cloudflare-sync.js"></script>
+  <script src="js/modules/no-api-hub.js"></script>
+  <script src="js/modules/bank-browser.js"></script>
+  <script src="js/modules/ai-engine.js"></script>
+  <script src="js/modules/exam-engine.js"></script>
+  <script src="js/modules/study-club.js"></script>
+  <script src="js/modules/analytics.js"></script>
+  <script src="js/modules/omr-printer.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- Top Navigation Header (Kid-Friendly Simple Words) -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white shadow-xl border-b-2 border-horwang-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo & Friendly Mascot -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('generator')">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-horwang-gold flex items-center justify-center text-horwang-darkMaroon shadow-md font-bold text-2xl ring-4 ring-white/20 transform hover:rotate-6 transition">
+            🦉
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-heading font-black text-lg sm:text-2xl tracking-tight text-white">
+                HORWANG <span class="text-horwang-gold">M.1 HERO</span>
+              </span>
+              <span class="bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow hidden sm:inline-block">
+                ✨ ป.5 สู่ ม.1 หอวัง
+              </span>
+            </div>
+            <p class="text-xs text-amber-200 font-medium hidden sm:block">ฝึกทำข้อสอบง่ายๆ พร้อมเฉลยเข้าใจเร็ว</p>
+          </div>
+        </div>
+
+        <!-- Main Easy Navigation Tabs -->
+        <nav class="hidden md:flex items-center space-x-2">
+          <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 bg-white/20 text-white font-heading shadow-sm">
+            <i class="fa-solid fa-play text-horwang-gold text-base"></i>
+            <span>🎯 เริ่มทำข้อสอบ</span>
+          </button>
+          <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
+            <span>📚 รวมข้อสอบ 100 ข้อ</span>
+          </button>
+          <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-comments text-sky-300 text-base"></i>
+            <span>💬 ถามเพื่อน & พี่ฮูก</span>
+          </button>
+          <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-trophy text-emerald-300 text-base"></i>
+            <span>🏆 ดูคะแนน & รางวัล</span>
+          </button>
+        </nav>
+
+        <!-- Right Quick Controls -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <!-- Audio Toggle -->
+          <button onclick="window.SoundEngine.toggle()" id="btn-audio" title="เปิด/ปิดเสียง" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
+            <i class="fa-solid fa-volume-high text-horwang-gold"></i>
+          </button>
+
+          <!-- Simple Import Button -->
+          <button onclick="openImportModal()" class="px-3.5 py-2 rounded-2xl bg-sky-500 hover:bg-sky-600 text-xs sm:text-sm font-bold text-white flex items-center space-x-1.5 shadow transition btn-kid">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span class="hidden sm:inline">เพิ่มข้อสอบ</span>
+          </button>
+
+          <!-- Level & XP Badge -->
+          <div class="flex items-center space-x-2 bg-slate-900/70 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold/50 shadow-inner">
+            <span class="text-lg">⭐</span>
+            <div>
+              <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider">แต้มดาวสะสม</div>
+              <span id="user-xp-display" class="text-xs font-black text-horwang-gold font-heading">0 แต้ม</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Bar (Easy Words) -->
+    <div class="flex md:hidden border-t border-white/10 bg-horwang-darkMaroon/95 px-2 py-2 justify-around text-center">
+      <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-horwang-gold font-bold flex flex-col items-center">
+        <i class="fa-solid fa-play mb-0.5 text-base"></i>
+        <span>ทำข้อสอบ</span>
+      </button>
+      <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-book-open mb-0.5 text-base"></i>
+        <span>ดูข้อสอบ</span>
+      </button>
+      <button onclick="switchTab('study-club')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-comments mb-0.5 text-base"></i>
+        <span>ถามเพื่อน</span>
+      </button>
+      <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-trophy mb-0.5 text-base"></i>
+        <span>ดูคะแนน</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sticky Exam Status Bar -->
+  <div id="sticky-exam-bar" class="hidden sticky top-16 sm:top-20 z-30 bg-slate-900/95 backdrop-blur text-white border-b-2 border-horwang-gold shadow-2xl px-4 py-3 transition-all">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="px-3 py-1 rounded-xl bg-horwang-maroon text-horwang-lightGold text-xs font-black font-heading shadow-sm flex items-center space-x-1">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span>กำลังทำข้อสอบ</span>
+        </span>
+        <span id="exam-mode-title" class="font-heading font-bold text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs text-amber-100">
+          คณิตศาสตร์
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        <!-- Digital OMR Toggle -->
+        <button onclick="window.ExamEngine.toggleOmrPanel()" id="btn-toggle-omr-sheet" title="เปิด/ปิดกระดาษฝนคำตอบ" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center space-x-1.5 transition btn-kid">
+          <i class="fa-solid fa-table-cells text-horwang-gold"></i>
+          <span class="hidden sm:inline">กระดาษฝนคำตอบ</span>
+        </button>
+
+        <!-- Progress Counter -->
+        <div class="text-xs sm:text-sm font-bold text-slate-300 bg-slate-800/80 px-3.5 py-1.5 rounded-2xl border border-slate-700">
+          ตอบแล้ว: <span id="answered-count-badge" class="font-black text-emerald-400 text-base">0</span>/<span id="total-count-badge" class="font-bold">20</span> ข้อ
+        </div>
+
+        <!-- Big Easy Timer Display -->
+        <div class="flex items-center space-x-2 bg-gradient-to-r from-slate-800 to-slate-900 px-4 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-sm">
+          <i class="fa-solid fa-stopwatch text-horwang-gold animate-bounce text-base"></i>
+          <span id="exam-timer-display" class="font-mono text-lg font-black text-horwang-lightGold">40:00</span>
+        </div>
+
+        <!-- Submit Button -->
+        <button onclick="window.ExamEngine.confirmSubmit()" class="px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white rounded-2xl text-xs sm:text-sm font-black font-heading shadow-lg transition btn-kid flex items-center space-x-1.5">
+          <i class="fa-solid fa-check"></i>
+          <span>ส่งข้อสอบ</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800 flex items-center space-x-2 overflow-x-auto custom-scrollbar pb-1" id="question-navigator-pills"></div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: HYBRID EXAM GENERATOR (EASY WORDS)                -->
+    <!-- ======================================================== -->
+    <section id="tab-generator" class="tab-content space-y-6">
+      
+      <!-- Welcome Hero with Horwang Owl Mascot -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white p-6 sm:p-8 shadow-2xl border-2 border-horwang-gold/40">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-3 text-center md:text-left">
+            <div class="inline-flex items-center space-x-2 bg-amber-400/20 text-amber-200 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-300/40">
+              <span>🌟 สวัสดีคนเก่ง ป.5! พร้อมลุย ม.1 หอวัง หรือยัง?</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight leading-snug">
+              คลังข้อสอบ & ติวสอบเข้า <span class="text-horwang-gold">ม.1 หอวัง</span>
+            </h1>
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-sarabun max-w-2xl">
+              ฝึกทำข้อสอบจริง 5 วิชาหลัก ตัวเลขสดใหม่ไม่ซ้ำ พร้อมเฉลยวิธีคิดทีละขั้นตอน เข้าใจง่ายสุดๆ!
+            </p>
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+              <button onclick="startHybridExam('balanced')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-horwang-gold to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-900 font-black text-sm font-heading shadow-xl flex items-center space-x-2 btn-kid animate-pulse-glow">
+                <i class="fa-solid fa-play text-base"></i>
+                <span>เริ่มทำชุดฝึกซ้อม 20 ข้อ (40 นาที)</span>
+              </button>
+              <button onclick="switchTab('bank')" class="px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm font-heading border border-white/30 flex items-center space-x-2 btn-kid">
+                <i class="fa-solid fa-book-open"></i>
+                <span>เปิดดูข้อสอบ 100 ข้อ</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mascot Illustration Card -->
+          <div class="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-white/20 max-w-xs text-center space-y-2.5">
+            <div class="text-6xl animate-soft-bounce">🦉</div>
+            <div class="mascot-bubble p-3 text-slate-800 text-xs font-bold font-sarabun shadow">
+              "ข้อไหนทำไม่ได้ ไม่ต้องกลัวนะ! มีพี่ฮูกคอยช่วยเฉลยสูตรลัดให้ทุกข้อเลย ✨"
+            </div>
+            <div class="text-[11px] text-amber-200 font-heading font-bold">พี่ฮูกหอวัง • ติวเตอร์ใจดีประจำตัว ป.5</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE SUBJECT SELECTOR -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-black font-heading text-horwang-maroon flex items-center space-x-2">
+            <i class="fa-solid fa-book-bookmark text-horwang-gold"></i>
+            <span>แตะเลือกวิชาที่อยากฝึกทำวันนี้:</span>
+          </h2>
+          <span class="text-xs text-slate-500 font-medium">แตะ 1 ครั้งเพื่อเลือกวิชา</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <!-- All -->
+          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-white p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🎯</div>
+            <div class="font-black font-heading text-xs text-slate-800">รวม 5 วิชา</div>
+            <div class="text-[10px] text-slate-400">ครบทุกวิชา</div>
+          </div>
+
+          <!-- Math -->
+          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-rose-50/70 p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mx-auto shadow-inner">📐</div>
+            <div class="font-black font-heading text-xs text-rose-900">คณิตศาสตร์</div>
+            <div class="text-[10px] text-rose-500">25 ข้อในคลัง</div>
+          </div>
+
+          <!-- Science -->
+          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-emerald-50/70 p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🔬</div>
+            <div class="font-black font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
+            <div class="text-[10px] text-emerald-500">25 ข้อในคลัง</div>
+          </div>
+
+          <!-- English -->
+          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-sky-50/70 p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🇬🇧</div>
+            <div class="font-black font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
+            <div class="text-[10px] text-sky-500">20 ข้อในคลัง</div>
+          </div>
+
+          <!-- Thai -->
+          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-amber-50/70 p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🇹🇭</div>
+            <div class="font-black font-heading text-xs text-amber-900">ภาษาไทย</div>
+            <div class="text-[10px] text-amber-600">15 ข้อในคลัง</div>
+          </div>
+
+          <!-- Social -->
+          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-purple-50/70 p-4 text-center space-y-2 card-kid border-2">
+            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🌏</div>
+            <div class="font-black font-heading text-xs text-purple-900">สังคมศึกษา</div>
+            <div class="text-[10px] text-purple-500">15 ข้อในคลัง</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 RECIPE CARDS (Kid-Friendly Words) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Recipe 1 -->
+        <div class="bg-white p-6 rounded-3xl border-2 border-amber-200 shadow-sm hover:border-amber-400 transition space-y-4 card-kid flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black shadow-inner">
+              ⭐
+            </div>
+            <span class="px-3 py-0.5 rounded-full bg-amber-100 text-amber-900 text-xs font-black font-heading inline-block">แบบที่ 1 (แนะนำสำหรับ ป.5)</span>
+            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดรวมโจทย์ฮิตยอดนิยม</h3>
+            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">มีทั้งโจทย์คำนวณและข้อสอบจริง ผสมกันอย่างละครึ่ง พอดีๆ สำหรับฝึกซ้อม</p>
+          </div>
+          <button onclick="startHybridExam('balanced')" class="w-full py-3 bg-gradient-to-r from-horwang-maroon to-rose-800 hover:from-horwang-darkMaroon hover:to-horwang-maroon text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-play"></i>
+            <span>เริ่มทำชุดนี้เลย</span>
+          </button>
+        </div>
+
+        <!-- Recipe 2 -->
+        <div class="bg-white p-6 rounded-3xl border-2 border-emerald-200 shadow-sm hover:border-emerald-400 transition space-y-4 card-kid flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-2xl font-black shadow-inner">
+              ⚡
+            </div>
+            <span class="px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-black font-heading inline-block">แบบที่ 2 (ฝึกคิดไว)</span>
+            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดฝึกคิดเลขเร็ว</h3>
+            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">เน้นโจทย์คิดเลขสุ่มตัวเลขใหม่ทุกรอบ ฝึกบวก ลบ คูณ หาร ให้คิดได้เร็วทันใจ</p>
+          </div>
+          <button onclick="startHybridExam('math-speed')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-play"></i>
+            <span>เริ่มฝึกคิดเลขเร็ว</span>
+          </button>
+        </div>
+
+        <!-- Recipe 3 -->
+        <div class="bg-white p-6 rounded-3xl border-2 border-sky-200 shadow-sm hover:border-sky-400 transition space-y-4 card-kid flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-800 flex items-center justify-center text-2xl font-black shadow-inner">
+              🏆
+            </div>
+            <span class="px-3 py-0.5 rounded-full bg-sky-100 text-sky-900 text-xs font-black font-heading inline-block">แบบที่ 3 (โจทย์ท้าทาย)</span>
+            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดโจทย์ Gifted ปราบเซียน</h3>
+            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">เน้นข้อสอบแข่งขันจริง พร้อมพาดูจุดหลอกที่คนส่วนใหญ่ตอบผิดบ่อยๆ</p>
+          </div>
+          <button onclick="startHybridExam('curated-trap')" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-play"></i>
+            <span>เริ่มชุดปราบเซียน</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Config Form (Simple Friendly Words) -->
+      <div id="exam-config-card" class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-2">
+          <div>
+            <h2 class="text-xl font-black font-heading text-horwang-maroon flex items-center space-x-2">
+              <i class="fa-solid fa-sliders text-horwang-gold"></i>
+              <span>เลือกตั้งค่าข้อสอบเอง:</span>
+            </h2>
+            <p class="text-xs text-slate-500 font-sarabun">เลือกห้องเรียนที่อยากสอบเข้าและความง่าย-ยากได้เลย</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <input type="hidden" id="select-subject" value="all" />
+
+          <div class="space-y-2">
+            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
+              1. เลือกห้องเรียนที่อยากเข้า
+            </label>
+            <select id="select-track" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
+              <option value="gifted" selected>🌟 ห้องเรียนพิเศษ (Gifted / EP / SMP)</option>
+              <option value="regular">🏫 ห้องเรียนปกติ (Regular Program)</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
+              2. เลือกระดับความง่าย-ยาก
+            </label>
+            <select id="select-difficulty" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
+              <option value="1">🌱 ระดับ 1: ฝึกพื้นฐาน ป.5 ให้แน่น</option>
+              <option value="2" selected>🌿 ระดับ 2: ปานกลาง (แนะนำสำหรับ ป.5)</option>
+              <option value="3">🌳 ระดับ 3: ยากแบบข้อสอบแข่งขันจริง</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
+              3. อยากทำกี่ข้อ?
+            </label>
+            <select id="select-count" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
+              <option value="5">⚡ 5 ข้อ (เร็วๆ 10 นาที)</option>
+              <option value="10">📝 10 ข้อ (พอดีๆ 20 นาที)</option>
+              <option value="15">🔥 15 ข้อ (เข้มข้น 30 นาที)</option>
+              <option value="20" selected>🏆 20 ข้อ (ชุดใหญ่ 40 นาที)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+          <div class="flex items-center space-x-2 text-xs text-emerald-700 font-bold">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+            <span>ข้อสอบครบ 100 ข้อ พร้อมเริ่มทำได้ทันที</span>
+          </div>
+
+          <button onclick="startCustomHybridExam()" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-horwang-maroon to-rose-800 hover:from-horwang-darkMaroon hover:to-horwang-maroon text-white font-black text-sm font-heading shadow-xl shadow-horwang-maroon/30 transition btn-kid flex items-center space-x-2">
+            <i class="fa-solid fa-play text-horwang-gold"></i>
+            <span>เริ่มทำข้อสอบเลย</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ACTIVE EXAM INTERFACE -->
+      <div id="active-exam-container" class="hidden space-y-6">
+        <div class="bg-gradient-to-r from-slate-900 to-horwang-darkMaroon text-white rounded-3xl p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span id="active-exam-badge" class="px-3 py-1 rounded-full bg-horwang-gold text-horwang-darkMaroon font-black text-xs font-heading">
+                กำลังทำข้อสอบ
+              </span>
+              <span id="active-exam-count-badge" class="text-xs text-slate-300 font-medium">
+                20 ข้อ • 40 นาที
+              </span>
+            </div>
+            <h2 id="active-exam-title" class="text-xl font-bold font-heading text-white mt-1">
+              แบบทดสอบรวม 5 วิชา เตรียมสอบเข้า ม.1 โรงเรียนหอวัง
+            </h2>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="window.OmrPrinter.printCurrentExam()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/20 transition btn-kid flex items-center space-x-1.5">
+              <i class="fa-solid fa-print"></i>
+              <span>ปริ้นท์ใบงาน</span>
+            </button>
+            <button onclick="window.ExamEngine.confirmSubmit()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-xs font-black text-white shadow-lg transition btn-kid flex items-center space-x-1.5">
+              <i class="fa-solid fa-check"></i>
+              <span>ส่งข้อสอบ</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+          <div id="exam-questions-list" class="lg:col-span-3 space-y-6"></div>
+
+          <!-- Digital OMR Sidebar -->
+          <div id="digital-omr-sidebar" class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 sticky top-36 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 class="font-black font-heading text-horwang-maroon text-sm flex items-center space-x-1.5">
+                <i class="fa-solid fa-table-cells text-horwang-gold"></i>
+                <span>กระดาษฝนคำตอบ</span>
+              </h3>
+              <span class="text-[11px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">แตะเพื่อฝน</span>
+            </div>
+            <div id="digital-omr-grid" class="max-h-[60vh] overflow-y-auto custom-scrollbar space-y-2 pr-1"></div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-sm font-sarabun text-slate-600">
+            ตรวจทานคำตอบให้ครบทุกข้อก่อนกดส่งนะครับ สู้ๆ! ✨
+          </div>
+          <div class="flex items-center space-x-3">
+            <button onclick="scrollToTop()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold font-heading transition btn-kid">
+              <i class="fa-solid fa-arrow-up mr-1"></i>ขึ้นบนสุด
+            </button>
+            <button onclick="window.ExamEngine.confirmSubmit()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm font-heading shadow-xl transition btn-kid flex items-center space-x-2">
+              <i class="fa-solid fa-check-circle"></i>
+              <span>ส่งข้อสอบ & ดูเฉลย</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXAM RESULT BREAKDOWN (Easy Words) -->
+      <div id="exam-result-container" class="hidden space-y-6">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="space-y-2 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 bg-horwang-gold/20 text-horwang-lightGold px-3.5 py-1 rounded-full text-xs font-bold border border-horwang-gold/30">
+                  <i class="fa-solid fa-star text-amber-300"></i>
+                  <span>ผลคะแนนของหนู</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-white">
+                  สรุปผลคะแนนที่ทำได้
+                </h2>
+                <p id="result-benchmark-comment" class="text-sm text-slate-200 max-w-xl font-sarabun">
+                  ยินดีด้วย! คะแนนยอดเยี่ยมมาก มีลุ้นสอบติดห้องเรียนพิเศษ Gifted หอวัง แน่นอน
+                </p>
+              </div>
+
+              <div class="flex flex-col items-center justify-center bg-white/10 rounded-3xl p-5 sm:p-6 border border-white/20 backdrop-blur min-w-[200px] shadow-lg">
+                <div class="text-xs text-slate-300 font-bold uppercase font-heading">คะแนนที่ได้</div>
+                <div class="flex items-baseline space-x-1 my-1">
+                  <span id="result-score-num" class="text-4xl sm:text-6xl font-black font-heading text-horwang-gold">18</span>
+                  <span id="result-total-num" class="text-xl font-bold text-slate-300">/ 20</span>
+                </div>
+                <div id="result-percentage-badge" class="px-3.5 py-1 rounded-full text-xs font-black bg-emerald-500/30 text-emerald-300 border border-emerald-400/40">
+                  90.0% (เก่งมากๆ)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-sarabun">
+              <div class="flex items-center space-x-2 text-emerald-600 font-bold">
+                <i class="fa-solid fa-circle-check text-lg"></i>
+                <span>ตอบถูก: <strong id="result-correct-count" class="text-base font-black">18</strong> ข้อ</span>
+              </div>
+              <div class="flex items-center space-x-2 text-rose-600 font-bold">
+                <i class="fa-solid fa-circle-xmark text-lg"></i>
+                <span>ตอบผิด: <strong id="result-incorrect-count" class="text-base font-black">2</strong> ข้อ</span>
+              </div>
+              <div class="flex items-center space-x-2 text-slate-600 font-medium">
+                <i class="fa-solid fa-stopwatch text-base text-amber-500"></i>
+                <span>เวลาที่ใช้: <strong id="result-time-used" class="font-bold">14:25</strong> นาที</span>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <button onclick="window.StudyClub.shareActiveExam()" class="px-4 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white text-xs sm:text-sm font-black font-heading shadow transition btn-kid flex items-center space-x-1.5">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>แชร์ให้เพื่อนลองทำ</span>
+              </button>
+              <button onclick="resetToGenerator()" class="px-5 py-2.5 rounded-2xl bg-horwang-maroon hover:bg-horwang-darkMaroon text-white text-xs sm:text-sm font-black font-heading shadow transition btn-kid flex items-center space-x-1.5">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>ทำใหม่อีกรอบ</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-black font-heading text-horwang-maroon flex items-center space-x-2">
+              <i class="fa-solid fa-lightbulb text-amber-500"></i>
+              <span>เฉลยวิธีคิด & เคล็ดลับพี่ฮูก (สำหรับ ป.5)</span>
+            </h3>
+          </div>
+
+          <div id="solutions-list-container" class="space-y-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 1.5: MEGA QUESTION BANK BROWSER (EASY WORDS)         -->
+    <!-- ======================================================== -->
+    <section id="tab-bank" class="tab-content hidden space-y-6">
+      <div class="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-amber-500/30">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-400/30">
+              <i class="fa-solid fa-book-open"></i>
+              <span>รวมข้อสอบจริง 100 ข้อ</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
+              ค้นหาและเลือกข้อสอบทำเอง
+            </h2>
+            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
+              เลือกดูเฉลยและสูตรลัดทีละข้อ หรือกดปุ่ม <strong>"+ เลือกข้อนี้"</strong> เพื่อเลือกข้อที่ชอบมาทำเองได้เลย!
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="window.BankBrowser.exportBankAsJson()" class="px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold font-heading border border-white/20 transition btn-kid flex items-center space-x-1.5">
+              <i class="fa-solid fa-download"></i>
+              <span>โหลดไฟล์</span>
+            </button>
+            <button onclick="window.BankBrowser.startSelectedExam()" id="btn-start-selected-exam" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-horwang-gold to-amber-400 text-slate-900 font-black font-heading shadow-lg opacity-50 pointer-events-none transition btn-kid flex items-center space-x-2">
+              <i class="fa-solid fa-play"></i>
+              <span id="bank-selected-count-badge">0 ข้อที่เลือก</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 sm:p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">เลือกวิชา:</label>
+            <select id="bank-filter-subject" onchange="window.BankBrowser.renderView()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm font-bold">
+              <option value="all">ทั้งหมด (ครบ 5 วิชา)</option>
+              <option value="math">📐 คณิตศาสตร์</option>
+              <option value="science">🔬 วิทยาศาสตร์</option>
+              <option value="english">🇬🇧 ภาษาอังกฤษ</option>
+              <option value="thai">🇹🇭 ภาษาไทย</option>
+              <option value="social">🌏 สังคมศึกษา</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">ระดับความยาก:</label>
+            <select id="bank-filter-difficulty" onchange="window.BankBrowser.renderView()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm font-bold">
+              <option value="0">ทุกระดับความยาก</option>
+              <option value="1">ระดับ 1 (พื้นฐาน)</option>
+              <option value="2">ระดับ 2 (ปานกลาง)</option>
+              <option value="3">ระดับ 3 (ยากปราบเซียน)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">พิมพ์ค้นหาโจทย์:</label>
+            <div class="relative">
+              <input type="text" id="bank-search-input" oninput="window.BankBrowser.renderView()" placeholder="พิมพ์เรื่องที่อยากหา เช่น เศษส่วน, วงจรไฟฟ้า, Past Tense..." class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl pl-10 pr-4 py-2.5 text-sm font-sarabun focus:border-horwang-maroon" />
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
+          <div class="text-slate-600 font-bold">
+            มีข้อสอบทั้งหมด <strong id="bank-found-count" class="text-horwang-maroon font-black text-sm">100 ข้อ</strong>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button onclick="window.BankBrowser.selectAllFiltered()" class="text-sky-600 hover:underline font-bold">
+              เลือกทุกข้อ
+            </button>
+            <span>•</span>
+            <button onclick="window.BankBrowser.clearSelection()" class="text-rose-500 hover:underline font-bold">
+              ยกเลิกการเลือก
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="bank-questions-grid" class="space-y-4"></div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: STUDY CLUB (EASY WORDS)                          -->
+    <!-- ======================================================== -->
+    <section id="tab-study-club" class="tab-content hidden space-y-6">
+      <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-500/30">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-2 bg-sky-500/20 text-sky-300 px-3.5 py-1 rounded-full text-xs font-bold border border-sky-400/30">
+              <i class="fa-solid fa-comments"></i>
+              <span>พูดคุย & ถามการบ้าน</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
+              ห้องถามโจทย์เพื่อน & พี่ฮูก
+            </h2>
+            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
+              สงสัยข้อไหน พิมพ์ถามไว้ตรงนี้ได้เลย! จะมีเพื่อนๆ และพี่ฮูก AI คอยมาตอบและอธิบายวิธีคิดให้ครับ
+            </p>
+          </div>
+          <div>
+            <button onclick="openNewPostModal()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black font-heading shadow-xl transition btn-kid flex items-center space-x-2">
+              <i class="fa-solid fa-plus-circle text-base"></i>
+              <span>พิมพ์ถามโจทย์ใหม่</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between bg-white p-3 rounded-2xl border border-slate-200">
+            <div class="flex items-center space-x-1.5">
+              <button onclick="window.StudyClub.filterFeed('all')" id="club-filter-all" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-black font-heading bg-horwang-maroon text-white">
+                ทั้งหมด
+              </button>
+              <button onclick="window.StudyClub.filterFeed('math')" id="club-filter-math" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                คณิต
+              </button>
+              <button onclick="window.StudyClub.filterFeed('science')" id="club-filter-science" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                วิทย์
+              </button>
+              <button onclick="window.StudyClub.filterFeed('english')" id="club-filter-english" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                อังกฤษ
+              </button>
+            </div>
+            <span class="text-xs text-slate-400 font-bold" id="feed-count-text">คำถามทั้งหมด 0 ข้อ</span>
+          </div>
+
+          <div id="club-posts-stream" class="space-y-4"></div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-sm">
+              <i class="fa-solid fa-folder-open text-horwang-gold"></i>
+              <span>ชุดข้อสอบที่เพื่อนส่งให้</span>
+            </h3>
+            <div class="space-y-2.5" id="shared-exams-list"></div>
+          </div>
+
+          <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-sm">
+              <i class="fa-solid fa-trophy text-amber-500"></i>
+              <span>ตารางอันดับดาวสะสม</span>
+            </h3>
+            <div class="space-y-2.5" id="leaderboard-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: ANALYTICS & ROADMAP (EASY WORDS)                 -->
+    <!-- ======================================================== -->
+    <section id="tab-analytics" class="tab-content hidden space-y-6">
+      <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-500/30">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold border border-emerald-400/30">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>ความเก่งของหนู</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
+              ดูคะแนนสะสม & แผนการเรียนสู่ ม.1 หอวัง
+            </h2>
+            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
+              ดูว่าเราทำวิชาไหนได้คะแนนดี และวิชาไหนที่ควรฝึกเพิ่มอีกนิด เพื่อให้พร้อมสอบที่สุด!
+            </p>
+          </div>
+          <div>
+            <button onclick="window.AnalyticsEngine.resetAllScoresAndHistory()" title="ล้างคะแนนดาวและประวัติข้อสอบเพื่อเริ่มต้นใหม่" class="px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-rose-600 text-rose-200 hover:text-white text-xs font-bold font-heading border border-rose-400/30 transition btn-kid flex items-center space-x-1.5 shadow-sm">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>ล้างคะแนนสะสม</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
+          <div class="text-xs font-black text-slate-500 font-heading uppercase">ทำข้อสอบไปแล้ว</div>
+          <div class="text-3xl font-black font-heading text-horwang-maroon" id="metric-exams-count">0</div>
+          <div class="text-[11px] text-emerald-600 font-bold">ฝึกทำบ่อยๆ นะ</div>
+        </div>
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
+          <div class="text-xs font-black text-slate-500 font-heading uppercase">คะแนนเฉลี่ย</div>
+          <div class="text-3xl font-black font-heading text-amber-500" id="metric-avg-score">0%</div>
+          <div class="text-[11px] text-slate-500 font-bold" id="metric-avg-sub">เกณฑ์ Gifted: &ge;80%</div>
+        </div>
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
+          <div class="text-xs font-black text-slate-500 font-heading uppercase">วิชาที่เก่งที่สุด</div>
+          <div class="text-base font-black font-heading text-emerald-600 truncate" id="metric-best-subject">-</div>
+          <div class="text-[11px] text-slate-400">วิชาเก็บคะแนน</div>
+        </div>
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
+          <div class="text-xs font-black text-slate-500 font-heading uppercase">วิชาที่ต้องฝึกเพิ่ม</div>
+          <div class="text-base font-black font-heading text-rose-600 truncate" id="metric-weak-subject">-</div>
+          <div class="text-[11px] text-rose-500 font-bold">ฝึกซ้ำเพื่อความมั่นใจ</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4 card-kid">
+          <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
+            <i class="fa-solid fa-chart-radar text-horwang-gold"></i>
+            <span>ระดับความเก่งใน 5 วิชา</span>
+          </h3>
+          <div class="h-64 flex items-center justify-center">
+            <canvas id="subjectMasteryChart"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4 card-kid">
+          <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
+            <i class="fa-solid fa-route text-horwang-gold"></i>
+            <span>บันได 4 ขั้นสู่ ม.1 หอวัง</span>
+          </h3>
+          <div id="roadmap-container" class="space-y-3 font-sarabun text-sm"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALS -->
+  <div id="import-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
+          <i class="fa-solid fa-plus-circle text-sky-500"></i>
+          <span>เพิ่มข้อสอบใหม่</span>
+        </h3>
+        <button onclick="closeImportModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-2 text-xs text-slate-600 font-sarabun">
+        <ol class="list-decimal list-inside space-y-1 pl-1 text-slate-500">
+          <li>กดปุ่ม <button onclick="window.NoApiHub.copyPromptToClipboard()" class="text-sky-600 font-bold underline">"ก๊อปปี้คำสั่งออกข้อสอบ"</button></li>
+          <li>นำไปวางในเว็บฟรี เช่น <a href="https://chatgpt.com" target="_blank" class="text-emerald-600 underline font-bold">ChatGPT ฟรี</a></li>
+          <li>ก๊อปปี้ข้อความมาวางในช่องด้านล่าง แล้วกดเริ่มทำได้เลย:</li>
+        </ol>
+      </div>
+
+      <textarea id="import-json-textarea" rows="7" placeholder='วางข้อความข้อสอบที่นี่...' class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-3 text-xs font-mono"></textarea>
+
+      <div class="flex items-center justify-between pt-2">
+        <button onclick="window.NoApiHub.copyPromptToClipboard()" class="text-xs font-bold text-sky-600 hover:underline">
+          <i class="fa-regular fa-copy mr-1"></i>ก๊อปปี้คำสั่งออกข้อสอบ
+        </button>
+        <button onclick="window.NoApiHub.handleImportSubmit()" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
+          เริ่มทำข้อสอบชุดนี้
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="new-post-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2">
+          <i class="fa-solid fa-pen-to-square text-horwang-gold"></i>
+          <span>พิมพ์ถามโจทย์ที่ไม่เข้าใจ</span>
+        </h3>
+        <button onclick="closeNewPostModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div class="space-y-3 font-sarabun text-sm">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">เลือกวิชา:</label>
+          <select id="post-subject-select" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3 py-2 text-sm font-bold">
+            <option value="math">คณิตศาสตร์</option>
+            <option value="science">วิทยาศาสตร์</option>
+            <option value="english">ภาษาอังกฤษ</option>
+            <option value="thai">ภาษาไทย</option>
+            <option value="social">สังคมศึกษา</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">หัวข้อคำถาม:</label>
+          <input type="text" id="post-title-input" placeholder="เช่น ข้อนี้ทำยังไงครับ" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">พิมพ์ข้อความหรือโจทย์ที่สงสัย:</label>
+          <textarea id="post-content-input" rows="4" placeholder="พิมพ์โจทย์ หรือสิ่งที่ไม่เข้าใจตรงนี้..." class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-sm"></textarea>
+        </div>
+      </div>
+      <div class="flex items-center justify-between pt-2">
+        <span class="text-xs text-sky-600 font-bold">
+          <i class="fa-solid fa-robot mr-1"></i>พี่ฮูก AI จะช่วยตอบวิธีคิดให้ทันที
+        </span>
+        <button onclick="submitNewClubPost()" class="px-5 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
+          ส่งคำถาม
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="printable-exam-sheet" class="hidden"></div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-6 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <strong class="text-horwang-maroon font-heading text-sm">Horwang M.1 Hero (สำหรับน้อง ป.5)</strong>
+        <p class="text-slate-400">ระบบฝึกทำข้อสอบเตรียมสอบเข้า ม.1 โรงเรียนหอวัง</p>
+      </div>
+      <div class="flex items-center space-x-3 text-slate-400 font-medium">
+        <span class="text-emerald-600 font-bold"><i class="fa-solid fa-book-open mr-1"></i>100 ข้อ</span>
+        <span>•</span>
+        <span>เข้าใจง่ายสำหรับเด็ก</span>
+        <span>•</span>
+        <span>v2.8</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Application Glue Logic -->
+  <script>
+    function switchTab(tabId) {
+      window.SoundEngine.click();
+      window.APP_STATE.currentTab = tabId;
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-white/20', 'text-white');
+        btn.classList.add('text-slate-200');
+      });
+
+      const activeTabEl = document.getElementById(`tab-${tabId}`);
+      if (activeTabEl) activeTabEl.classList.remove('hidden');
+
+      const navBtn = document.getElementById(`nav-${tabId}`);
+      if (navBtn) {
+        navBtn.classList.add('bg-white/20', 'text-white');
+        navBtn.classList.remove('text-slate-200');
+      }
+
+      if (tabId === 'bank') {
+        window.BankBrowser.renderView();
+      } else if (tabId === 'analytics') {
+        window.AnalyticsEngine.renderView();
+      } else if (tabId === 'study-club') {
+        window.StudyClub.renderFeed();
+      }
+    }
+
+    function selectSubjectCard(subject) {
+      window.SoundEngine.click();
+      document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('active'));
+      const card = document.getElementById(`subj-card-${subject}`);
+      if (card) card.classList.add('active');
+      const select = document.getElementById('select-subject');
+      if (select) select.value = subject;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetToGenerator() {
+      window.SoundEngine.click();
+      document.getElementById('exam-result-container')?.classList.add('hidden');
+      document.getElementById('exam-config-card')?.classList.remove('hidden');
+      scrollToTop();
+    }
+
+    function startHybridExam(preset = 'balanced') {
+      window.SoundEngine.click();
+      const count = parseInt(document.getElementById('select-count')?.value || '20', 10);
+      const subject = document.getElementById('select-subject')?.value || 'all';
+      const difficulty = parseInt(document.getElementById('select-difficulty')?.value || '2', 10);
+      const track = document.getElementById('select-track')?.value || 'gifted';
+
+      const questions = window.MegaBankEngine.generateHybridExam(count, subject, track, difficulty, preset);
+      const subjName = window.HORWANG_CONFIG.SUBJECTS[subject]?.name || 'รวม 5 วิชา';
+      const presetTitle = preset === 'balanced' ? 'รวมโจทย์ฮิต' : (preset === 'math-speed' ? 'คิดเลขเร็ว' : 'โจทย์ท้าทาย');
+      window.ExamEngine.startExam(questions, `ชุดข้อสอบ ${presetTitle} (${subjName} ${questions.length} ข้อ)`);
+    }
+
+    function startCustomHybridExam() {
+      const preset = 'balanced';
+      startHybridExam(preset);
+    }
+
+    function openImportModal() {
+      window.SoundEngine.click();
+      document.getElementById('import-modal').classList.remove('hidden');
+      document.getElementById('import-modal').classList.add('flex');
+    }
+    function closeImportModal() {
+      document.getElementById('import-modal').classList.add('hidden');
+      document.getElementById('import-modal').classList.remove('flex');
+    }
+
+    function openNewPostModal() {
+      window.SoundEngine.click();
+      document.getElementById('new-post-modal').classList.remove('hidden');
+      document.getElementById('new-post-modal').classList.add('flex');
+    }
+    function closeNewPostModal() {
+      document.getElementById('new-post-modal').classList.add('hidden');
+      document.getElementById('new-post-modal').classList.remove('flex');
+    }
+    async function submitNewClubPost() {
+      const subject = document.getElementById('post-subject-select').value;
+      const title = document.getElementById('post-title-input').value.trim();
+      const content = document.getElementById('post-content-input').value.trim();
+      if (!title || !content) {
+        alert("กรุณากรอกหัวข้อและรายละเอียดโจทย์");
+        return;
+      }
+      closeNewPostModal();
+      await window.StudyClub.createNewPost(subject, title, content);
+      document.getElementById('post-title-input').value = '';
+      document.getElementById('post-content-input').value = '';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const xpEl = document.getElementById('user-xp-display');
+      if (xpEl) xpEl.innerText = `${window.APP_STATE.userXp} แต้ม`;
+      window.CloudflareSync.checkConnection();
+    });
+  </script>
+</body>
+</html>
