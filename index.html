@@ -91,38 +91,59 @@
 
         <!-- Main Navigation Tabs -->
         <nav class="hidden md:flex items-center space-x-2">
-          <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 bg-white/20 text-white font-heading shadow-sm">
-            <i class="fa-solid fa-gamepad text-horwang-gold text-base"></i>
-            <span>🎯 เล่นข้อสอบ</span>
-          </button>
-          <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-            <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
-            <span>📚 รวมข้อสอบ 500 ข้อ</span>
-          </button>
-          <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-            <i class="fa-solid fa-comments text-sky-300 text-base"></i>
-            <span>💬 ถามเพื่อน & พี่ฮูก</span>
-          </button>
-          <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-            <i class="fa-solid fa-trophy text-emerald-300 text-base"></i>
-            <span>🏆 สมุดสะสมรางวัล</span>
-          </button>
+          <div class="has-bubble-tip">
+            <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 bg-white/20 text-white font-heading shadow-sm">
+              <i class="fa-solid fa-gamepad text-horwang-gold text-base"></i>
+              <span>🎯 เล่นข้อสอบ</span>
+            </button>
+            <div class="bubble-tip">จัดชุดข้อสอบ & ทำแบบฝึกหัด 🎮</div>
+          </div>
+
+          <div class="has-bubble-tip">
+            <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+              <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
+              <span>📚 รวมข้อสอบ 500 ข้อ</span>
+            </button>
+            <div class="bubble-tip">คลังข้อสอบ 5 วิชาครบ 500 ข้อ 📖</div>
+          </div>
+
+          <div class="has-bubble-tip">
+            <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+              <i class="fa-solid fa-comments text-sky-300 text-base"></i>
+              <span>💬 ถามเพื่อน & พี่ฮูก</span>
+            </button>
+            <div class="bubble-tip">ถามการบ้าน & คุยกับเพื่อนๆ 💬</div>
+          </div>
+
+          <div class="has-bubble-tip">
+            <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
+              <i class="fa-solid fa-trophy text-emerald-300 text-base"></i>
+              <span>🏆 สมุดสะสมรางวัล</span>
+            </button>
+            <div class="bubble-tip">ดูคะแนน & เหรียญตราอัศวิน 🏅</div>
+          </div>
         </nav>
 
         <!-- Right Quick Controls -->
         <div class="flex items-center space-x-2 sm:space-x-3">
           <!-- Audio Toggle -->
-          <button onclick="window.SoundEngine.toggle()" id="btn-audio" title="เปิด/ปิดเสียงดนตรี" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
-            <i class="fa-solid fa-volume-high text-horwang-gold"></i>
-          </button>
+          <div class="has-bubble-tip">
+            <button onclick="window.SoundEngine.toggle()" id="btn-audio" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
+              <i class="fa-solid fa-volume-high text-horwang-gold"></i>
+            </button>
+            <div class="bubble-tip">เปิด/ปิดเสียงเอฟเฟกต์แสนสนุก 🎵</div>
+          </div>
 
           <!-- Level & XP Badge -->
-          <div onclick="switchTab('analytics')" class="flex items-center space-x-2 bg-gradient-to-r from-amber-500/30 to-orange-500/30 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-md cursor-pointer hover:scale-105 transition">
-            <span class="text-xl animate-bounce">⭐</span>
-            <div>
-              <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider" id="user-rank-title">นักสำรวจ ป.5</div>
-              <span id="user-xp-display" class="text-xs font-black text-horwang-gold font-heading">0 แต้ม</span>
+          <div class="has-bubble-tip">
+            <div onclick="switchTab('analytics')" class="flex items-center space-x-2 bg-gradient-to-r from-amber-500/30 to-orange-500/30 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-md cursor-pointer hover:scale-105 transition">
+              <span class="text-xl animate-bounce">⭐</span>
+              <div>
+                <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider" id="user-rank-title">นักสำรวจ ป.5</div>
+                <span id="user-xp-display" class="text-xs font-black text-horwang-gold font-heading">0 แต้ม</span>
+              </div>
             </div>
+            <div class="bubble-tip">แต้มดาวสะสม & เลเวลอัศวิน ⭐</div>
           </div>
         </div>
       </div>
@@ -258,9 +279,10 @@
           <span class="text-xs text-slate-500 font-medium">แตะ 1 ครั้งเพื่อเลือกวิชา</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-2">
           <!-- All -->
           <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-gradient-to-b from-white to-slate-50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble">ครบ 5 วิชา ✨</span>
             <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🎯</div>
             <div class="font-black font-heading text-xs text-slate-800">รวม 5 วิชา</div>
             <div class="text-[10px] text-slate-500 font-medium">500 ข้อในคลัง</div>
@@ -268,6 +290,7 @@
 
           <!-- Math -->
           <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-gradient-to-b from-rose-50 to-rose-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble bg-rose-500 text-white">100 ข้อ 📐</span>
             <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mx-auto shadow-inner">📐</div>
             <div class="font-black font-heading text-xs text-rose-900">คณิตศาสตร์</div>
             <div class="text-[10px] text-rose-600 font-medium">100 ข้อในคลัง</div>
@@ -275,6 +298,7 @@
 
           <!-- Science -->
           <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-gradient-to-b from-emerald-50 to-emerald-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble bg-emerald-500 text-white">100 ข้อ 🔬</span>
             <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🔬</div>
             <div class="font-black font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
             <div class="text-[10px] text-emerald-600 font-medium">100 ข้อในคลัง</div>
@@ -282,6 +306,7 @@
 
           <!-- English -->
           <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-gradient-to-b from-sky-50 to-sky-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble bg-sky-500 text-white">100 ข้อ 🇬🇧</span>
             <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🇬🇧</div>
             <div class="font-black font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
             <div class="text-[10px] text-sky-600 font-medium">100 ข้อในคลัง</div>
@@ -289,6 +314,7 @@
 
           <!-- Thai -->
           <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-gradient-to-b from-amber-50 to-amber-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble bg-amber-500 text-slate-900">100 ข้อ 🇹🇭</span>
             <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🇹🇭</div>
             <div class="font-black font-heading text-xs text-amber-900">ภาษาไทย</div>
             <div class="text-[10px] text-amber-700 font-medium">100 ข้อในคลัง</div>
@@ -296,10 +322,10 @@
 
           <!-- Social -->
           <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-gradient-to-b from-purple-50 to-purple-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
+            <span class="subject-card-bubble bg-purple-500 text-white">100 ข้อ 🌏</span>
             <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🌏</div>
             <div class="font-black font-heading text-xs text-purple-900">สังคมศึกษา</div>
             <div class="text-[10px] text-purple-600 font-medium">100 ข้อในคลัง</div>
-          </div>
         </div>
       </div>
 

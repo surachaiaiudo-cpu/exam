@@ -66,13 +66,20 @@ window.ExamEngine = (function() {
             </div>
             
             <div class="flex items-center space-x-2">
-              <button onclick="window.ExamEngine.speakQuestion(${idx})" id="speak-btn-${idx}" title="อ่านโจทย์ให้ฟัง" class="text-slate-500 hover:text-horwang-maroon px-2.5 py-1.5 rounded-xl hover:bg-rose-50 transition text-xs font-bold flex items-center space-x-1 border border-slate-200 btn-kid">
-                <i class="fa-solid fa-volume-high text-amber-500"></i>
-                <span class="hidden sm:inline">ฟังโจทย์</span>
-              </button>
-              <button onclick="window.ExamEngine.toggleFlag(${idx})" id="flag-btn-${idx}" title="ปักหมุดข้อที่ต้องการทบทวน" class="text-slate-400 hover:text-amber-500 p-2 rounded-xl hover:bg-slate-100 transition text-sm">
-                <i class="fa-regular fa-bookmark"></i>
-              </button>
+              <div class="has-bubble-tip">
+                <button onclick="window.ExamEngine.speakQuestion(${idx})" id="speak-btn-${idx}" class="text-slate-500 hover:text-horwang-maroon px-2.5 py-1.5 rounded-xl hover:bg-rose-50 transition text-xs font-bold flex items-center space-x-1 border border-slate-200 btn-kid">
+                  <i class="fa-solid fa-volume-high text-amber-500"></i>
+                  <span class="hidden sm:inline">ฟังโจทย์</span>
+                </button>
+                <div class="bubble-tip">กดให้พี่ฮูกอ่านโจทย์ให้ฟังนะ 🔊</div>
+              </div>
+
+              <div class="has-bubble-tip">
+                <button onclick="window.ExamEngine.toggleFlag(${idx})" id="flag-btn-${idx}" class="text-slate-400 hover:text-amber-500 p-2 rounded-xl hover:bg-slate-100 transition text-sm">
+                  <i class="fa-regular fa-bookmark"></i>
+                </button>
+                <div class="bubble-tip">ปักหมุดไว้ทบทวนทีหลัง 🚩</div>
+              </div>
             </div>
           </div>
 
