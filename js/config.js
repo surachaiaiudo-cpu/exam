@@ -72,3 +72,34 @@ window.APP_STATE = {
   posts: JSON.parse(localStorage.getItem('hw_club_posts') || '[]'),
   sharedExams: JSON.parse(localStorage.getItem('hw_shared_exams') || '[]')
 };
+
+// Bulletproof Real-time KaTeX Math & Fraction Formatter
+window.formatMathText = function(text) {
+  if (!text || typeof text !== 'string') return text || '';
+  if (!window.katex) return text;
+
+  let formatted = text;
+
+  // Replace $$...$$ (Display Block)
+  formatted = formatted.replace(/\$\$([\s\S]*?)\$\$/g, (m, formula) => {
+    try {
+      return katex.renderToString(formula.trim(), { displayMode: true, throwOnError: false });
+    } catch (e) { return m; }
+  });
+
+  // Replace \[...\] (Display Block)
+  formatted = formatted.replace(/\\\[([\s\S]*?)\\\]/g, (m, formula) => {
+    try {
+      return katex.renderToString(formula.trim(), { displayMode: true, throwOnError: false });
+    } catch (e) { return m; }
+  });
+
+  // Replace \(...\) (Inline Math)
+  formatted = formatted.replace(/\\\(([\s\S]*?)\\\)/g, (m, formula) => {
+    try {
+      return katex.renderToString(formula.trim(), { displayMode: false, throwOnError: false });
+    } catch (e) { return m; }
+  });
+
+  return formatted;
+};

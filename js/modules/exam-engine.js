@@ -84,7 +84,7 @@ window.ExamEngine = (function() {
           </div>
 
           <div class="text-base sm:text-lg font-medium text-slate-800 leading-relaxed font-sarabun" id="q-text-${idx}">
-            ${q.question}
+            ${window.formatMathText ? window.formatMathText(q.question) : q.question}
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
@@ -93,7 +93,7 @@ window.ExamEngine = (function() {
                 <span id="opt-badge-${idx}-${optIdx}" class="w-8 h-8 rounded-full border-2 border-slate-300 group-hover:border-horwang-maroon text-xs font-black font-heading flex items-center justify-center shrink-0 mt-0.5 text-slate-500 group-hover:text-horwang-maroon bg-white shadow-sm transition">
                   ${String.fromCharCode(65 + optIdx)}
                 </span>
-                <span class="leading-relaxed flex-1">${opt}</span>
+                <span class="leading-relaxed flex-1">${window.formatMathText ? window.formatMathText(opt) : opt}</span>
               </button>
             `).join('')}
           </div>
@@ -436,7 +436,7 @@ window.ExamEngine = (function() {
           </div>
 
           <div class="text-base sm:text-lg font-bold text-slate-800 font-sarabun">
-            ${q.question}
+            ${window.formatMathText ? window.formatMathText(q.question) : q.question}
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base font-sarabun">
@@ -452,7 +452,7 @@ window.ExamEngine = (function() {
               }
               return `
                 <div class="p-3.5 rounded-2xl border ${style} flex items-center justify-between">
-                  <span><strong>${String.fromCharCode(65 + optIdx)}.</strong> ${opt}</span>
+                  <span><strong>${String.fromCharCode(65 + optIdx)}.</strong> ${window.formatMathText ? window.formatMathText(opt) : opt}</span>
                   ${icon}
                 </div>
               `;
@@ -465,7 +465,7 @@ window.ExamEngine = (function() {
               <span>เฉลยวิธีคิดทีละขั้นตอน (Step-by-step):</span>
             </div>
             <div class="text-slate-700 whitespace-pre-line leading-relaxed pl-3 border-l-4 border-amber-400">
-              ${q.explanation}
+              ${window.formatMathText ? window.formatMathText(q.explanation) : q.explanation}
             </div>
 
             ${q.trap ? `

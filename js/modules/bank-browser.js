@@ -55,26 +55,26 @@ window.BankBrowser = (function() {
           </div>
 
           <div class="text-sm sm:text-base font-medium text-slate-800 font-sarabun leading-relaxed">
-            ${q.question}
+            ${window.formatMathText ? window.formatMathText(q.question) : q.question}
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sarabun">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sarabun">
             ${q.options.map((opt, optIdx) => `
-              <div class="p-2 rounded-lg border ${optIdx === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 text-emerald-900 font-bold' : 'bg-slate-50 border-slate-200 text-slate-600'}">
-                <strong>(${String.fromCharCode(65 + optIdx)})</strong> ${opt}
+              <div class="p-2.5 rounded-xl border ${optIdx === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 text-emerald-900 font-bold' : 'bg-slate-50 border-slate-200 text-slate-600'}">
+                <strong>(${String.fromCharCode(65 + optIdx)})</strong> ${window.formatMathText ? window.formatMathText(opt) : opt}
               </div>
             `).join('')}
           </div>
 
           <!-- Solution Accordion -->
-          <details class="text-xs font-sarabun text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 cursor-pointer">
+          <details class="text-xs sm:text-sm font-sarabun text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-200 cursor-pointer">
             <summary class="font-bold text-horwang-maroon font-heading outline-none">
               <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i>ดูเฉลยละเอียดและเทคนิคคิดเร็ว
             </summary>
-            <div class="pt-2 pl-2 space-y-1.5 border-t border-slate-200 mt-2">
-              <div class="whitespace-pre-line text-slate-700"><strong>วิธีคิด:</strong> ${q.explanation}</div>
-              ${q.trap ? `<div class="text-rose-700"><strong>จุดหลอก:</strong> ${q.trap}</div>` : ''}
-              ${q.shortcutTrick ? `<div class="text-amber-800"><strong>สูตรลัด:</strong> ${q.shortcutTrick}</div>` : ''}
+            <div class="pt-2.5 pl-2 space-y-2 border-t border-slate-200 mt-2">
+              <div class="whitespace-pre-line text-slate-700 leading-relaxed"><strong>วิธีคิด:</strong>\n${window.formatMathText ? window.formatMathText(q.explanation) : q.explanation}</div>
+              ${q.trap ? `<div class="text-rose-700 bg-rose-50 p-2 rounded-lg border border-rose-200"><strong>จุดหลอก:</strong> ${q.trap}</div>` : ''}
+              ${q.shortcutTrick ? `<div class="text-amber-900 bg-amber-50 p-2 rounded-lg border border-amber-200"><strong>สูตรลัด:</strong> ${q.shortcutTrick}</div>` : ''}
             </div>
           </details>
         </div>
