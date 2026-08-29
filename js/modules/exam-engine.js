@@ -101,8 +101,8 @@ window.ExamEngine = (function() {
       `;
     }).join('');
 
-    if (window.renderMathInBody) {
-      renderMathInBody(container);
+    if (window.renderAllMath) {
+      window.renderAllMath(container);
     }
   }
 
@@ -492,8 +492,8 @@ window.ExamEngine = (function() {
       `;
     }).join('');
 
-    if (window.renderMathInBody) {
-      renderMathInBody(container);
+    if (window.renderAllMath) {
+      window.renderAllMath(container);
     }
   }
 

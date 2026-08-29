@@ -82,7 +82,7 @@ window.BankBrowser = (function() {
     }).join('');
 
     updateSelectedCount();
-    if (window.renderMathInBody) renderMathInBody(container);
+    if (window.renderAllMath) window.renderAllMath(container);
   }
 
   function toggleSelectQuestion(id) {

@@ -1,5 +1,5 @@
 /**
- * 500 Questions Generator for Horwang M.1 Exam Bank
+ * 500 Questions Generator for Horwang M.1 Exam Bank (Beautiful Visual KaTeX Fractions Edition)
  * 100 Math, 100 Science, 100 English, 100 Thai, 100 Social Studies
  */
 
@@ -15,21 +15,23 @@ function buildMathQuestions() {
     const a = i + 1;
     const b = i + 2;
     const c = i + 3;
-    const bottom = b + 1/c;
-    const inv = 1 / bottom;
-    const total = a + inv;
     const num = a * (b * c + 1) + c;
     const den = b * c + 1;
     list.push({
       id: `m_${String(list.length + 1).padStart(3, '0')}`,
-      subject: 'math', subjectName: 'คณิตศาสตร์', track: i % 2 === 0 ? 'Gifted' : 'Regular', difficulty: (i % 3) + 1,
-      topic: 'เศษส่วนต่อเนื่องและพีชคณิต',
-      question: `ถ้า \\( x = ${a} + \\frac{1}{${b} + \\frac{1}{${c}}} \\) จงหาค่าของเศษส่วนอย่างต่ำของ \\( x \\)`,
-      options: [`\\( \\frac{${num}}{${den}} \\)`, `\\( \\frac{${num + 2}}{${den}} \\)`, `\\( \\frac{${num - 1}}{${den + 1}} \\)`, `\\( \\frac{${num + 3}}{${den + 2}} \\)`],
+      subject: 'math', subjectName: 'คณิตศาสตร์', track: 'Gifted', difficulty: 3,
+      topic: 'เศษส่วนซ้อนและพีชคณิต',
+      question: `กำหนดให้ \\( \\displaystyle x = ${a} + \\cfrac{1}{${b} + \\cfrac{1}{${c}}} \\) จงหาค่าของ \\( x \\) ในรูปเศษส่วนอย่างต่ำ`,
+      options: [
+        `\\( \\displaystyle \\frac{${num}}{${den}} \\)`,
+        `\\( \\displaystyle \\frac{${num + 2}}{${den}} \\)`,
+        `\\( \\displaystyle \\frac{${num - 1}}{${den + 1}} \\)`,
+        `\\( \\displaystyle \\frac{${num + 3}}{${den + 2}} \\)`
+      ],
       correctAnswer: 0,
-      explanation: `1) คำนวณชั้นล่างสุด: ${b} + 1/${c} = ${b * c + 1}/${c}\n2) กลับเศษเป็นส่วน: ${c}/${b * c + 1}\n3) บวกกับตัวหน้า: ${a} + ${c}/${b * c + 1} = ${num}/${den}`,
+      explanation: `วิธีคิดแบบบันได 3 ขั้น (กินเบอร์เกอร์จากล่างขึ้นบน):\n1) คิดชั้นล่างสุด: \\( \\displaystyle ${b} + \\frac{1}{${c}} = \\frac{${b * c + 1}}{${c}} \\)\n2) ตีลังกากลับเศษเป็นส่วน: \\( \\displaystyle \\cfrac{1}{\\frac{${b * c + 1}}{${c}}} = \\frac{${c}}{${b * c + 1}} \\)\n3) บวกกับตัวหน้าสุด: \\( \\displaystyle ${a} + \\frac{${c}}{${b * c + 1}} = \\frac{${num}}{${den}} \\)`,
       trap: 'ระวังลืมกลับเศษเป็นส่วนก่อนบวกในแต่ละชั้น',
-      shortcutTrick: 'คำนวณจากล่างขึ้นบนทีละชั้น (Bottom-up)'
+      shortcutTrick: 'สูตรเบอร์เกอร์ 3 ขั้น: 1.คิดตัวล่าง 2.ตีลังกากลับหัว 3.บวกตัวบน'
     });
   }
 
@@ -69,7 +71,7 @@ function buildMathQuestions() {
       question: `รถไฟขบวนหนึ่งยาว ${tLen} เมตร วิ่งด้วยความเร็ว ${vKm} กิโลเมตรต่อชั่วโมง จะใช้เวลากี่วินาทีในการวิ่งผ่านพ้นอุโมงค์ยาว ${tunnelLen} เมตร พ้นทั้งขบวนพอดี`,
       options: [`${timeSec} วินาที`, `${timeSec + 5} วินาที`, `${timeSec - 4} วินาที`, `${timeSec + 8} วินาที`],
       correctAnswer: 0,
-      explanation: `1) แปลงความเร็ว ${vKm} km/h เป็น m/s: ${vKm} × 5/18 = ${vMs} m/s\n2) ระยะทางรวม = รถไฟ + อุโมงค์ = ${tLen} + ${tunnelLen} = ${totalDist} เมตร\n3) เวลา = ${totalDist} / ${vMs} = ${timeSec} วินาที`,
+      explanation: `1) แปลงความเร็ว ${vKm} km/h เป็น m/s: \\( \\displaystyle ${vKm} \\times \\frac{5}{18} = ${vMs} \\text{ m/s} \\)\n2) ระยะทางรวม = รถไฟ + อุโมงค์ = ${tLen} + ${tunnelLen} = ${totalDist} เมตร\n3) เวลา = ${totalDist} / ${vMs} = ${timeSec} วินาที`,
       trap: 'อย่าลืมบวกความยาวของตัวรถไฟเองเข้าไปด้วย',
       shortcutTrick: 'แปลง km/h เป็น m/s คูณ 5/18 เสมอ'
     });
@@ -103,10 +105,10 @@ function buildMathQuestions() {
       id: `m_${String(list.length + 1).padStart(3, '0')}`,
       subject: 'math', subjectName: 'คณิตศาสตร์', track: 'Gifted', difficulty: 2,
       topic: 'อนุกรมและผลบวกเลขเรียง',
-      question: `ผลบวกของจำนวนนับตั้งแต่ 1 ถึง ${n} (คือ \\( 1 + 2 + 3 + ... + ${n} \\)) มีค่าเท่ากับข้อใด`,
+      question: `ผลบวกของจำนวนนับตั้งแต่ 1 ถึง ${n} (คือ \\( \\displaystyle 1 + 2 + 3 + ... + ${n} \\)) มีค่าเท่ากับข้อใด`,
       options: [`${sum.toLocaleString()}`, `${(sum + n).toLocaleString()}`, `${(sum - 10).toLocaleString()}`, `${(sum + 50).toLocaleString()}`],
       correctAnswer: 0,
-      explanation: `ใช้สูตรผลบวกของเกาส์ (Gauss Formula): ผลบวก = [n(n + 1)] / 2 = [${n} × ${n + 1}] / 2 = ${sum}`,
+      explanation: `ใช้สูตรผลบวกของเกาส์: \\( \\displaystyle \\text{ผลบวก} = \\frac{n(n + 1)}{2} = \\frac{${n} \\times ${n + 1}}{2} = ${sum} \\)`,
       trap: 'อย่าลืมบวก 1 ให้ตัวคูณก่อนนำมาหาร 2',
       shortcutTrick: 'สูตรลัดเกาส์: [ต้น + ปลาย] × จำนวนตัว / 2'
     });
@@ -117,7 +119,6 @@ function buildMathQuestions() {
     const t1 = 3 + (i % 4);
     const t2 = 4 + (i % 3);
     const t3 = 6 + (i % 2);
-    // gcd and lcm
     const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
     const lcm = (a, b) => (a * b) / gcd(a, b);
     const totalLcm = lcm(lcm(t1, t2), t3);
@@ -398,13 +399,6 @@ const all500 = [
   ...buildSocialQuestions()
 ];
 
-console.log(`Generated ${all500.length} questions total:`);
-console.log(`- Math: ${all500.filter(q => q.subject === 'math').length}`);
-console.log(`- Science: ${all500.filter(q => q.subject === 'science').length}`);
-console.log(`- English: ${all500.filter(q => q.subject === 'english').length}`);
-console.log(`- Thai: ${all500.filter(q => q.subject === 'thai').length}`);
-console.log(`- Social: ${all500.filter(q => q.subject === 'social').length}`);
-
 // Write to js/data/questions-db.js
 const jsContent = `/**
  * Horwang M.1 AI Exam Master - Mega Master Question Bank (500 Authentic Questions)
@@ -438,4 +432,4 @@ all500.forEach(q => {
 });
 
 fs.writeFileSync(path.join(__dirname, '..', 'seed_questions.sql'), sqlContent, 'utf8');
-console.log("Successfully updated js/data/questions-db.js and seed_questions.sql!");
+console.log("Successfully rebuilt 500 questions with beautiful KaTeX visual fractions!");
