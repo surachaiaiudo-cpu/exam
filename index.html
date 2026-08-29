@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🦉 Horwang M.1 Hero - ฝึกทำข้อสอบเข้า ม.1 หอวัง (สำหรับ ป.5)</title>
+  <title>🦉 Horwang M.1 Hero - ผจญภัยพิชิตข้อสอบเข้า ม.1 หอวัง (สำหรับ ป.5)</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -66,34 +66,34 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Navigation Header (Kid-Friendly Simple Words) -->
-  <header class="sticky top-0 z-40 bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white shadow-xl border-b-2 border-horwang-gold">
+  <!-- Top Navigation Header (Joyful & Colorful) -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white shadow-xl border-b-4 border-horwang-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         
-        <!-- Logo & Friendly Mascot -->
+        <!-- Logo & Interactive Mascot -->
         <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('generator')">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-horwang-gold flex items-center justify-center text-horwang-darkMaroon shadow-md font-bold text-2xl ring-4 ring-white/20 transform hover:rotate-6 transition">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-300 via-amber-400 to-horwang-gold flex items-center justify-center text-horwang-darkMaroon shadow-lg font-bold text-2xl ring-4 ring-white/30 transform hover:scale-110 hover:rotate-6 transition">
             🦉
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="font-heading font-black text-lg sm:text-2xl tracking-tight text-white">
+              <span class="font-heading font-black text-lg sm:text-2xl tracking-tight text-white drop-shadow">
                 HORWANG <span class="text-horwang-gold">M.1 HERO</span>
               </span>
-              <span class="bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow hidden sm:inline-block">
-                ✨ ป.5 สู่ ม.1 หอวัง
+              <span class="bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow hidden sm:inline-block">
+                ✨ ป.5 พิชิต ม.1 หอวัง
               </span>
             </div>
-            <p class="text-xs text-amber-200 font-medium hidden sm:block">ฝึกทำข้อสอบง่ายๆ พร้อมเฉลยเข้าใจเร็ว</p>
+            <p class="text-xs text-amber-200 font-medium hidden sm:block">เกมฝึกทำข้อสอบแสนสนุก พร้อมเฉลยเข้าใจง่ายสุดๆ</p>
           </div>
         </div>
 
-        <!-- Main Easy Navigation Tabs -->
+        <!-- Main Navigation Tabs -->
         <nav class="hidden md:flex items-center space-x-2">
           <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 bg-white/20 text-white font-heading shadow-sm">
-            <i class="fa-solid fa-play text-horwang-gold text-base"></i>
-            <span>🎯 เริ่มทำข้อสอบ</span>
+            <i class="fa-solid fa-gamepad text-horwang-gold text-base"></i>
+            <span>🎯 เล่นข้อสอบ</span>
           </button>
           <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
             <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
@@ -105,28 +105,22 @@
           </button>
           <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
             <i class="fa-solid fa-trophy text-emerald-300 text-base"></i>
-            <span>🏆 ดูคะแนน & รางวัล</span>
+            <span>🏆 สมุดสะสมรางวัล</span>
           </button>
         </nav>
 
         <!-- Right Quick Controls -->
         <div class="flex items-center space-x-2 sm:space-x-3">
           <!-- Audio Toggle -->
-          <button onclick="window.SoundEngine.toggle()" id="btn-audio" title="เปิด/ปิดเสียง" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
+          <button onclick="window.SoundEngine.toggle()" id="btn-audio" title="เปิด/ปิดเสียงดนตรี" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
             <i class="fa-solid fa-volume-high text-horwang-gold"></i>
           </button>
 
-          <!-- Simple Import Button -->
-          <button onclick="openImportModal()" class="px-3.5 py-2 rounded-2xl bg-sky-500 hover:bg-sky-600 text-xs sm:text-sm font-bold text-white flex items-center space-x-1.5 shadow transition btn-kid">
-            <i class="fa-solid fa-plus-circle"></i>
-            <span class="hidden sm:inline">เพิ่มข้อสอบ</span>
-          </button>
-
           <!-- Level & XP Badge -->
-          <div class="flex items-center space-x-2 bg-slate-900/70 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold/50 shadow-inner">
-            <span class="text-lg">⭐</span>
+          <div onclick="switchTab('analytics')" class="flex items-center space-x-2 bg-gradient-to-r from-amber-500/30 to-orange-500/30 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-md cursor-pointer hover:scale-105 transition">
+            <span class="text-xl animate-bounce">⭐</span>
             <div>
-              <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider">แต้มดาวสะสม</div>
+              <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider" id="user-rank-title">นักสำรวจ ป.5</div>
               <span id="user-xp-display" class="text-xs font-black text-horwang-gold font-heading">0 แต้ม</span>
             </div>
           </div>
@@ -134,11 +128,11 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Bar (Easy Words) -->
+    <!-- Mobile Navigation Bar -->
     <div class="flex md:hidden border-t border-white/10 bg-horwang-darkMaroon/95 px-2 py-2 justify-around text-center">
       <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-horwang-gold font-bold flex flex-col items-center">
-        <i class="fa-solid fa-play mb-0.5 text-base"></i>
-        <span>ทำข้อสอบ</span>
+        <i class="fa-solid fa-gamepad mb-0.5 text-base"></i>
+        <span>เล่นข้อสอบ</span>
       </button>
       <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
         <i class="fa-solid fa-book-open mb-0.5 text-base"></i>
@@ -150,7 +144,7 @@
       </button>
       <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
         <i class="fa-solid fa-trophy mb-0.5 text-base"></i>
-        <span>ดูคะแนน</span>
+        <span>รางวัล</span>
       </button>
     </div>
   </header>
@@ -159,9 +153,8 @@
   <div id="sticky-exam-bar" class="hidden sticky top-16 sm:top-20 z-30 bg-slate-900/95 backdrop-blur text-white border-b-2 border-horwang-gold shadow-2xl px-4 py-3 transition-all">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
-        <span class="px-3 py-1 rounded-xl bg-horwang-maroon text-horwang-lightGold text-xs font-black font-heading shadow-sm flex items-center space-x-1">
-          <i class="fa-solid fa-pen-nib"></i>
-          <span>กำลังทำข้อสอบ</span>
+        <span class="px-3.5 py-1 rounded-2xl bg-gradient-to-r from-horwang-maroon to-rose-700 text-amber-200 text-xs font-black font-heading shadow flex items-center space-x-1.5">
+          <span>🎮 กำลังทำภารกิจ</span>
         </span>
         <span id="exam-mode-title" class="font-heading font-bold text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs text-amber-100">
           คณิตศาสตร์
@@ -170,7 +163,7 @@
 
       <div class="flex items-center space-x-3 sm:space-x-4">
         <!-- Digital OMR Toggle -->
-        <button onclick="window.ExamEngine.toggleOmrPanel()" id="btn-toggle-omr-sheet" title="เปิด/ปิดกระดาษฝนคำตอบ" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center space-x-1.5 transition btn-kid">
+        <button onclick="window.ExamEngine.toggleOmrPanel()" id="btn-toggle-omr-sheet" title="เปิด/ปิดกระดาษฝนคำตอบ" class="px-3.5 py-1.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center space-x-1.5 transition btn-kid">
           <i class="fa-solid fa-table-cells text-horwang-gold"></i>
           <span class="hidden sm:inline">กระดาษฝนคำตอบ</span>
         </button>
@@ -201,112 +194,126 @@
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
 
     <!-- ======================================================== -->
-    <!-- TAB 1: HYBRID EXAM GENERATOR (EASY WORDS)                -->
+    <!-- TAB 1: ADVENTURE EXAM GENERATOR                         -->
     <!-- ======================================================== -->
     <section id="tab-generator" class="tab-content space-y-6">
       
-      <!-- Welcome Hero with Horwang Owl Mascot -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white p-6 sm:p-8 shadow-2xl border-2 border-horwang-gold/40">
+      <!-- Cheerful Adventure Banner with Mascot -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-horwang-darkMaroon via-rose-950 to-slate-900 text-white p-6 sm:p-8 shadow-2xl border-4 border-amber-400/40">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-3 text-center md:text-left">
-            <div class="inline-flex items-center space-x-2 bg-amber-400/20 text-amber-200 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-300/40">
-              <span>🌟 สวัสดีคนเก่ง ป.5! พร้อมลุย ม.1 หอวัง หรือยัง?</span>
+            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-400/30 to-orange-400/30 text-amber-200 px-4 py-1.5 rounded-full text-xs font-black border border-amber-300/40 shadow-sm">
+              <span>🏰 ยินดีต้อนรับสู่เกาะผจญภัย ม.1 หอวัง!</span>
             </div>
             <h1 class="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight leading-snug">
-              คลังข้อสอบ & ติวสอบเข้า <span class="text-horwang-gold">ม.1 หอวัง</span>
+              ภารกิจพิชิตข้อสอบ <span class="text-horwang-gold">ม.1 หอวัง</span> ✨
             </h1>
-            <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-sarabun max-w-2xl">
-              ฝึกทำข้อสอบจริง 5 วิชาหลัก ตัวเลขสดใหม่ไม่ซ้ำ พร้อมเฉลยวิธีคิดทีละขั้นตอน เข้าใจง่ายสุดๆ!
+            <p class="text-sm sm:text-base text-amber-100 leading-relaxed font-sarabun max-w-2xl">
+              ฝึกทำโจทย์แบบไม่เครียด! ตอบถูกสะสมแต้มดาว ⭐ ปลดล็อกเหรียญตราอัศวิน และดูวิธีคิดเข้าใจง่ายกับพี่ฮูกได้เลยครับ
             </p>
+
+            <!-- Adventure Rank Progress Bar -->
+            <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/10 max-w-xl space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold text-amber-200">
+                <span>🐣 ระดับปัจจุบัน: <strong id="adventure-rank-name" class="text-horwang-gold font-heading">ลูกเจี๊ยบนักสำรวจ (Level 1)</strong></span>
+                <span id="adventure-xp-goal">เป้าหมาย: 100 แต้ม</span>
+              </div>
+              <div class="level-progress-bar">
+                <div id="adventure-progress-fill" class="level-progress-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-              <button onclick="startHybridExam('balanced')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-horwang-gold to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-900 font-black text-sm font-heading shadow-xl flex items-center space-x-2 btn-kid animate-pulse-glow">
+              <button onclick="startHybridExam('balanced')" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-horwang-gold to-orange-400 hover:from-amber-300 hover:to-orange-300 text-slate-950 font-black text-sm font-heading shadow-xl flex items-center space-x-2 btn-kid animate-pulse-glow">
                 <i class="fa-solid fa-play text-base"></i>
-                <span>เริ่มทำชุดฝึกซ้อม 20 ข้อ (40 นาที)</span>
+                <span>เริ่มเล่นชุดรวมโจทย์ฮิต (20 ข้อ)</span>
               </button>
-              <button onclick="switchTab('bank')" class="px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm font-heading border border-white/30 flex items-center space-x-2 btn-kid">
+              <button onclick="switchTab('bank')" class="px-5 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-sm font-heading border border-white/30 flex items-center space-x-2 btn-kid">
                 <i class="fa-solid fa-book-open"></i>
-                <span>เปิดดูข้อสอบ 100 ข้อ</span>
+                <span>ดูข้อสอบทั้งหมด 100 ข้อ</span>
               </button>
             </div>
           </div>
 
-          <!-- Mascot Illustration Card -->
-          <div class="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-white/20 max-w-xs text-center space-y-2.5">
-            <div class="text-6xl animate-soft-bounce">🦉</div>
-            <div class="mascot-bubble p-3 text-slate-800 text-xs font-bold font-sarabun shadow">
-              "ข้อไหนทำไม่ได้ ไม่ต้องกลัวนะ! มีพี่ฮูกคอยช่วยเฉลยสูตรลัดให้ทุกข้อเลย ✨"
+          <!-- Mascot Card -->
+          <div class="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur-md p-5 rounded-3xl border-2 border-amber-300/30 max-w-xs text-center space-y-2.5">
+            <div class="text-6xl animate-float cursor-pointer" onclick="tellMascotJoke()" title="แตะพี่ฮูกเพื่อฟังเคล็ดลับแสนสนุก">🦉</div>
+            <div id="mascot-speech-text" class="mascot-bubble p-3 text-slate-800 text-xs font-bold font-sarabun shadow">
+              "สวัสดีคนเก่ง! วันนี้เรามาเก็บแต้มดาว 100 แต้มกันนะ แตะตัวพี่ฮูกเพื่อฟังเคล็ดลับได้เลย! ✨"
             </div>
-            <div class="text-[11px] text-amber-200 font-heading font-bold">พี่ฮูกหอวัง • ติวเตอร์ใจดีประจำตัว ป.5</div>
+            <button onclick="tellMascotJoke()" class="text-[11px] text-amber-200 hover:underline font-heading font-bold">
+              💡 แตะเพื่อฟังเคล็ดลับพี่ฮูก
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- INTERACTIVE SUBJECT SELECTOR -->
+      <!-- INTERACTIVE SUBJECT SELECTOR (Bright Candy Cards) -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black font-heading text-horwang-maroon flex items-center space-x-2">
-            <i class="fa-solid fa-book-bookmark text-horwang-gold"></i>
-            <span>แตะเลือกวิชาที่อยากฝึกทำวันนี้:</span>
+            <i class="fa-solid fa-gamepad text-horwang-gold"></i>
+            <span>แตะเลือกวิชาที่อยากเล่นวันนี้:</span>
           </h2>
           <span class="text-xs text-slate-500 font-medium">แตะ 1 ครั้งเพื่อเลือกวิชา</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
           <!-- All -->
-          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-white p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-gradient-to-b from-white to-slate-50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🎯</div>
             <div class="font-black font-heading text-xs text-slate-800">รวม 5 วิชา</div>
-            <div class="text-[10px] text-slate-400">ครบทุกวิชา</div>
+            <div class="text-[10px] text-slate-500 font-medium">ครบทุกวิชา</div>
           </div>
 
           <!-- Math -->
-          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-rose-50/70 p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-gradient-to-b from-rose-50 to-rose-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mx-auto shadow-inner">📐</div>
             <div class="font-black font-heading text-xs text-rose-900">คณิตศาสตร์</div>
-            <div class="text-[10px] text-rose-500">25 ข้อในคลัง</div>
+            <div class="text-[10px] text-rose-600 font-medium">25 ข้อในคลัง</div>
           </div>
 
           <!-- Science -->
-          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-emerald-50/70 p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-gradient-to-b from-emerald-50 to-emerald-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🔬</div>
             <div class="font-black font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
-            <div class="text-[10px] text-emerald-500">25 ข้อในคลัง</div>
+            <div class="text-[10px] text-emerald-600 font-medium">25 ข้อในคลัง</div>
           </div>
 
           <!-- English -->
-          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-sky-50/70 p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-gradient-to-b from-sky-50 to-sky-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🇬🇧</div>
             <div class="font-black font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
-            <div class="text-[10px] text-sky-500">20 ข้อในคลัง</div>
+            <div class="text-[10px] text-sky-600 font-medium">20 ข้อในคลัง</div>
           </div>
 
           <!-- Thai -->
-          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-amber-50/70 p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-gradient-to-b from-amber-50 to-amber-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🇹🇭</div>
             <div class="font-black font-heading text-xs text-amber-900">ภาษาไทย</div>
-            <div class="text-[10px] text-amber-600">15 ข้อในคลัง</div>
+            <div class="text-[10px] text-amber-700 font-medium">15 ข้อในคลัง</div>
           </div>
 
           <!-- Social -->
-          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-purple-50/70 p-4 text-center space-y-2 card-kid border-2">
+          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-gradient-to-b from-purple-50 to-purple-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🌏</div>
             <div class="font-black font-heading text-xs text-purple-900">สังคมศึกษา</div>
-            <div class="text-[10px] text-purple-500">15 ข้อในคลัง</div>
+            <div class="text-[10px] text-purple-600 font-medium">15 ข้อในคลัง</div>
           </div>
         </div>
       </div>
 
-      <!-- 3 RECIPE CARDS (Kid-Friendly Words) -->
+      <!-- 3 RECIPE CARDS -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- Recipe 1 -->
-        <div class="bg-white p-6 rounded-3xl border-2 border-amber-200 shadow-sm hover:border-amber-400 transition space-y-4 card-kid flex flex-col justify-between">
+        <div class="bg-gradient-to-b from-amber-50/80 to-white p-6 rounded-3xl border-2 border-amber-300 shadow-sm hover:border-amber-400 transition space-y-4 card-kid flex flex-col justify-between">
           <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black shadow-inner">
+            <div class="w-12 h-12 rounded-2xl bg-amber-200 text-amber-900 flex items-center justify-center text-2xl font-black shadow-inner">
               ⭐
             </div>
-            <span class="px-3 py-0.5 rounded-full bg-amber-100 text-amber-900 text-xs font-black font-heading inline-block">แบบที่ 1 (แนะนำสำหรับ ป.5)</span>
+            <span class="px-3 py-0.5 rounded-full bg-amber-200 text-amber-950 text-xs font-black font-heading inline-block">แบบที่ 1 (แนะนำสำหรับ ป.5)</span>
             <h3 class="font-black font-heading text-slate-900 text-lg">ชุดรวมโจทย์ฮิตยอดนิยม</h3>
-            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">มีทั้งโจทย์คำนวณและข้อสอบจริง ผสมกันอย่างละครึ่ง พอดีๆ สำหรับฝึกซ้อม</p>
+            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">มีทั้งโจทย์คำนวณและข้อสอบจริง ผสมกันอย่างละครึ่ง พอดีๆ สำหรับฝึกซ้อม</p>
           </div>
           <button onclick="startHybridExam('balanced')" class="w-full py-3 bg-gradient-to-r from-horwang-maroon to-rose-800 hover:from-horwang-darkMaroon hover:to-horwang-maroon text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
             <i class="fa-solid fa-play"></i>
@@ -315,14 +322,14 @@
         </div>
 
         <!-- Recipe 2 -->
-        <div class="bg-white p-6 rounded-3xl border-2 border-emerald-200 shadow-sm hover:border-emerald-400 transition space-y-4 card-kid flex flex-col justify-between">
+        <div class="bg-gradient-to-b from-emerald-50/80 to-white p-6 rounded-3xl border-2 border-emerald-300 shadow-sm hover:border-emerald-400 transition space-y-4 card-kid flex flex-col justify-between">
           <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-2xl font-black shadow-inner">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-200 text-emerald-900 flex items-center justify-center text-2xl font-black shadow-inner">
               ⚡
             </div>
-            <span class="px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-black font-heading inline-block">แบบที่ 2 (ฝึกคิดไว)</span>
+            <span class="px-3 py-0.5 rounded-full bg-emerald-200 text-emerald-950 text-xs font-black font-heading inline-block">แบบที่ 2 (ฝึกคิดไว)</span>
             <h3 class="font-black font-heading text-slate-900 text-lg">ชุดฝึกคิดเลขเร็ว</h3>
-            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">เน้นโจทย์คิดเลขสุ่มตัวเลขใหม่ทุกรอบ ฝึกบวก ลบ คูณ หาร ให้คิดได้เร็วทันใจ</p>
+            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">เน้นโจทย์คิดเลขสุ่มตัวเลขใหม่ทุกรอบ ฝึกบวก ลบ คูณ หาร ให้คิดได้เร็วทันใจ</p>
           </div>
           <button onclick="startHybridExam('math-speed')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
             <i class="fa-solid fa-play"></i>
@@ -331,14 +338,14 @@
         </div>
 
         <!-- Recipe 3 -->
-        <div class="bg-white p-6 rounded-3xl border-2 border-sky-200 shadow-sm hover:border-sky-400 transition space-y-4 card-kid flex flex-col justify-between">
+        <div class="bg-gradient-to-b from-sky-50/80 to-white p-6 rounded-3xl border-2 border-sky-300 shadow-sm hover:border-sky-400 transition space-y-4 card-kid flex flex-col justify-between">
           <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-800 flex items-center justify-center text-2xl font-black shadow-inner">
+            <div class="w-12 h-12 rounded-2xl bg-sky-200 text-sky-900 flex items-center justify-center text-2xl font-black shadow-inner">
               🏆
             </div>
-            <span class="px-3 py-0.5 rounded-full bg-sky-100 text-sky-900 text-xs font-black font-heading inline-block">แบบที่ 3 (โจทย์ท้าทาย)</span>
+            <span class="px-3 py-0.5 rounded-full bg-sky-200 text-sky-950 text-xs font-black font-heading inline-block">แบบที่ 3 (โจทย์ท้าทาย)</span>
             <h3 class="font-black font-heading text-slate-900 text-lg">ชุดโจทย์ Gifted ปราบเซียน</h3>
-            <p class="text-xs text-slate-500 font-sarabun leading-relaxed">เน้นข้อสอบแข่งขันจริง พร้อมพาดูจุดหลอกที่คนส่วนใหญ่ตอบผิดบ่อยๆ</p>
+            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">เน้นข้อสอบแข่งขันจริง พร้อมพาดูจุดหลอกที่คนส่วนใหญ่ตอบผิดบ่อยๆ</p>
           </div>
           <button onclick="startHybridExam('curated-trap')" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
             <i class="fa-solid fa-play"></i>
@@ -347,7 +354,7 @@
         </div>
       </div>
 
-      <!-- Config Form (Simple Friendly Words) -->
+      <!-- Config Form -->
       <div id="exam-config-card" class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-2">
           <div>
@@ -469,7 +476,7 @@
         </div>
       </div>
 
-      <!-- EXAM RESULT BREAKDOWN (Easy Words) -->
+      <!-- EXAM RESULT BREAKDOWN -->
       <div id="exam-result-container" class="hidden space-y-6">
         <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
           <div class="bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white p-6 sm:p-8">
@@ -543,7 +550,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 1.5: MEGA QUESTION BANK BROWSER (EASY WORDS)         -->
+    <!-- TAB 1.5: QUESTION BANK BROWSER                          -->
     <!-- ======================================================== -->
     <section id="tab-bank" class="tab-content hidden space-y-6">
       <div class="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-amber-500/30">
@@ -624,7 +631,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 2: STUDY CLUB (EASY WORDS)                          -->
+    <!-- TAB 2: STUDY CLUB                                       -->
     <!-- ======================================================== -->
     <section id="tab-study-club" class="tab-content hidden space-y-6">
       <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-500/30">
@@ -694,7 +701,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 3: ANALYTICS & ROADMAP (EASY WORDS)                 -->
+    <!-- TAB 3: ANALYTICS & ROADMAP                              -->
     <!-- ======================================================== -->
     <section id="tab-analytics" class="tab-content hidden space-y-6">
       <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-500/30">
@@ -702,7 +709,7 @@
           <div class="space-y-2">
             <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold border border-emerald-400/30">
               <i class="fa-solid fa-chart-line"></i>
-              <span>ความเก่งของหนู</span>
+              <span>สมุดบันทึกความเก่ง</span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
               ดูคะแนนสะสม & แผนการเรียนสู่ ม.1 หอวัง
@@ -765,6 +772,13 @@
     </section>
 
   </main>
+
+  <!-- FLOATING INTERACTIVE MASCOT COMPANION -->
+  <div class="floating-mascot-btn">
+    <button onclick="tellMascotJoke()" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-horwang-gold flex items-center justify-center text-3xl sm:text-4xl shadow-2xl ring-4 ring-white border-2 border-amber-500 cursor-pointer animate-float" title="แตะพี่ฮูกเพื่อฟังเคล็ดลับ">
+      🦉
+    </button>
+  </div>
 
   <!-- MODALS -->
   <div id="import-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -854,15 +868,72 @@
       <div class="flex items-center space-x-3 text-slate-400 font-medium">
         <span class="text-emerald-600 font-bold"><i class="fa-solid fa-book-open mr-1"></i>100 ข้อ</span>
         <span>•</span>
-        <span>เข้าใจง่ายสำหรับเด็ก</span>
+        <span>Kids Adventure Edition</span>
         <span>•</span>
-        <span>v2.8</span>
+        <span>v3.0</span>
       </div>
     </div>
   </footer>
 
   <!-- Main Application Glue Logic -->
   <script>
+    const MASCOT_JOKES = [
+      "🍫 รู้ไหมว่า... ถ้ากินขนมหวานนิดหน่อยก่อนทำโจทย์เลข จะช่วยให้สมองคิดเลขไวขึ้นนะ!",
+      "🎨 ข้อไหนโจทย์ยาวและงง ให้ลองวาดรูปง่ายๆ ในกระดาษทด จะเห็นคำตอบทันที!",
+      "⭐ ทำผิดไม่ต้องเสียใจนะ! ทุกข้อที่ผิดคือบทเรียนที่จะทำให้เราเก่งขึ้นในห้องสอบจริง ✨",
+      "🚀 เทคนิคตัดช้อยส์: ดูช้อยส์ที่ตัวเลขกระโดดแปลกกว่าเพื่อน มักจะไม่ใช่คำตอบ!",
+      "🍀 สู้ๆ นะคนเก่ง! พี่ฮูกเชื่อว่าหนูทำได้แน่นอน รั้ว ม.1 หอวัง รออยู่นะครับ 🦉",
+      "⏱️ ถ้าเจอข้อไหนคิดเกิน 2 นาที ให้ข้ามไปทำข้ออื่นก่อน แล้วค่อยวนกลับมาทำนะ!"
+    ];
+
+    function tellMascotJoke() {
+      window.SoundEngine.bubblePop();
+      const quote = MASCOT_JOKES[Math.floor(Math.random() * MASCOT_JOKES.length)];
+      const speech = document.getElementById('mascot-speech-text');
+      if (speech) {
+        speech.innerText = quote;
+        speech.classList.remove('animate-pop');
+        void speech.offsetWidth; // trigger reflow
+        speech.classList.add('animate-pop');
+      }
+      alert(quote);
+    }
+
+    function updateAdventureRank() {
+      const xp = window.APP_STATE.userXp || 0;
+      const rankTitle = document.getElementById('user-rank-title');
+      const adventureRankName = document.getElementById('adventure-rank-name');
+      const adventureXpGoal = document.getElementById('adventure-xp-goal');
+      const progressFill = document.getElementById('adventure-progress-fill');
+
+      let rank = "🐣 ลูกเจี๊ยบนักสำรวจ (Level 1)";
+      let nextGoal = 100;
+      let pct = (xp / 100) * 100;
+
+      if (xp >= 1000) {
+        rank = "👑 ราชาเหรียญทอง Gifted (Level 5)";
+        nextGoal = 1000;
+        pct = 100;
+      } else if (xp >= 600) {
+        rank = "🚀 จอมยุทธ์โจทย์เซียน (Level 4)";
+        nextGoal = 1000;
+        pct = ((xp - 600) / 400) * 100;
+      } else if (xp >= 300) {
+        rank = "🌟 อัศวินฝึกหัด (Level 3)";
+        nextGoal = 600;
+        pct = ((xp - 300) / 300) * 100;
+      } else if (xp >= 100) {
+        rank = "🦉 ผู้ช่วยพี่ฮูกหอวัง (Level 2)";
+        nextGoal = 300;
+        pct = ((xp - 100) / 200) * 100;
+      }
+
+      if (rankTitle) rankTitle.innerText = rank.split(' ')[1] || "นักสำรวจ ป.5";
+      if (adventureRankName) adventureRankName.innerText = rank;
+      if (adventureXpGoal) adventureXpGoal.innerText = `เป้าหมายต่อไป: ${nextGoal} แต้ม`;
+      if (progressFill) progressFill.style.width = `${Math.min(100, Math.max(5, pct))}%`;
+    }
+
     function switchTab(tabId) {
       window.SoundEngine.click();
       window.APP_STATE.currentTab = tabId;
@@ -964,6 +1035,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       const xpEl = document.getElementById('user-xp-display');
       if (xpEl) xpEl.innerText = `${window.APP_STATE.userXp} แต้ม`;
+      updateAdventureRank();
       window.CloudflareSync.checkConnection();
     });
   </script>
