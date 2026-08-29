@@ -1,14 +1,14 @@
 /* ===================================================================
-   Horwang M.1 Hero - Clean, Elegant & Calming Design System
-   Focused, High-Legibility, Distilled UX for Grade 5 Students
+   Horwang M.1 Hero - Joyful, Vibrant & High-Legibility Design System
+   Bright Subject Colors, Rich Header & Calm, Readable Typography
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fira+Code:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;600&display=swap');
 
 :root {
   --hw-maroon: #7B001C;
   --hw-dark-maroon: #520013;
-  --hw-gold: #E5A823;
+  --hw-gold: #F59E0B;
   --hw-gold-light: #FEF3C7;
   --hw-slate-bg: #F8FAFC;
   --hw-border: #E2E8F0;
@@ -19,7 +19,7 @@
 body {
   font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--hw-slate-bg);
+  background-color: #F8FAFC;
   color: var(--hw-text-main);
   font-size: 16px;
   line-height: 1.7;
@@ -34,19 +34,26 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: 'Fira Code', monospace;
 }
 
-/* Smooth Interactive Buttons */
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth Kid Buttons */
 .btn-kid {
-  transition: all 0.18s ease;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   user-select: none;
 }
 .btn-kid:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.03);
+  transform: translateY(-2px) scale(1.02);
 }
 .btn-kid:active {
-  transform: translateY(1px);
-  filter: brightness(0.97);
+  transform: translateY(1px) scale(0.98);
 }
 
 /* Clean Modern Card */
@@ -61,25 +68,86 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
 }
 
-/* Subject Selector Cards */
+/* ===================================================================
+   VIBRANT SUBJECT THEME CARDS
+   =================================================================== */
 .subject-card {
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid #E2E8F0;
-  background: #FFFFFF;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 20px;
+  border: 2px solid transparent;
 }
 .subject-card:hover {
-  border-color: #CBD5E1;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px -2px rgba(15, 23, 42, 0.06);
-}
-.subject-card.active {
-  border-color: var(--hw-maroon) !important;
-  background-color: #FFF5F7 !important;
-  box-shadow: 0 0 0 3px rgba(123, 0, 28, 0.15) !important;
+  transform: translateY(-3px) scale(1.02);
 }
 
-/* Clean Question Option Cards */
+/* Math (Vibrant Rose) */
+.subject-card-math {
+  background: linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 100%);
+  border-color: #FECDD3;
+}
+.subject-card-math.active {
+  border-color: #E11D48 !important;
+  background: #FFE4E6 !important;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.2) !important;
+}
+
+/* Science (Mint Emerald) */
+.subject-card-science {
+  background: linear-gradient(180deg, #F0FDF4 0%, #DCFCE7 100%);
+  border-color: #BBF7D0;
+}
+.subject-card-science.active {
+  border-color: #16A34A !important;
+  background: #DCFCE7 !important;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2) !important;
+}
+
+/* English (Sky Ocean) */
+.subject-card-english {
+  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+  border-color: #BAE6FD;
+}
+.subject-card-english.active {
+  border-color: #0284C7 !important;
+  background: #E0F2FE !important;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2) !important;
+}
+
+/* Thai (Sunny Amber) */
+.subject-card-thai {
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+  border-color: #FDE68A;
+}
+.subject-card-thai.active {
+  border-color: #D97706 !important;
+  background: #FEF3C7 !important;
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.2) !important;
+}
+
+/* Social (Royal Purple) */
+.subject-card-social {
+  background: linear-gradient(180deg, #FAF5FF 0%, #F3E8FF 100%);
+  border-color: #E9D5FF;
+}
+.subject-card-social.active {
+  border-color: #9333EA !important;
+  background: #F3E8FF !important;
+  box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.2) !important;
+}
+
+/* All Subjects (Horwang Maroon) */
+.subject-card-all {
+  background: linear-gradient(180deg, #FFF5F7 0%, #FCE7EB 100%);
+  border-color: #F8B4C0;
+}
+.subject-card-all.active {
+  border-color: var(--hw-maroon) !important;
+  background: #FCE7EB !important;
+  box-shadow: 0 0 0 4px rgba(123, 0, 28, 0.2) !important;
+}
+
+/* Option Buttons in Exam */
 .option-btn {
   transition: all 0.18s ease;
   background: #FFFFFF;
@@ -87,7 +155,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border-radius: 16px;
 }
 .option-btn:hover {
-  border-color: #94A3B8;
+  border-color: #CBD5E1;
   background: #F8FAFC;
 }
 .option-btn.selected {
@@ -111,7 +179,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   align-items: center;
   justify-content: center;
   font-family: 'Prompt', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 13px;
   color: #475569;
   cursor: pointer;
@@ -130,7 +198,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Clean Math Formulas */
+/* Math Typography */
 .katex {
   font-size: 1.15em !important;
   line-height: 1.4 !important;
@@ -155,16 +223,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background: #94A3B8;
 }
 
-/* Print Sheet Styling */
+/* Print Sheet */
 @media print {
-  body {
-    background: #FFFFFF !important;
-    color: #000000 !important;
-  }
-  header, footer, nav, #sticky-exam-bar, #mascot-floating-container, .no-print {
-    display: none !important;
-  }
-  #printable-exam-sheet {
-    display: block !important;
-  }
+  body { background: #FFFFFF !important; color: #000000 !important; }
+  header, footer, nav, #sticky-exam-bar, .no-print { display: none !important; }
+  #printable-exam-sheet { display: block !important; }
 }

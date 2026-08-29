@@ -89,92 +89,92 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased font-sarabun">
 
-  <!-- Clean Top Navigation Header -->
-  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+  <!-- Vibrant Top Navigation Header -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-rose-950 text-white border-b-2 border-amber-400 shadow-md">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16 sm:h-18">
         
         <!-- Logo & Branding -->
         <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('generator')">
-          <div class="w-10 h-10 rounded-xl bg-horwang-maroon text-white flex items-center justify-center text-xl shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-300 via-amber-400 to-amber-500 text-slate-950 flex items-center justify-center text-xl shadow-md font-bold">
             🦉
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="font-heading font-bold text-lg text-slate-900">
-                HORWANG <span class="text-horwang-maroon">M.1 HERO</span>
+              <span class="font-heading font-black text-lg sm:text-xl text-white tracking-tight">
+                HORWANG <span class="text-amber-300">M.1 HERO</span>
               </span>
-              <span class="bg-amber-100 text-amber-900 text-[11px] font-semibold px-2 py-0.5 rounded-md hidden sm:inline-block">
-                ป.5 พิชิต ม.1 หอวัง
+              <span class="bg-amber-400 text-slate-950 text-[11px] font-black px-2 py-0.5 rounded-full shadow hidden sm:inline-block">
+                ✨ ป.5 พิชิต ม.1 หอวัง
               </span>
             </div>
-            <p class="text-xs text-slate-500 hidden sm:block">คลังข้อสอบ 500 ข้อ พร้อมเฉลยวิธีคิดละเอียด</p>
+            <p class="text-xs text-amber-200 hidden sm:block">คลังข้อสอบ 5 วิชา 500 ข้อ พร้อมเฉลยละเอียด</p>
           </div>
         </div>
 
         <!-- Main Navigation Tabs -->
-        <nav class="hidden md:flex items-center space-x-1">
-          <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 bg-horwang-maroon text-white font-heading">
-            <i class="fa-solid fa-gamepad text-xs"></i>
-            <span>ทำข้อสอบ</span>
+        <nav class="hidden md:flex items-center space-x-1.5">
+          <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-white/20 text-white font-heading shadow-sm">
+            <i class="fa-solid fa-gamepad text-amber-300"></i>
+            <span>🎯 ทำข้อสอบ</span>
           </button>
 
-          <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
-            <i class="fa-solid fa-book-open text-xs"></i>
-            <span>คลังข้อสอบ (500 ข้อ)</span>
+          <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-rose-100 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-book-open text-amber-300"></i>
+            <span>📚 คลังข้อสอบ (500 ข้อ)</span>
           </button>
 
-          <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
-            <i class="fa-solid fa-comments text-xs"></i>
-            <span>ชุมชนถามตอบ</span>
+          <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-rose-100 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-comments text-sky-300"></i>
+            <span>💬 ชุมชนถามตอบ</span>
           </button>
 
-          <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
-            <i class="fa-solid fa-chart-pie text-xs"></i>
-            <span>คะแนน & สถิติ</span>
+          <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 text-rose-100 hover:bg-white/10 font-heading">
+            <i class="fa-solid fa-trophy text-emerald-300"></i>
+            <span>🏆 คะแนน & สถิติ</span>
           </button>
         </nav>
 
         <!-- Right User & Settings Controls -->
         <div class="flex items-center space-x-2 sm:space-x-3">
           <!-- Student Profile Trigger -->
-          <button onclick="window.UserProfile.openProfileModal()" id="btn-profile-trigger" class="flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl text-slate-800 transition btn-kid" title="เปลี่ยนโปรไฟล์ผู้ใช้งาน">
+          <button onclick="window.UserProfile.openProfileModal()" id="btn-profile-trigger" class="flex items-center space-x-2 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl text-white transition border border-white/20 shadow-sm btn-kid" title="เปลี่ยนโปรไฟล์ผู้ใช้งาน">
             <span id="header-profile-avatar" class="text-lg">🦉</span>
             <div class="text-left hidden sm:block">
-              <div id="header-profile-name" class="text-xs font-bold font-heading text-slate-800 truncate max-w-[90px]">น้องคนเก่ง</div>
-              <div class="text-[10px] text-slate-500">สลับโปรไฟล์</div>
+              <div id="header-profile-name" class="text-xs font-bold font-heading text-white truncate max-w-[90px]">น้องคนเก่ง</div>
+              <div class="text-[10px] text-amber-200">สลับโปรไฟล์</div>
             </div>
           </button>
 
           <!-- Audio Toggle -->
-          <button onclick="window.SoundEngine.toggle()" id="btn-audio" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 transition btn-kid" title="เปิด/ปิดเสียง">
-            <i class="fa-solid fa-volume-high text-sm"></i>
+          <button onclick="window.SoundEngine.toggle()" id="btn-audio" class="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white transition btn-kid" title="เปิด/ปิดเสียง">
+            <i class="fa-solid fa-volume-high text-sm text-amber-300"></i>
           </button>
 
           <!-- XP Pill -->
-          <div onclick="switchTab('analytics')" class="flex items-center space-x-1.5 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-xl cursor-pointer hover:bg-amber-100 transition" title="คะแนนสะสม">
-            <span class="text-amber-500 text-sm">⭐</span>
-            <span id="user-xp-display" class="text-xs font-bold text-amber-900 font-heading">0 แต้ม</span>
+          <div onclick="switchTab('analytics')" class="flex items-center space-x-1.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 px-3 py-1.5 rounded-xl cursor-pointer shadow-sm hover:scale-105 transition font-bold" title="คะแนนสะสม">
+            <span class="text-sm">⭐</span>
+            <span id="user-xp-display" class="text-xs font-black font-heading">0 แต้ม</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Mobile Navigation Bar -->
-    <div class="flex md:hidden border-t border-slate-200 bg-white px-2 py-1.5 justify-around text-center">
-      <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-horwang-maroon font-bold flex flex-col items-center">
+    <div class="flex md:hidden border-t border-white/10 bg-horwang-darkMaroon px-2 py-1.5 justify-around text-center">
+      <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-amber-300 font-bold flex flex-col items-center">
         <i class="fa-solid fa-gamepad mb-0.5 text-sm"></i>
         <span>ทำข้อสอบ</span>
       </button>
-      <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+      <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-rose-100 font-medium flex flex-col items-center">
         <i class="fa-solid fa-book-open mb-0.5 text-sm"></i>
         <span>คลังข้อสอบ</span>
       </button>
-      <button onclick="switchTab('study-club')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+      <button onclick="switchTab('study-club')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-rose-100 font-medium flex flex-col items-center">
         <i class="fa-solid fa-comments mb-0.5 text-sm"></i>
         <span>ถามตอบ</span>
       </button>
-      <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+      <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-rose-100 font-medium flex flex-col items-center">
         <i class="fa-solid fa-chart-pie mb-0.5 text-sm"></i>
         <span>สถิติ</span>
       </button>
@@ -224,102 +224,102 @@
     <!-- ======================================================== -->
     <section id="tab-generator" class="tab-content space-y-6">
       
-      <!-- Clean Welcome Banner -->
-      <div class="clean-card p-6 sm:p-8 bg-gradient-to-br from-white via-slate-50 to-rose-50/30 border border-slate-200">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="space-y-2 flex-1">
-            <div class="inline-flex items-center space-x-2 bg-rose-100 text-horwang-maroon px-3 py-1 rounded-lg text-xs font-semibold">
-              <span>🎯 เตรียมสอบเข้า ม.1 โรงเรียนหอวัง (สำหรับ ป.5)</span>
+      <!-- Colorful & Cheerful Welcome Banner -->
+      <div class="clean-card p-6 sm:p-8 bg-gradient-to-br from-rose-900 via-horwang-darkMaroon to-slate-900 text-white shadow-xl border-2 border-amber-400/40 relative overflow-hidden">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+          <div class="space-y-2.5 flex-1">
+            <div class="inline-flex items-center space-x-2 bg-amber-400 text-slate-950 px-3 py-1 rounded-full text-xs font-black shadow-sm">
+              <span>🏰 พิชิตข้อสอบเข้า ม.1 โรงเรียนหอวัง</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900">
-              ฝึกทำข้อสอบหอวัง <span class="text-horwang-maroon">500 ข้อ</span>
+            <h1 class="text-2xl sm:text-3xl font-black font-heading text-white">
+              เกาะผจญภัยข้อสอบ <span class="text-amber-300">500 ข้อ</span> ✨
             </h1>
-            <p class="text-sm text-slate-600 font-sarabun max-w-xl leading-relaxed">
-              ฝึกทำข้อสอบจริง 5 วิชาหลัก พร้อมเฉลยวิธีคิดทีละขั้นตอน สูตรลัด และจุดหลอกที่พบบ่อยในห้องสอบ
+            <p class="text-sm text-amber-100 font-sarabun max-w-xl leading-relaxed">
+              ฝึกทำข้อสอบจริง 5 วิชาหลัก เฉลยวิธีคิดทีละขั้นตอน เทคนิคคิดเร็ว และจุดหลอกที่พบบ่อยในห้องสอบ
             </p>
 
-            <div class="flex flex-wrap items-center gap-3 pt-3">
-              <button onclick="startHybridExam('balanced')" class="px-5 py-2.5 rounded-xl bg-horwang-maroon hover:bg-horwang-darkMaroon text-white font-bold text-sm font-heading shadow transition btn-kid flex items-center space-x-2">
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button onclick="startHybridExam('balanced')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-sm font-heading shadow-lg transition btn-kid flex items-center space-x-2">
                 <i class="fa-solid fa-play text-xs"></i>
                 <span>เริ่มทำชุดรวม 5 วิชา (20 ข้อ)</span>
               </button>
-              <button onclick="switchTab('bank')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm font-heading border border-slate-300 flex items-center space-x-2 btn-kid">
+              <button onclick="switchTab('bank')" class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-sm font-heading border border-white/25 flex items-center space-x-2 btn-kid">
                 <i class="fa-solid fa-book-open text-xs"></i>
-                <span>เปิดดูคลังข้อสอบทั้งหมด</span>
+                <span>เปิดดูคลังข้อสอบ 500 ข้อ</span>
               </button>
             </div>
           </div>
 
-          <!-- Mascot Tip Card -->
-          <div class="shrink-0 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm max-w-xs space-y-2 text-center md:text-left">
+          <!-- Mascot Card -->
+          <div class="shrink-0 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-sm max-w-xs space-y-2 text-center md:text-left">
             <div class="flex items-center space-x-3">
-              <div class="text-3xl cursor-pointer" onclick="tellMascotJoke()" title="แตะเพื่อฟังคำแนะนำ">🦉</div>
+              <div class="text-3xl animate-float cursor-pointer" onclick="tellMascotJoke()" title="แตะเพื่อฟังคำแนะนำ">🦉</div>
               <div>
-                <strong class="text-xs font-heading font-bold text-slate-900 block">พี่ฮูกหอวัง</strong>
-                <span class="text-[11px] text-slate-500">เคล็ดลับการทำข้อสอบ</span>
+                <strong class="text-xs font-heading font-black text-amber-200 block">พี่ฮูกหอวัง</strong>
+                <span class="text-[11px] text-slate-200">เคล็ดลับการทำข้อสอบ</span>
               </div>
             </div>
-            <p id="mascot-speech-text" class="text-xs text-slate-700 font-sarabun leading-relaxed bg-slate-50 p-2.5 rounded-xl">
+            <p id="mascot-speech-text" class="text-xs text-slate-100 font-sarabun leading-relaxed bg-black/20 p-2.5 rounded-xl">
               "ข้อไหนโจทย์ยาวและงง ให้ลองวาดรูปในกระดาษทด จะเห็นคำตอบทันทีครับ!"
             </p>
-            <button onclick="tellMascotJoke()" class="text-[11px] text-horwang-maroon font-semibold hover:underline block w-full text-center">
+            <button onclick="tellMascotJoke()" class="text-[11px] text-amber-300 font-bold hover:underline block w-full text-center">
               💡 เปลี่ยนเคล็ดลับใหม่
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Subject Selector -->
+      <!-- VIBRANT SUBJECT SELECTOR -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-base font-bold font-heading text-slate-900 flex items-center space-x-2">
-            <i class="fa-solid fa-layer-group text-horwang-maroon"></i>
+            <i class="fa-solid fa-shapes text-horwang-maroon"></i>
             <span>เลือกวิชาที่ต้องการฝึกทำ:</span>
           </h2>
-          <span class="text-xs text-slate-500">แตะเพื่อเลือกวิชา</span>
+          <span class="text-xs text-slate-500 font-medium">แตะเพื่อเลือกวิชา</span>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           <!-- All Subjects -->
-          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">🎯</div>
-            <div class="font-bold font-heading text-xs text-slate-800">รวม 5 วิชา</div>
-            <div class="text-[11px] text-slate-500">500 ข้อ</div>
+          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card subject-card-all active p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-horwang-maroon flex items-center justify-center text-xl mx-auto shadow-sm">🎯</div>
+            <div class="font-bold font-heading text-xs text-slate-900">รวม 5 วิชา</div>
+            <div class="text-[10px] bg-horwang-maroon text-white font-bold px-2 py-0.5 rounded-full inline-block">500 ข้อ</div>
           </div>
 
-          <!-- Math -->
-          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">📐</div>
-            <div class="font-bold font-heading text-xs text-rose-900">คณิตศาสตร์</div>
-            <div class="text-[11px] text-rose-600">100 ข้อ</div>
+          <!-- Math (Vibrant Rose) -->
+          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card subject-card-math p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-rose-600 flex items-center justify-center text-xl mx-auto shadow-sm">📐</div>
+            <div class="font-bold font-heading text-xs text-rose-950">คณิตศาสตร์</div>
+            <div class="text-[10px] bg-rose-500 text-white font-bold px-2 py-0.5 rounded-full inline-block">100 ข้อ</div>
           </div>
 
-          <!-- Science -->
-          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">🔬</div>
-            <div class="font-bold font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
-            <div class="text-[11px] text-emerald-600">100 ข้อ</div>
+          <!-- Science (Mint Emerald) -->
+          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card subject-card-science p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-emerald-600 flex items-center justify-center text-xl mx-auto shadow-sm">🔬</div>
+            <div class="font-bold font-heading text-xs text-emerald-950">วิทยาศาสตร์</div>
+            <div class="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full inline-block">100 ข้อ</div>
           </div>
 
-          <!-- English -->
-          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">🇬🇧</div>
-            <div class="font-bold font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
-            <div class="text-[11px] text-sky-600">100 ข้อ</div>
+          <!-- English (Sky Ocean) -->
+          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card subject-card-english p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-sky-600 flex items-center justify-center text-xl mx-auto shadow-sm">🇬🇧</div>
+            <div class="font-bold font-heading text-xs text-sky-950">ภาษาอังกฤษ</div>
+            <div class="text-[10px] bg-sky-600 text-white font-bold px-2 py-0.5 rounded-full inline-block">100 ข้อ</div>
           </div>
 
-          <!-- Thai -->
-          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">🇹🇭</div>
-            <div class="font-bold font-heading text-xs text-amber-900">ภาษาไทย</div>
-            <div class="text-[11px] text-amber-700">100 ข้อ</div>
+          <!-- Thai (Sunny Amber) -->
+          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card subject-card-thai p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-amber-600 flex items-center justify-center text-xl mx-auto shadow-sm">🇹🇭</div>
+            <div class="font-bold font-heading text-xs text-amber-950">ภาษาไทย</div>
+            <div class="text-[10px] bg-amber-500 text-white font-bold px-2 py-0.5 rounded-full inline-block">100 ข้อ</div>
           </div>
 
-          <!-- Social -->
-          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
-            <div class="text-2xl">🌏</div>
-            <div class="font-bold font-heading text-xs text-purple-900">สังคมศึกษา</div>
-            <div class="text-[11px] text-purple-600">100 ข้อ</div>
+          <!-- Social (Royal Purple) -->
+          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card subject-card-social p-3.5 text-center space-y-1.5">
+            <div class="w-10 h-10 rounded-xl bg-white text-purple-600 flex items-center justify-center text-xl mx-auto shadow-sm">🌏</div>
+            <div class="font-bold font-heading text-xs text-purple-950">สังคมศึกษา</div>
+            <div class="text-[10px] bg-purple-600 text-white font-bold px-2 py-0.5 rounded-full inline-block">100 ข้อ</div>
           </div>
         </div>
       </div>
