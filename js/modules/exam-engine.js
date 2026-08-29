@@ -340,14 +340,8 @@ window.ExamEngine = (function() {
     const timeUsedSec = window.APP_STATE.timeSpentSeconds % 60;
     const timeUsedFormatted = `${timeUsedMin}:${String(timeUsedSec).padStart(2, '0')}`;
 
-    // Update XP
+    // Update XP and Save history to active student profile
     const earnedXp = correctCount * 20 + 50;
-    window.APP_STATE.userXp += earnedXp;
-    localStorage.setItem('hw_user_xp', window.APP_STATE.userXp.toString());
-    const xpDisplay = document.getElementById('user-xp-display');
-    if (xpDisplay) xpDisplay.innerText = `${window.APP_STATE.userXp} แต้ม`;
-
-    // Save history
     const historyEntry = {
       date: new Date().toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' }),
       title: document.getElementById('active-exam-title')?.innerText || "ชุดข้อสอบหอวัง",
@@ -357,8 +351,17 @@ window.ExamEngine = (function() {
       timeUsed: timeUsedFormatted,
       subjectStats: subjectStats
     };
-    window.APP_STATE.examHistory.unshift(historyEntry);
-    localStorage.setItem('hw_exam_history', JSON.stringify(window.APP_STATE.examHistory));
+
+    if (window.UserProfile && typeof window.UserProfile.recordExamToCurrentProfile === 'function') {
+      window.UserProfile.recordExamToCurrentProfile(historyEntry, earnedXp);
+    } else {
+      window.APP_STATE.userXp += earnedXp;
+      window.APP_STATE.examHistory.unshift(historyEntry);
+      localStorage.setItem('hw_user_xp', window.APP_STATE.userXp.toString());
+      localStorage.setItem('hw_exam_history', JSON.stringify(window.APP_STATE.examHistory));
+      const xpDisplay = document.getElementById('user-xp-display');
+      if (xpDisplay) xpDisplay.innerText = `${window.APP_STATE.userXp} แต้ม`;
+    }
 
     // Render scorecard
     document.getElementById('result-score-num').innerText = correctCount;
