@@ -38,7 +38,7 @@ window.BankBrowser = (function() {
       const subjConfig = window.HORWANG_CONFIG.SUBJECTS[q.subject] || { name: q.subjectName || "ทั่วไป", badgeClass: "bg-slate-100 text-slate-700" };
 
       return `
-        <div class="bg-white rounded-2xl p-5 shadow-sm border ${isSelected ? 'border-horwang-maroon ring-2 ring-horwang-maroon/20' : 'border-slate-200'} space-y-3 transition hover:shadow-md">
+        <div class="clean-card p-5 space-y-3.5 border ${isSelected ? 'border-horwang-maroon ring-2 ring-horwang-maroon/20' : 'border-slate-200'}">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <div class="flex items-center space-x-2">
               <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${subjConfig.badgeClass}">

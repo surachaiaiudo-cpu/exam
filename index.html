@@ -1,50 +1,52 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🦉 Horwang M.1 Hero - ผจญภัยพิชิตข้อสอบเข้า ม.1 หอวัง (สำหรับ ป.5)</title>
+  <title>Horwang M.1 Hero - ระบบฝึกทำข้อสอบเข้า ม.1 หอวัง</title>
   
-  <!-- Tailwind CSS CDN -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             horwang: {
               maroon: '#7B001C',
               darkMaroon: '#520013',
-              lightMaroon: '#A30026',
-              gold: '#F5B01D',
-              lightGold: '#FDE68A',
-              navy: '#0F172A',
-              mint: '#10B981',
-              sky: '#0EA5E9',
-              coral: '#F97316',
-              purple: '#8B5CF6',
-              rose: '#F43F5E',
+              lightMaroon: '#9B1131',
+              gold: '#D97706',
+              lightGold: '#FEF3C7',
+              navy: '#0F172A'
             }
+          },
+          fontFamily: {
+            sarabun: ['Sarabun', 'sans-serif'],
+            heading: ['Prompt', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
           }
         }
       }
     }
   </script>
 
-  <!-- Custom Kid-Friendly CSS -->
+  <!-- Custom Clean CSS -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Canvas Confetti for Celebration -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <!-- Chart.js for Progress Dashboard -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- KaTeX for Math & Science formulas (Visual Fractions) -->
+  <!-- KaTeX for Math & Science formulas -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -85,976 +87,586 @@
   <script src="js/modules/user-profile.js"></script>
   <script src="js/modules/omr-printer.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased font-sarabun">
 
-  <!-- Top Navigation Header (Joyful & Colorful) -->
-  <header class="sticky top-0 z-40 bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white shadow-xl border-b-4 border-horwang-gold">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20">
+  <!-- Clean Top Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 sm:h-18">
         
-        <!-- Logo & Interactive Mascot -->
+        <!-- Logo & Branding -->
         <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('generator')">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-300 via-amber-400 to-horwang-gold flex items-center justify-center text-horwang-darkMaroon shadow-lg font-bold text-2xl ring-4 ring-white/30 transform hover:scale-110 hover:rotate-6 transition">
+          <div class="w-10 h-10 rounded-xl bg-horwang-maroon text-white flex items-center justify-center text-xl shadow-sm">
             🦉
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="font-heading font-black text-lg sm:text-2xl tracking-tight text-white drop-shadow">
-                HORWANG <span class="text-horwang-gold">M.1 HERO</span>
+              <span class="font-heading font-bold text-lg text-slate-900">
+                HORWANG <span class="text-horwang-maroon">M.1 HERO</span>
               </span>
-              <span class="bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow hidden sm:inline-block">
-                ✨ ป.5 พิชิต ม.1 หอวัง
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-semibold px-2 py-0.5 rounded-md hidden sm:inline-block">
+                ป.5 พิชิต ม.1 หอวัง
               </span>
             </div>
-            <p class="text-xs text-amber-200 font-medium hidden sm:block">เกมฝึกทำข้อสอบแสนสนุก พร้อมเฉลยเข้าใจง่ายสุดๆ</p>
+            <p class="text-xs text-slate-500 hidden sm:block">คลังข้อสอบ 500 ข้อ พร้อมเฉลยวิธีคิดละเอียด</p>
           </div>
         </div>
 
         <!-- Main Navigation Tabs -->
-        <nav class="hidden md:flex items-center space-x-2">
-          <div class="has-bubble-tip">
-            <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 bg-white/20 text-white font-heading shadow-sm">
-              <i class="fa-solid fa-gamepad text-horwang-gold text-base"></i>
-              <span>🎯 เล่นข้อสอบ</span>
-            </button>
-            <div class="bubble-tip">จัดชุดข้อสอบ & ทำแบบฝึกหัด 🎮</div>
-          </div>
+        <nav class="hidden md:flex items-center space-x-1">
+          <button onclick="switchTab('generator')" id="nav-generator" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 bg-horwang-maroon text-white font-heading">
+            <i class="fa-solid fa-gamepad text-xs"></i>
+            <span>ทำข้อสอบ</span>
+          </button>
 
-          <div class="has-bubble-tip">
-            <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-              <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
-              <span>📚 รวมข้อสอบ 500 ข้อ</span>
-            </button>
-            <div class="bubble-tip">คลังข้อสอบ 5 วิชาครบ 500 ข้อ 📖</div>
-          </div>
+          <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
+            <i class="fa-solid fa-book-open text-xs"></i>
+            <span>คลังข้อสอบ (500 ข้อ)</span>
+          </button>
 
-          <div class="has-bubble-tip">
-            <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-              <i class="fa-solid fa-comments text-sky-300 text-base"></i>
-              <span>💬 ถามเพื่อน & พี่ฮูก</span>
-            </button>
-            <div class="bubble-tip">ถามการบ้าน & คุยกับเพื่อนๆ 💬</div>
-          </div>
+          <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
+            <i class="fa-solid fa-comments text-xs"></i>
+            <span>ชุมชนถามตอบ</span>
+          </button>
 
-          <div class="has-bubble-tip">
-            <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
-              <i class="fa-solid fa-trophy text-emerald-300 text-base"></i>
-              <span>🏆 สมุดสะสมรางวัล</span>
-            </button>
-            <div class="bubble-tip">ดูคะแนน & เหรียญตราอัศวิน 🏅</div>
-          </div>
+          <button onclick="switchTab('analytics')" id="nav-analytics" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-heading">
+            <i class="fa-solid fa-chart-pie text-xs"></i>
+            <span>คะแนน & สถิติ</span>
+          </button>
         </nav>
 
-        <!-- Right Quick Controls -->
+        <!-- Right User & Settings Controls -->
         <div class="flex items-center space-x-2 sm:space-x-3">
-          <!-- Student Profile / Member Button -->
-          <div class="has-bubble-tip">
-            <button onclick="window.UserProfile.openProfileModal()" id="btn-profile-trigger" class="flex items-center space-x-2 bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-2xl border border-white/30 shadow transition btn-kid">
-              <span id="header-profile-avatar" class="text-xl">🦉</span>
-              <div class="text-left hidden sm:block">
-                <div id="header-profile-name" class="text-xs font-black font-heading text-white truncate max-w-[100px]">น้องคนเก่ง</div>
-                <div class="text-[9px] text-amber-200 font-bold">สลับโปรไฟล์</div>
-              </div>
-            </button>
-            <div class="bubble-tip">โปรไฟล์นักเรียน & สลับผู้ใช้ 👤</div>
-          </div>
+          <!-- Student Profile Trigger -->
+          <button onclick="window.UserProfile.openProfileModal()" id="btn-profile-trigger" class="flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl text-slate-800 transition btn-kid" title="เปลี่ยนโปรไฟล์ผู้ใช้งาน">
+            <span id="header-profile-avatar" class="text-lg">🦉</span>
+            <div class="text-left hidden sm:block">
+              <div id="header-profile-name" class="text-xs font-bold font-heading text-slate-800 truncate max-w-[90px]">น้องคนเก่ง</div>
+              <div class="text-[10px] text-slate-500">สลับโปรไฟล์</div>
+            </div>
+          </button>
 
           <!-- Audio Toggle -->
-          <div class="has-bubble-tip">
-            <button onclick="window.SoundEngine.toggle()" id="btn-audio" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-200 text-base transition btn-kid">
-              <i class="fa-solid fa-volume-high text-horwang-gold"></i>
-            </button>
-            <div class="bubble-tip">เปิด/ปิดเสียงเอฟเฟกต์แสนสนุก 🎵</div>
-          </div>
+          <button onclick="window.SoundEngine.toggle()" id="btn-audio" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 transition btn-kid" title="เปิด/ปิดเสียง">
+            <i class="fa-solid fa-volume-high text-sm"></i>
+          </button>
 
-          <!-- Level & XP Badge -->
-          <div class="has-bubble-tip">
-            <div onclick="switchTab('analytics')" class="flex items-center space-x-2 bg-gradient-to-r from-amber-500/30 to-orange-500/30 px-3.5 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-md cursor-pointer hover:scale-105 transition">
-              <span class="text-xl animate-bounce">⭐</span>
-              <div>
-                <div class="text-[10px] text-amber-200 font-bold uppercase tracking-wider" id="user-rank-title">นักสำรวจ ป.5</div>
-                <span id="user-xp-display" class="text-xs font-black text-horwang-gold font-heading">0 แต้ม</span>
-              </div>
-            </div>
-            <div class="bubble-tip">แต้มดาวสะสม & เลเวลอัศวิน ⭐</div>
+          <!-- XP Pill -->
+          <div onclick="switchTab('analytics')" class="flex items-center space-x-1.5 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-xl cursor-pointer hover:bg-amber-100 transition" title="คะแนนสะสม">
+            <span class="text-amber-500 text-sm">⭐</span>
+            <span id="user-xp-display" class="text-xs font-bold text-amber-900 font-heading">0 แต้ม</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Mobile Navigation Bar -->
-    <div class="flex md:hidden border-t border-white/10 bg-horwang-darkMaroon/95 px-2 py-2 justify-around text-center">
-      <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-horwang-gold font-bold flex flex-col items-center">
-        <i class="fa-solid fa-gamepad mb-0.5 text-base"></i>
-        <span>เล่นข้อสอบ</span>
+    <div class="flex md:hidden border-t border-slate-200 bg-white px-2 py-1.5 justify-around text-center">
+      <button onclick="switchTab('generator')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-horwang-maroon font-bold flex flex-col items-center">
+        <i class="fa-solid fa-gamepad mb-0.5 text-sm"></i>
+        <span>ทำข้อสอบ</span>
       </button>
-      <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
-        <i class="fa-solid fa-book-open mb-0.5 text-base"></i>
-        <span>ดูข้อสอบ</span>
+      <button onclick="switchTab('bank')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-book-open mb-0.5 text-sm"></i>
+        <span>คลังข้อสอบ</span>
       </button>
-      <button onclick="switchTab('study-club')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
-        <i class="fa-solid fa-comments mb-0.5 text-base"></i>
-        <span>ถามเพื่อน</span>
+      <button onclick="switchTab('study-club')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-comments mb-0.5 text-sm"></i>
+        <span>ถามตอบ</span>
       </button>
-      <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-300 font-medium flex flex-col items-center">
-        <i class="fa-solid fa-trophy mb-0.5 text-base"></i>
-        <span>รางวัล</span>
+      <button onclick="switchTab('analytics')" class="mobile-nav-btn text-xs py-1 px-2 rounded-lg text-slate-600 font-medium flex flex-col items-center">
+        <i class="fa-solid fa-chart-pie mb-0.5 text-sm"></i>
+        <span>สถิติ</span>
       </button>
     </div>
   </header>
 
-  <!-- Sticky Exam Status Bar -->
-  <div id="sticky-exam-bar" class="hidden sticky top-16 sm:top-20 z-30 bg-slate-900/95 backdrop-blur text-white border-b-2 border-horwang-gold shadow-2xl px-4 py-3 transition-all">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center space-x-3">
-        <span class="px-3.5 py-1 rounded-2xl bg-gradient-to-r from-horwang-maroon to-rose-700 text-amber-200 text-xs font-black font-heading shadow flex items-center space-x-1.5">
-          <span>🎮 กำลังทำภารกิจ</span>
+  <!-- Sticky Exam Progress Bar -->
+  <div id="sticky-exam-bar" class="hidden sticky top-16 sm:top-18 z-30 bg-slate-900 text-white shadow-lg px-4 py-2.5">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="px-2.5 py-0.5 rounded-lg bg-horwang-maroon text-white text-xs font-bold font-heading">
+          กำลังสอบ
         </span>
-        <span id="exam-mode-title" class="font-heading font-bold text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs text-amber-100">
+        <span id="exam-mode-title" class="font-heading font-semibold text-sm truncate max-w-[180px] sm:max-w-xs text-slate-200">
           คณิตศาสตร์
         </span>
       </div>
 
-      <div class="flex items-center space-x-3 sm:space-x-4">
-        <!-- Digital OMR Toggle -->
-        <button onclick="window.ExamEngine.toggleOmrPanel()" id="btn-toggle-omr-sheet" title="เปิด/ปิดกระดาษฝนคำตอบ" class="px-3.5 py-1.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 flex items-center space-x-1.5 transition btn-kid">
-          <i class="fa-solid fa-table-cells text-horwang-gold"></i>
-          <span class="hidden sm:inline">กระดาษฝนคำตอบ</span>
-        </button>
-
+      <div class="flex items-center space-x-3">
         <!-- Progress Counter -->
-        <div class="text-xs sm:text-sm font-bold text-slate-300 bg-slate-800/80 px-3.5 py-1.5 rounded-2xl border border-slate-700">
-          ตอบแล้ว: <span id="answered-count-badge" class="font-black text-emerald-400 text-base">0</span>/<span id="total-count-badge" class="font-bold">20</span> ข้อ
+        <div class="text-xs text-slate-300">
+          ตอบแล้ว: <span id="answered-count-badge" class="font-bold text-emerald-400">0</span>/<span id="total-count-badge" class="font-bold">20</span> ข้อ
         </div>
 
-        <!-- Big Easy Timer Display -->
-        <div class="flex items-center space-x-2 bg-gradient-to-r from-slate-800 to-slate-900 px-4 py-1.5 rounded-2xl border-2 border-horwang-gold shadow-sm">
-          <i class="fa-solid fa-stopwatch text-horwang-gold animate-bounce text-base"></i>
-          <span id="exam-timer-display" class="font-mono text-lg font-black text-horwang-lightGold">40:00</span>
+        <!-- Timer -->
+        <div class="flex items-center space-x-1.5 bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-clock text-amber-400 text-xs"></i>
+          <span id="exam-timer-display" class="font-mono text-sm font-bold text-amber-200">40:00</span>
         </div>
 
         <!-- Submit Button -->
-        <button onclick="window.ExamEngine.confirmSubmit()" class="px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white rounded-2xl text-xs sm:text-sm font-black font-heading shadow-lg transition btn-kid flex items-center space-x-1.5">
-          <i class="fa-solid fa-check"></i>
+        <button onclick="window.ExamEngine.confirmSubmit()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold font-heading transition btn-kid flex items-center space-x-1">
+          <i class="fa-solid fa-check text-xs"></i>
           <span>ส่งข้อสอบ</span>
         </button>
       </div>
     </div>
 
-    <div class="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800 flex items-center space-x-2 overflow-x-auto custom-scrollbar pb-1" id="question-navigator-pills"></div>
+    <div class="max-w-6xl mx-auto mt-2 pt-2 border-t border-slate-800 flex items-center space-x-1.5 overflow-x-auto pb-1" id="question-navigator-pills"></div>
   </div>
 
   <!-- Main Content Container -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 space-y-6">
 
     <!-- ======================================================== -->
-    <!-- TAB 1: ADVENTURE EXAM GENERATOR                         -->
+    <!-- TAB 1: EXAM GENERATOR & PRESET HUB                      -->
     <!-- ======================================================== -->
     <section id="tab-generator" class="tab-content space-y-6">
       
-      <!-- Cheerful Adventure Banner with Mascot -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-horwang-darkMaroon via-rose-950 to-slate-900 text-white p-6 sm:p-8 shadow-2xl border-4 border-amber-400/40">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="space-y-3 text-center md:text-left">
-            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-400/30 to-orange-400/30 text-amber-200 px-4 py-1.5 rounded-full text-xs font-black border border-amber-300/40 shadow-sm">
-              <span>🏰 ยินดีต้อนรับสู่เกาะผจญภัย ม.1 หอวัง!</span>
+      <!-- Clean Welcome Banner -->
+      <div class="clean-card p-6 sm:p-8 bg-gradient-to-br from-white via-slate-50 to-rose-50/30 border border-slate-200">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2 flex-1">
+            <div class="inline-flex items-center space-x-2 bg-rose-100 text-horwang-maroon px-3 py-1 rounded-lg text-xs font-semibold">
+              <span>🎯 เตรียมสอบเข้า ม.1 โรงเรียนหอวัง (สำหรับ ป.5)</span>
             </div>
-            <h1 class="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight leading-snug">
-              ภารกิจพิชิตข้อสอบ <span class="text-horwang-gold">ม.1 หอวัง</span> ✨
+            <h1 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900">
+              ฝึกทำข้อสอบหอวัง <span class="text-horwang-maroon">500 ข้อ</span>
             </h1>
-            <p class="text-sm sm:text-base text-amber-100 leading-relaxed font-sarabun max-w-2xl">
-              ฝึกทำโจทย์แบบไม่เครียด! ตอบถูกสะสมแต้มดาว ⭐ ปลดล็อกเหรียญตราอัศวิน และดูวิธีคิดเข้าใจง่ายกับพี่ฮูกได้เลยครับ
+            <p class="text-sm text-slate-600 font-sarabun max-w-xl leading-relaxed">
+              ฝึกทำข้อสอบจริง 5 วิชาหลัก พร้อมเฉลยวิธีคิดทีละขั้นตอน สูตรลัด และจุดหลอกที่พบบ่อยในห้องสอบ
             </p>
 
-            <!-- Adventure Rank Progress Bar -->
-            <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/10 max-w-xl space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold text-amber-200">
-                <span>🐣 ระดับปัจจุบัน: <strong id="adventure-rank-name" class="text-horwang-gold font-heading">ลูกเจี๊ยบนักสำรวจ (Level 1)</strong></span>
-                <span id="adventure-xp-goal">เป้าหมาย: 100 แต้ม</span>
-              </div>
-              <div class="level-progress-bar">
-                <div id="adventure-progress-fill" class="level-progress-fill" style="width: 0%;"></div>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-              <button onclick="startHybridExam('balanced')" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-horwang-gold to-orange-400 hover:from-amber-300 hover:to-orange-300 text-slate-950 font-black text-sm font-heading shadow-xl flex items-center space-x-2 btn-kid animate-pulse-glow">
-                <i class="fa-solid fa-play text-base"></i>
-                <span>เริ่มเล่นชุดรวมโจทย์ฮิต (20 ข้อ)</span>
+            <div class="flex flex-wrap items-center gap-3 pt-3">
+              <button onclick="startHybridExam('balanced')" class="px-5 py-2.5 rounded-xl bg-horwang-maroon hover:bg-horwang-darkMaroon text-white font-bold text-sm font-heading shadow transition btn-kid flex items-center space-x-2">
+                <i class="fa-solid fa-play text-xs"></i>
+                <span>เริ่มทำชุดรวม 5 วิชา (20 ข้อ)</span>
               </button>
-              <button onclick="switchTab('bank')" class="px-5 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-sm font-heading border border-white/30 flex items-center space-x-2 btn-kid">
-                <i class="fa-solid fa-book-open"></i>
-                <span>ดูข้อสอบทั้งหมด 500 ข้อ</span>
+              <button onclick="switchTab('bank')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm font-heading border border-slate-300 flex items-center space-x-2 btn-kid">
+                <i class="fa-solid fa-book-open text-xs"></i>
+                <span>เปิดดูคลังข้อสอบทั้งหมด</span>
               </button>
             </div>
           </div>
 
-          <!-- Mascot Card -->
-          <div class="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur-md p-5 rounded-3xl border-2 border-amber-300/30 max-w-xs text-center space-y-2.5">
-            <div class="text-6xl animate-float cursor-pointer" onclick="tellMascotJoke()" title="แตะพี่ฮูกเพื่อฟังเคล็ดลับแสนสนุก">🦉</div>
-            <div id="mascot-speech-text" class="mascot-bubble p-3 text-slate-800 text-xs font-bold font-sarabun shadow">
-              "สวัสดีคนเก่ง! ตอนนี้มีข้อสอบให้ฝึกถึง 500 ข้อแล้วนะ แตะตัวพี่ฮูกเพื่อฟังเคล็ดลับได้เลย! ✨"
+          <!-- Mascot Tip Card -->
+          <div class="shrink-0 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm max-w-xs space-y-2 text-center md:text-left">
+            <div class="flex items-center space-x-3">
+              <div class="text-3xl cursor-pointer" onclick="tellMascotJoke()" title="แตะเพื่อฟังคำแนะนำ">🦉</div>
+              <div>
+                <strong class="text-xs font-heading font-bold text-slate-900 block">พี่ฮูกหอวัง</strong>
+                <span class="text-[11px] text-slate-500">เคล็ดลับการทำข้อสอบ</span>
+              </div>
             </div>
-            <button onclick="tellMascotJoke()" class="text-[11px] text-amber-200 hover:underline font-heading font-bold">
-              💡 แตะเพื่อฟังเคล็ดลับพี่ฮูก
+            <p id="mascot-speech-text" class="text-xs text-slate-700 font-sarabun leading-relaxed bg-slate-50 p-2.5 rounded-xl">
+              "ข้อไหนโจทย์ยาวและงง ให้ลองวาดรูปในกระดาษทด จะเห็นคำตอบทันทีครับ!"
+            </p>
+            <button onclick="tellMascotJoke()" class="text-[11px] text-horwang-maroon font-semibold hover:underline block w-full text-center">
+              💡 เปลี่ยนเคล็ดลับใหม่
             </button>
           </div>
         </div>
       </div>
 
-      <!-- INTERACTIVE SUBJECT SELECTOR (Bright Candy Cards) -->
+      <!-- Subject Selector -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
-          <h2 class="text-lg font-black font-heading text-horwang-maroon flex items-center space-x-2">
-            <i class="fa-solid fa-gamepad text-horwang-gold"></i>
-            <span>แตะเลือกวิชาที่อยากเล่นวันนี้:</span>
+          <h2 class="text-base font-bold font-heading text-slate-900 flex items-center space-x-2">
+            <i class="fa-solid fa-layer-group text-horwang-maroon"></i>
+            <span>เลือกวิชาที่ต้องการฝึกทำ:</span>
           </h2>
-          <span class="text-xs text-slate-500 font-medium">แตะ 1 ครั้งเพื่อเลือกวิชา</span>
+          <span class="text-xs text-slate-500">แตะเพื่อเลือกวิชา</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-2">
-          <!-- All -->
-          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-gradient-to-b from-white to-slate-50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble">ครบ 5 วิชา ✨</span>
-            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🎯</div>
-            <div class="font-black font-heading text-xs text-slate-800">รวม 5 วิชา</div>
-            <div class="text-[10px] text-slate-500 font-medium">500 ข้อในคลัง</div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <!-- All Subjects -->
+          <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">🎯</div>
+            <div class="font-bold font-heading text-xs text-slate-800">รวม 5 วิชา</div>
+            <div class="text-[11px] text-slate-500">500 ข้อ</div>
           </div>
 
           <!-- Math -->
-          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-gradient-to-b from-rose-50 to-rose-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble bg-rose-500 text-white">100 ข้อ 📐</span>
-            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mx-auto shadow-inner">📐</div>
-            <div class="font-black font-heading text-xs text-rose-900">คณิตศาสตร์</div>
-            <div class="text-[10px] text-rose-600 font-medium">100 ข้อในคลัง</div>
+          <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">📐</div>
+            <div class="font-bold font-heading text-xs text-rose-900">คณิตศาสตร์</div>
+            <div class="text-[11px] text-rose-600">100 ข้อ</div>
           </div>
 
           <!-- Science -->
-          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-gradient-to-b from-emerald-50 to-emerald-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble bg-emerald-500 text-white">100 ข้อ 🔬</span>
-            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🔬</div>
-            <div class="font-black font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
-            <div class="text-[10px] text-emerald-600 font-medium">100 ข้อในคลัง</div>
+          <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">🔬</div>
+            <div class="font-bold font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
+            <div class="text-[11px] text-emerald-600">100 ข้อ</div>
           </div>
 
           <!-- English -->
-          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-gradient-to-b from-sky-50 to-sky-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble bg-sky-500 text-white">100 ข้อ 🇬🇧</span>
-            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🇬🇧</div>
-            <div class="font-black font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
-            <div class="text-[10px] text-sky-600 font-medium">100 ข้อในคลัง</div>
+          <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">🇬🇧</div>
+            <div class="font-bold font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
+            <div class="text-[11px] text-sky-600">100 ข้อ</div>
           </div>
 
           <!-- Thai -->
-          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-gradient-to-b from-amber-50 to-amber-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble bg-amber-500 text-slate-900">100 ข้อ 🇹🇭</span>
-            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🇹🇭</div>
-            <div class="font-black font-heading text-xs text-amber-900">ภาษาไทย</div>
-            <div class="text-[10px] text-amber-700 font-medium">100 ข้อในคลัง</div>
+          <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">🇹🇭</div>
+            <div class="font-bold font-heading text-xs text-amber-900">ภาษาไทย</div>
+            <div class="text-[11px] text-amber-700">100 ข้อ</div>
           </div>
 
           <!-- Social -->
-          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-gradient-to-b from-purple-50 to-purple-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
-            <span class="subject-card-bubble bg-purple-500 text-white">100 ข้อ 🌏</span>
-            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🌏</div>
-            <div class="font-black font-heading text-xs text-purple-900">สังคมศึกษา</div>
-            <div class="text-[10px] text-purple-600 font-medium">100 ข้อในคลัง</div>
+          <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card p-3.5 rounded-2xl text-center space-y-1.5">
+            <div class="text-2xl">🌏</div>
+            <div class="font-bold font-heading text-xs text-purple-900">สังคมศึกษา</div>
+            <div class="text-[11px] text-purple-600">100 ข้อ</div>
+          </div>
         </div>
       </div>
 
-      <!-- 3 RECIPE CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <!-- Recipe 1 -->
-        <div class="bg-gradient-to-b from-amber-50/80 to-white p-6 rounded-3xl border-2 border-amber-300 shadow-sm hover:border-amber-400 transition space-y-4 card-kid flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-amber-200 text-amber-900 flex items-center justify-center text-2xl font-black shadow-inner">
-              ⭐
-            </div>
-            <span class="px-3 py-0.5 rounded-full bg-amber-200 text-amber-950 text-xs font-black font-heading inline-block">แบบที่ 1 (แนะนำสำหรับ ป.5)</span>
-            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดรวมโจทย์ฮิตยอดนิยม</h3>
-            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">มีทั้งโจทย์คำนวณและข้อสอบจริง ผสมกันอย่างละครึ่ง พอดีๆ สำหรับฝึกซ้อม</p>
-          </div>
-          <button onclick="startHybridExam('balanced')" class="w-full py-3 bg-gradient-to-r from-horwang-maroon to-rose-800 hover:from-horwang-darkMaroon hover:to-horwang-maroon text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
-            <i class="fa-solid fa-play"></i>
-            <span>เริ่มทำชุดนี้เลย</span>
-          </button>
-        </div>
+      <!-- Quick Exam Options Card -->
+      <div id="exam-config-card" class="clean-card p-6 space-y-5">
+        <h3 class="text-base font-bold font-heading text-slate-900 flex items-center space-x-2 border-b border-slate-100 pb-3">
+          <i class="fa-solid fa-sliders text-horwang-maroon"></i>
+          <span>ตั้งค่าชุดข้อสอบ:</span>
+        </h3>
 
-        <!-- Recipe 2 -->
-        <div class="bg-gradient-to-b from-emerald-50/80 to-white p-6 rounded-3xl border-2 border-emerald-300 shadow-sm hover:border-emerald-400 transition space-y-4 card-kid flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-200 text-emerald-900 flex items-center justify-center text-2xl font-black shadow-inner">
-              ⚡
-            </div>
-            <span class="px-3 py-0.5 rounded-full bg-emerald-200 text-emerald-950 text-xs font-black font-heading inline-block">แบบที่ 2 (ฝึกคิดไว)</span>
-            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดฝึกคิดเลขเร็ว</h3>
-            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">เน้นโจทย์คิดเลขสุ่มตัวเลขใหม่ทุกรอบ ฝึกบวก ลบ คูณ หาร ให้คิดได้เร็วทันใจ</p>
-          </div>
-          <button onclick="startHybridExam('math-speed')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
-            <i class="fa-solid fa-play"></i>
-            <span>เริ่มฝึกคิดเลขเร็ว</span>
-          </button>
-        </div>
-
-        <!-- Recipe 3 -->
-        <div class="bg-gradient-to-b from-sky-50/80 to-white p-6 rounded-3xl border-2 border-sky-300 shadow-sm hover:border-sky-400 transition space-y-4 card-kid flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="w-12 h-12 rounded-2xl bg-sky-200 text-sky-900 flex items-center justify-center text-2xl font-black shadow-inner">
-              🏆
-            </div>
-            <span class="px-3 py-0.5 rounded-full bg-sky-200 text-sky-950 text-xs font-black font-heading inline-block">แบบที่ 3 (โจทย์ท้าทาย)</span>
-            <h3 class="font-black font-heading text-slate-900 text-lg">ชุดโจทย์ Gifted ปราบเซียน</h3>
-            <p class="text-xs text-slate-600 font-sarabun leading-relaxed">เน้นข้อสอบแข่งขันจริง พร้อมพาดูจุดหลอกที่คนส่วนใหญ่ตอบผิดบ่อยๆ</p>
-          </div>
-          <button onclick="startHybridExam('curated-trap')" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold font-heading text-xs rounded-2xl shadow-md transition btn-kid flex items-center justify-center space-x-1.5">
-            <i class="fa-solid fa-play"></i>
-            <span>เริ่มชุดปราบเซียน</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Config Form -->
-      <div id="exam-config-card" class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-2">
-          <div>
-            <h2 class="text-xl font-black font-heading text-horwang-maroon flex items-center space-x-2">
-              <i class="fa-solid fa-sliders text-horwang-gold"></i>
-              <span>เลือกตั้งค่าข้อสอบเอง:</span>
-            </h2>
-            <p class="text-xs text-slate-500 font-sarabun">เลือกห้องเรียนที่อยากสอบเข้าและความง่าย-ยากได้เลย</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <input type="hidden" id="select-subject" value="all" />
 
-          <div class="space-y-2">
-            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
-              1. เลือกห้องเรียนที่อยากเข้า
-            </label>
-            <select id="select-track" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
-              <option value="gifted" selected>🌟 ห้องเรียนพิเศษ (Gifted / EP / SMP)</option>
-              <option value="regular">🏫 ห้องเรียนปกติ (Regular Program)</option>
+          <!-- Track -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">1. แผนการเรียนที่สนใจ:</label>
+            <select id="select-track" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
+              <option value="gifted" selected>🌟 ห้อง Gifted / EP / SMP</option>
+              <option value="regular">🏫 ห้องเรียนปกติ หอวัง</option>
             </select>
           </div>
 
-          <div class="space-y-2">
-            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
-              2. เลือกระดับความง่าย-ยาก
-            </label>
-            <select id="select-difficulty" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
-              <option value="1">🌱 ระดับ 1: ฝึกพื้นฐาน ป.5 ให้แน่น</option>
-              <option value="2" selected>🌿 ระดับ 2: ปานกลาง (แนะนำสำหรับ ป.5)</option>
-              <option value="3">🌳 ระดับ 3: ยากแบบข้อสอบแข่งขันจริง</option>
+          <!-- Difficulty -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">2. ระดับความยาก:</label>
+            <select id="select-difficulty" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
+              <option value="1">🌱 ระดับ 1: พื้นฐาน ป.5</option>
+              <option value="2" selected>🌿 ระดับ 2: ปานกลาง (มาตรฐาน ป.5)</option>
+              <option value="3">🌳 ระดับ 3: โจทย์ท้าทายแข่งขัน</option>
             </select>
           </div>
 
-          <div class="space-y-2">
-            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider font-heading">
-              3. อยากทำกี่ข้อ?
-            </label>
-            <select id="select-count" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-4 py-3 text-sm font-bold text-slate-800 focus:border-horwang-maroon">
-              <option value="5">⚡ 5 ข้อ (เร็วๆ 10 นาที)</option>
-              <option value="10">📝 10 ข้อ (พอดีๆ 20 นาที)</option>
-              <option value="15">🔥 15 ข้อ (เข้มข้น 30 นาที)</option>
-              <option value="20" selected>🏆 20 ข้อ (ชุดใหญ่ 40 นาที)</option>
+          <!-- Question Count -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">3. จำนวนข้อ:</label>
+            <select id="select-count" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
+              <option value="10">10 ข้อ (ประมาณ 20 นาที)</option>
+              <option value="20" selected>20 ข้อ (ประมาณ 40 นาที - แนะนำ)</option>
+              <option value="30">30 ข้อ (ประมาณ 60 นาที)</option>
+              <option value="50">50 ข้อ (ชุดใหญ่จำลองสอบจริง)</option>
             </select>
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
-          <div class="flex items-center space-x-2 text-xs text-emerald-700 font-bold">
-            <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
-            <span>ข้อสอบครบ 100 ข้อ พร้อมเริ่มทำได้ทันที</span>
+        <div class="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100">
+          <div class="text-xs text-slate-500">
+            ระบบจะสุ่มข้อสอบที่ไม่ซ้ำกัน พร้อมจับเวลาและบันทึกสถิติ
           </div>
-
-          <button onclick="startCustomHybridExam()" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-horwang-maroon to-rose-800 hover:from-horwang-darkMaroon hover:to-horwang-maroon text-white font-black text-sm font-heading shadow-xl shadow-horwang-maroon/30 transition btn-kid flex items-center space-x-2">
-            <i class="fa-solid fa-play text-horwang-gold"></i>
-            <span>เริ่มทำข้อสอบเลย</span>
+          <button onclick="startCustomHybridExam()" class="px-6 py-2.5 bg-horwang-maroon hover:bg-horwang-darkMaroon text-white font-bold text-sm font-heading rounded-xl shadow transition btn-kid flex items-center space-x-2">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span>เริ่มทำข้อสอบ</span>
           </button>
         </div>
       </div>
 
-      <!-- ACTIVE EXAM INTERFACE -->
-      <div id="active-exam-container" class="hidden space-y-6">
-        <div class="bg-gradient-to-r from-slate-900 to-horwang-darkMaroon text-white rounded-3xl p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center space-x-2">
-              <span id="active-exam-badge" class="px-3 py-1 rounded-full bg-horwang-gold text-horwang-darkMaroon font-black text-xs font-heading">
-                กำลังทำข้อสอบ
-              </span>
-              <span id="active-exam-count-badge" class="text-xs text-slate-300 font-medium">
-                20 ข้อ • 40 นาที
-              </span>
-            </div>
-            <h2 id="active-exam-title" class="text-xl font-bold font-heading text-white mt-1">
-              แบบทดสอบรวม 5 วิชา เตรียมสอบเข้า ม.1 โรงเรียนหอวัง
-            </h2>
-          </div>
-          <div class="flex items-center space-x-2">
-            <button onclick="window.OmrPrinter.printCurrentExam()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/20 transition btn-kid flex items-center space-x-1.5">
-              <i class="fa-solid fa-print"></i>
-              <span>ปริ้นท์ใบงาน</span>
-            </button>
-            <button onclick="window.ExamEngine.confirmSubmit()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-xs font-black text-white shadow-lg transition btn-kid flex items-center space-x-1.5">
-              <i class="fa-solid fa-check"></i>
-              <span>ส่งข้อสอบ</span>
-            </button>
-          </div>
-        </div>
+      <!-- Active Exam Questions Container -->
+      <div id="exam-questions-container" class="space-y-4"></div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-          <div id="exam-questions-list" class="lg:col-span-3 space-y-6"></div>
-
-          <!-- Digital OMR Sidebar -->
-          <div id="digital-omr-sidebar" class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 sticky top-36 space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <h3 class="font-black font-heading text-horwang-maroon text-sm flex items-center space-x-1.5">
-                <i class="fa-solid fa-table-cells text-horwang-gold"></i>
-                <span>กระดาษฝนคำตอบ</span>
-              </h3>
-              <span class="text-[11px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">แตะเพื่อฝน</span>
-            </div>
-            <div id="digital-omr-grid" class="max-h-[60vh] overflow-y-auto custom-scrollbar space-y-2 pr-1"></div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="text-sm font-sarabun text-slate-600">
-            ตรวจทานคำตอบให้ครบทุกข้อก่อนกดส่งนะครับ สู้ๆ! ✨
-          </div>
-          <div class="flex items-center space-x-3">
-            <button onclick="scrollToTop()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold font-heading transition btn-kid">
-              <i class="fa-solid fa-arrow-up mr-1"></i>ขึ้นบนสุด
-            </button>
-            <button onclick="window.ExamEngine.confirmSubmit()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm font-heading shadow-xl transition btn-kid flex items-center space-x-2">
-              <i class="fa-solid fa-check-circle"></i>
-              <span>ส่งข้อสอบ & ดูเฉลย</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- EXAM RESULT BREAKDOWN -->
+      <!-- Exam Result / Scorecard -->
       <div id="exam-result-container" class="hidden space-y-6">
-        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
-          <div class="bg-gradient-to-r from-horwang-darkMaroon via-horwang-maroon to-slate-900 text-white p-6 sm:p-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div class="space-y-2 text-center md:text-left">
-                <div class="inline-flex items-center space-x-2 bg-horwang-gold/20 text-horwang-lightGold px-3.5 py-1 rounded-full text-xs font-bold border border-horwang-gold/30">
-                  <i class="fa-solid fa-star text-amber-300"></i>
-                  <span>ผลคะแนนของหนู</span>
-                </div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-                  สรุปผลคะแนนที่ทำได้
-                </h2>
-                <p id="result-benchmark-comment" class="text-sm text-slate-200 max-w-xl font-sarabun">
-                  ยินดีด้วย! คะแนนยอดเยี่ยมมาก มีลุ้นสอบติดห้องเรียนพิเศษ Gifted หอวัง แน่นอน
-                </p>
-              </div>
+        <div class="clean-card p-6 sm:p-8 text-center space-y-4">
+          <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center text-3xl mx-auto">
+            🏆
+          </div>
+          <h2 class="text-2xl font-bold font-heading text-slate-900">ผลการทำข้อสอบ</h2>
+          
+          <div class="flex items-center justify-center space-x-2">
+            <span id="result-score-num" class="text-5xl font-extrabold font-heading text-horwang-maroon">0</span>
+            <span id="result-total-num" class="text-2xl text-slate-400 font-heading">/ 20</span>
+          </div>
 
-              <div class="flex flex-col items-center justify-center bg-white/10 rounded-3xl p-5 sm:p-6 border border-white/20 backdrop-blur min-w-[200px] shadow-lg">
-                <div class="text-xs text-slate-300 font-bold uppercase font-heading">คะแนนที่ได้</div>
-                <div class="flex items-baseline space-x-1 my-1">
-                  <span id="result-score-num" class="text-4xl sm:text-6xl font-black font-heading text-horwang-gold">18</span>
-                  <span id="result-total-num" class="text-xl font-bold text-slate-300">/ 20</span>
-                </div>
-                <div id="result-percentage-badge" class="px-3.5 py-1 rounded-full text-xs font-black bg-emerald-500/30 text-emerald-300 border border-emerald-400/40">
-                  90.0% (เก่งมากๆ)
-                </div>
-              </div>
+          <div class="flex flex-wrap justify-center gap-4 text-sm pt-2">
+            <div class="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-200">
+              ตอบถูก: <strong id="result-correct-count" class="font-bold">0</strong> ข้อ
+            </div>
+            <div class="px-4 py-2 bg-rose-50 text-rose-800 rounded-xl border border-rose-200">
+              ตอบผิด: <strong id="result-incorrect-count" class="font-bold">0</strong> ข้อ
+            </div>
+            <div class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl">
+              เวลาที่ใช้: <strong id="result-time-used" class="font-bold">0:00</strong>
             </div>
           </div>
 
-          <div class="p-6 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-            <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-sarabun">
-              <div class="flex items-center space-x-2 text-emerald-600 font-bold">
-                <i class="fa-solid fa-circle-check text-lg"></i>
-                <span>ตอบถูก: <strong id="result-correct-count" class="text-base font-black">18</strong> ข้อ</span>
-              </div>
-              <div class="flex items-center space-x-2 text-rose-600 font-bold">
-                <i class="fa-solid fa-circle-xmark text-lg"></i>
-                <span>ตอบผิด: <strong id="result-incorrect-count" class="text-base font-black">2</strong> ข้อ</span>
-              </div>
-              <div class="flex items-center space-x-2 text-slate-600 font-medium">
-                <i class="fa-solid fa-stopwatch text-base text-amber-500"></i>
-                <span>เวลาที่ใช้: <strong id="result-time-used" class="font-bold">14:25</strong> นาที</span>
-              </div>
-            </div>
-
-            <div class="flex items-center space-x-3">
-              <button onclick="window.StudyClub.shareActiveExam()" class="px-4 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white text-xs sm:text-sm font-black font-heading shadow transition btn-kid flex items-center space-x-1.5">
-                <i class="fa-solid fa-share-nodes"></i>
-                <span>แชร์ให้เพื่อนลองทำ</span>
-              </button>
-              <button onclick="resetToGenerator()" class="px-5 py-2.5 rounded-2xl bg-horwang-maroon hover:bg-horwang-darkMaroon text-white text-xs sm:text-sm font-black font-heading shadow transition btn-kid flex items-center space-x-1.5">
-                <i class="fa-solid fa-rotate-right"></i>
-                <span>ทำใหม่อีกรอบ</span>
-              </button>
-            </div>
+          <div class="pt-4 flex justify-center space-x-3">
+            <button onclick="resetToGenerator()" class="px-5 py-2.5 bg-horwang-maroon text-white font-bold text-sm font-heading rounded-xl btn-kid">
+              <i class="fa-solid fa-rotate-right mr-1.5"></i>ทำชุดใหม่
+            </button>
+            <button onclick="switchTab('bank')" class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold text-sm font-heading rounded-xl hover:bg-slate-200 btn-kid">
+              <i class="fa-solid fa-book-open mr-1.5"></i>ดูคลังข้อสอบ
+            </button>
           </div>
         </div>
 
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-black font-heading text-horwang-maroon flex items-center space-x-2">
-              <i class="fa-solid fa-lightbulb text-amber-500"></i>
-              <span>เฉลยวิธีคิด & เคล็ดลับพี่ฮูก (สำหรับ ป.5)</span>
-            </h3>
-          </div>
-
-          <div id="solutions-list-container" class="space-y-6"></div>
+        <!-- Step-by-Step Solutions Container -->
+        <div id="exam-solutions-container" class="space-y-4">
+          <h3 class="text-lg font-bold font-heading text-slate-900">เฉลยวิธีคิดทีละข้อ:</h3>
+          <div id="solutions-list-container" class="space-y-4"></div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 1.5: QUESTION BANK BROWSER                          -->
+    <!-- TAB 2: QUESTION BANK BROWSER (500 QUESTIONS)            -->
     <!-- ======================================================== -->
-    <section id="tab-bank" class="tab-content hidden space-y-6">
-      <div class="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-amber-500/30">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="space-y-2">
-            <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-400/30">
-              <i class="fa-solid fa-book-open"></i>
-              <span>รวมข้อสอบจริง 500 ข้อ</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
-              ค้นหาและเลือกข้อสอบทำเอง
+    <section id="tab-bank" class="tab-content hidden space-y-5">
+      <div class="clean-card p-5 sm:p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <h2 class="text-xl font-bold font-heading text-slate-900 flex items-center space-x-2">
+              <i class="fa-solid fa-book-bookmark text-horwang-maroon"></i>
+              <span>คลังข้อสอบมาตรฐาน (500 ข้อ)</span>
             </h2>
-            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
-              เลือกดูเฉลยและสูตรลัดทีละข้อ หรือกดปุ่ม <strong>"+ เลือกข้อนี้"</strong> เพื่อเลือกข้อที่ชอบมาทำเองได้เลย!
-            </p>
+            <p class="text-xs text-slate-500">เลือกดูข้อสอบและศึกษาเฉลยละเอียดได้ทุกวิชา</p>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <button onclick="window.BankBrowser.exportBankAsJson()" class="px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold font-heading border border-white/20 transition btn-kid flex items-center space-x-1.5">
-              <i class="fa-solid fa-download"></i>
-              <span>โหลดไฟล์</span>
-            </button>
-            <button onclick="window.BankBrowser.startSelectedExam()" id="btn-start-selected-exam" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-horwang-gold to-amber-400 text-slate-900 font-black font-heading shadow-lg opacity-50 pointer-events-none transition btn-kid flex items-center space-x-2">
-              <i class="fa-solid fa-play"></i>
-              <span id="bank-selected-count-badge">0 ข้อที่เลือก</span>
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <div class="bg-white p-5 sm:p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div>
-            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">เลือกวิชา:</label>
-            <select id="bank-filter-subject" onchange="window.BankBrowser.renderView()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm font-bold">
-              <option value="all">ทั้งหมด (ครบ 5 วิชา)</option>
-              <option value="math">📐 คณิตศาสตร์</option>
-              <option value="science">🔬 วิทยาศาสตร์</option>
-              <option value="english">🇬🇧 ภาษาอังกฤษ</option>
-              <option value="thai">🇹🇭 ภาษาไทย</option>
-              <option value="social">🌏 สังคมศึกษา</option>
+          <!-- Filters -->
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="bank-filter-subject" onchange="window.BankBrowser.renderView()" class="bg-slate-50 border border-slate-300 rounded-xl px-3 py-1.5 text-xs text-slate-800 outline-none">
+              <option value="all">ทุกวิชา (500 ข้อ)</option>
+              <option value="math">คณิตศาสตร์ (100 ข้อ)</option>
+              <option value="science">วิทยาศาสตร์ (100 ข้อ)</option>
+              <option value="english">ภาษาอังกฤษ (100 ข้อ)</option>
+              <option value="thai">ภาษาไทย (100 ข้อ)</option>
+              <option value="social">สังคมศึกษา (100 ข้อ)</option>
             </select>
-          </div>
-          <div>
-            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">ระดับความยาก:</label>
-            <select id="bank-filter-difficulty" onchange="window.BankBrowser.renderView()" class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl px-3.5 py-2.5 text-sm font-bold">
+
+            <select id="bank-filter-difficulty" onchange="window.BankBrowser.renderView()" class="bg-slate-50 border border-slate-300 rounded-xl px-3 py-1.5 text-xs text-slate-800 outline-none">
               <option value="0">ทุกระดับความยาก</option>
               <option value="1">ระดับ 1 (พื้นฐาน)</option>
               <option value="2">ระดับ 2 (ปานกลาง)</option>
-              <option value="3">ระดับ 3 (ยากปราบเซียน)</option>
+              <option value="3">ระดับ 3 (แข่งขัน)</option>
             </select>
-          </div>
-          <div class="sm:col-span-2">
-            <label class="block text-xs font-black text-slate-700 font-heading mb-1.5">พิมพ์ค้นหาโจทย์:</label>
-            <div class="relative">
-              <input type="text" id="bank-search-input" oninput="window.BankBrowser.renderView()" placeholder="พิมพ์เรื่องที่อยากหา เช่น เศษส่วน, วงจรไฟฟ้า, Past Tense..." class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl pl-10 pr-4 py-2.5 text-sm font-sarabun focus:border-horwang-maroon" />
-              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
-            </div>
           </div>
         </div>
 
-        <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
-          <div class="text-slate-600 font-bold">
-            มีข้อสอบทั้งหมด <strong id="bank-found-count" class="text-horwang-maroon font-black text-sm">500 ข้อ</strong>
-          </div>
-          <div class="flex items-center space-x-3">
-            <button onclick="window.BankBrowser.selectAllFiltered()" class="text-sky-600 hover:underline font-bold">
-              เลือกทุกข้อ
-            </button>
-            <span>•</span>
-            <button onclick="window.BankBrowser.clearSelection()" class="text-rose-500 hover:underline font-bold">
-              ยกเลิกการเลือก
-            </button>
-          </div>
+        <!-- Search Bar -->
+        <div>
+          <input type="text" id="bank-search-input" oninput="window.BankBrowser.renderView()" placeholder="พิมพ์คำค้นหา เช่น เศษส่วน, รอก, If-clause, ร.5..." class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm outline-none focus:border-horwang-maroon focus:bg-white transition" />
         </div>
       </div>
 
+      <!-- Questions Grid -->
       <div id="bank-questions-grid" class="space-y-4"></div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 2: STUDY CLUB                                       -->
+    <!-- TAB 3: STUDY CLUB & QUESTIONS COMMUNITY                 -->
     <!-- ======================================================== -->
-    <section id="tab-study-club" class="tab-content hidden space-y-6">
-      <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-500/30">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="space-y-2">
-            <div class="inline-flex items-center space-x-2 bg-sky-500/20 text-sky-300 px-3.5 py-1 rounded-full text-xs font-bold border border-sky-400/30">
-              <i class="fa-solid fa-comments"></i>
-              <span>พูดคุย & ถามการบ้าน</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
-              ห้องถามโจทย์เพื่อน & พี่ฮูก
-            </h2>
-            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
-              สงสัยข้อไหน พิมพ์ถามไว้ตรงนี้ได้เลย! จะมีเพื่อนๆ และพี่ฮูก AI คอยมาตอบและอธิบายวิธีคิดให้ครับ
-            </p>
-          </div>
+    <section id="tab-study-club" class="tab-content hidden space-y-5">
+      <div class="clean-card p-5 sm:p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
-            <button onclick="openNewPostModal()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black font-heading shadow-xl transition btn-kid flex items-center space-x-2">
-              <i class="fa-solid fa-plus-circle text-base"></i>
-              <span>พิมพ์ถามโจทย์ใหม่</span>
-            </button>
+            <h2 class="text-xl font-bold font-heading text-slate-900 flex items-center space-x-2">
+              <i class="fa-solid fa-comments text-horwang-maroon"></i>
+              <span>กระดานถามการบ้าน & พี่ฮูก</span>
+            </h2>
+            <p class="text-xs text-slate-500">ติดข้อไหน สงสัยอะไร โพสต์ถามเพื่อนๆ และพี่ฮูกได้เลย</p>
           </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center justify-between bg-white p-3 rounded-2xl border border-slate-200">
-            <div class="flex items-center space-x-1.5">
-              <button onclick="window.StudyClub.filterFeed('all')" id="club-filter-all" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-black font-heading bg-horwang-maroon text-white">
-                ทั้งหมด
-              </button>
-              <button onclick="window.StudyClub.filterFeed('math')" id="club-filter-math" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
-                คณิต
-              </button>
-              <button onclick="window.StudyClub.filterFeed('science')" id="club-filter-science" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
-                วิทย์
-              </button>
-              <button onclick="window.StudyClub.filterFeed('english')" id="club-filter-english" class="club-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
-                อังกฤษ
-              </button>
-            </div>
-            <span class="text-xs text-slate-400 font-bold" id="feed-count-text">คำถามทั้งหมด 0 ข้อ</span>
-          </div>
-
-          <div id="club-posts-stream" class="space-y-4"></div>
+          <button onclick="openNewPostModal()" class="px-4 py-2 bg-horwang-maroon text-white font-bold text-xs font-heading rounded-xl shadow btn-kid flex items-center space-x-1.5">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span>ตั้งคำถามใหม่</span>
+          </button>
         </div>
 
-        <div class="space-y-6">
-          <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 space-y-4">
-            <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-sm">
-              <i class="fa-solid fa-folder-open text-horwang-gold"></i>
-              <span>ชุดข้อสอบที่เพื่อนส่งให้</span>
-            </h3>
-            <div class="space-y-2.5" id="shared-exams-list"></div>
-          </div>
-
-          <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 space-y-4">
-            <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-sm">
-              <i class="fa-solid fa-trophy text-amber-500"></i>
-              <span>ตารางอันดับดาวสะสม</span>
-            </h3>
-            <div class="space-y-2.5" id="leaderboard-list"></div>
-          </div>
-        </div>
+        <div id="club-posts-feed" class="space-y-4"></div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 3: ANALYTICS & ROADMAP                              -->
+    <!-- TAB 4: ANALYTICS & STUDENT PROGRESS                     -->
     <!-- ======================================================== -->
-    <section id="tab-analytics" class="tab-content hidden space-y-6">
-      <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-500/30">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="space-y-2">
-            <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold border border-emerald-400/30">
-              <i class="fa-solid fa-chart-line"></i>
-              <span>สมุดบันทึกความเก่ง</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
-              ดูคะแนนสะสม & แผนการเรียนสู่ ม.1 หอวัง
-            </h2>
-            <p class="text-sm text-slate-300 max-w-2xl font-sarabun">
-              ดูว่าเราทำวิชาไหนได้คะแนนดี และวิชาไหนที่ควรฝึกเพิ่มอีกนิด เพื่อให้พร้อมสอบที่สุด!
-            </p>
-          </div>
+    <section id="tab-analytics" class="tab-content hidden space-y-5">
+      <div class="clean-card p-5 sm:p-6 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
-            <button onclick="window.AnalyticsEngine.resetAllScoresAndHistory()" title="ล้างคะแนนดาวและประวัติข้อสอบเพื่อเริ่มต้นใหม่" class="px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-rose-600 text-rose-200 hover:text-white text-xs font-bold font-heading border border-rose-400/30 transition btn-kid flex items-center space-x-1.5 shadow-sm">
-              <i class="fa-solid fa-trash-can"></i>
-              <span>ล้างคะแนนสะสม</span>
-            </button>
+            <h2 class="text-xl font-bold font-heading text-slate-900 flex items-center space-x-2">
+              <i class="fa-solid fa-chart-line text-horwang-maroon"></i>
+              <span>สมุดสะสมคะแนน & สถิติ</span>
+            </h2>
+            <p class="text-xs text-slate-500">ติดตามความก้าวหน้าและประวัติการฝึกทำข้อสอบ</p>
           </div>
+          <button onclick="resetAllScoresAndHistory()" class="px-3.5 py-1.5 bg-rose-50 text-rose-700 text-xs font-bold font-heading rounded-xl border border-rose-200 hover:bg-rose-100 transition">
+            <i class="fa-solid fa-trash mr-1"></i>ล้างคะแนนสะสม
+          </button>
         </div>
-      </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
-          <div class="text-xs font-black text-slate-500 font-heading uppercase">ทำข้อสอบไปแล้ว</div>
-          <div class="text-3xl font-black font-heading text-horwang-maroon" id="metric-exams-count">0</div>
-          <div class="text-[11px] text-emerald-600 font-bold">ฝึกทำบ่อยๆ นะ</div>
-        </div>
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
-          <div class="text-xs font-black text-slate-500 font-heading uppercase">คะแนนเฉลี่ย</div>
-          <div class="text-3xl font-black font-heading text-amber-500" id="metric-avg-score">0%</div>
-          <div class="text-[11px] text-slate-500 font-bold" id="metric-avg-sub">เกณฑ์ Gifted: &ge;80%</div>
-        </div>
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
-          <div class="text-xs font-black text-slate-500 font-heading uppercase">วิชาที่เก่งที่สุด</div>
-          <div class="text-base font-black font-heading text-emerald-600 truncate" id="metric-best-subject">-</div>
-          <div class="text-[11px] text-slate-400">วิชาเก็บคะแนน</div>
-        </div>
-        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm space-y-1 card-kid">
-          <div class="text-xs font-black text-slate-500 font-heading uppercase">วิชาที่ต้องฝึกเพิ่ม</div>
-          <div class="text-base font-black font-heading text-rose-600 truncate" id="metric-weak-subject">-</div>
-          <div class="text-[11px] text-rose-500 font-bold">ฝึกซ้ำเพื่อความมั่นใจ</div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4 card-kid">
-          <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
-            <i class="fa-solid fa-chart-radar text-horwang-gold"></i>
-            <span>ระดับความเก่งใน 5 วิชา</span>
-          </h3>
-          <div class="h-64 flex items-center justify-center">
-            <canvas id="subjectMasteryChart"></canvas>
+        <!-- Summary Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-2xl">📝</span>
+            <div class="text-xs text-slate-500 mt-1 font-medium">ทำไปแล้ว</div>
+            <div id="stat-total-exams" class="text-xl font-bold font-heading text-slate-800">0 ชุด</div>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-2xl">⭐</span>
+            <div class="text-xs text-slate-500 mt-1 font-medium">แต้มสะสม</div>
+            <div id="stat-total-xp" class="text-xl font-bold font-heading text-amber-600">0 แต้ม</div>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-2xl">🎯</span>
+            <div class="text-xs text-slate-500 mt-1 font-medium">คะแนนเฉลี่ย</div>
+            <div id="stat-avg-score" class="text-xl font-bold font-heading text-emerald-600">0%</div>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-2xl">⏱️</span>
+            <div class="text-xs text-slate-500 mt-1 font-medium">เวลาเฉลี่ย/ข้อ</div>
+            <div id="stat-avg-time" class="text-xl font-bold font-heading text-slate-800">0 วิ</div>
           </div>
         </div>
 
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4 card-kid">
-          <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
-            <i class="fa-solid fa-route text-horwang-gold"></i>
-            <span>บันได 4 ขั้นสู่ ม.1 หอวัง</span>
-          </h3>
-          <div id="roadmap-container" class="space-y-3 font-sarabun text-sm"></div>
+        <!-- History Table -->
+        <div class="space-y-3">
+          <h3 class="text-sm font-bold font-heading text-slate-800">ประวัติการทำข้อสอบล่าสุด:</h3>
+          <div id="exam-history-list" class="space-y-2"></div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FLOATING INTERACTIVE MASCOT COMPANION -->
-  <div class="floating-mascot-btn">
-    <button onclick="tellMascotJoke()" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-horwang-gold flex items-center justify-center text-3xl sm:text-4xl shadow-2xl ring-4 ring-white border-2 border-amber-500 cursor-pointer animate-float" title="แตะพี่ฮูกเพื่อฟังเคล็ดลับ">
-      🦉
-    </button>
-  </div>
-
-  <!-- MODALS -->
-  <div id="import-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 space-y-4 border border-slate-200">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2 text-base">
-          <i class="fa-solid fa-plus-circle text-sky-500"></i>
-          <span>เพิ่มข้อสอบใหม่</span>
-        </h3>
-        <button onclick="closeImportModal()" class="text-slate-400 hover:text-slate-600">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <div class="space-y-2 text-xs text-slate-600 font-sarabun">
-        <ol class="list-decimal list-inside space-y-1 pl-1 text-slate-500">
-          <li>กดปุ่ม <button onclick="window.NoApiHub.copyPromptToClipboard()" class="text-sky-600 font-bold underline">"ก๊อปปี้คำสั่งออกข้อสอบ"</button></li>
-          <li>นำไปวางในเว็บฟรี เช่น <a href="https://chatgpt.com" target="_blank" class="text-emerald-600 underline font-bold">ChatGPT ฟรี</a></li>
-          <li>ก๊อปปี้ข้อความมาวางในช่องด้านล่าง แล้วกดเริ่มทำได้เลย:</li>
-        </ol>
-      </div>
-
-      <textarea id="import-json-textarea" rows="7" placeholder='วางข้อความข้อสอบที่นี่...' class="w-full bg-slate-50 border-2 border-slate-200 rounded-2xl p-3 text-xs font-mono"></textarea>
-
-      <div class="flex items-center justify-between pt-2">
-        <button onclick="window.NoApiHub.copyPromptToClipboard()" class="text-xs font-bold text-sky-600 hover:underline">
-          <i class="fa-regular fa-copy mr-1"></i>ก๊อปปี้คำสั่งออกข้อสอบ
-        </button>
-        <button onclick="window.NoApiHub.handleImportSubmit()" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
-          เริ่มทำข้อสอบชุดนี้
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div id="new-post-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 space-y-4 border border-slate-200">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="font-black font-heading text-horwang-maroon flex items-center space-x-2">
-          <i class="fa-solid fa-pen-to-square text-horwang-gold"></i>
-          <span>พิมพ์ถามโจทย์ที่ไม่เข้าใจ</span>
-        </h3>
-        <button onclick="closeNewPostModal()" class="text-slate-400 hover:text-slate-600">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-      <div class="space-y-3 font-sarabun text-sm">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">เลือกวิชา:</label>
-          <select id="post-subject-select" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3 py-2 text-sm font-bold">
-            <option value="math">คณิตศาสตร์</option>
-            <option value="science">วิทยาศาสตร์</option>
-            <option value="english">ภาษาอังกฤษ</option>
-            <option value="thai">ภาษาไทย</option>
-            <option value="social">สังคมศึกษา</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">หัวข้อคำถาม:</label>
-          <input type="text" id="post-title-input" placeholder="เช่น ข้อนี้ทำยังไงครับ" class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2 text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 font-heading mb-1">พิมพ์ข้อความหรือโจทย์ที่สงสัย:</label>
-          <textarea id="post-content-input" rows="4" placeholder="พิมพ์โจทย์ หรือสิ่งที่ไม่เข้าใจตรงนี้..." class="w-full bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-sm"></textarea>
-        </div>
-      </div>
-      <div class="flex items-center justify-between pt-2">
-        <span class="text-xs text-sky-600 font-bold">
-          <i class="fa-solid fa-robot mr-1"></i>พี่ฮูก AI จะช่วยตอบวิธีคิดให้ทันที
-        </span>
-        <button onclick="submitNewClubPost()" class="px-5 py-2.5 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
-          ส่งคำถาม
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Student Profile & Multi-User Modal -->
+  <!-- Student Profile Modal -->
   <div id="profile-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-xl w-full p-6 space-y-5 shadow-2xl border border-slate-200 animate-slide-up max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-5 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <div class="flex items-center space-x-2.5">
+        <div class="flex items-center space-x-2">
           <span class="text-2xl">👤</span>
           <div>
-            <h3 class="font-black font-heading text-lg text-slate-800">ระบบสมาชิก & โปรไฟล์นักเรียน</h3>
-            <p class="text-xs text-slate-500">สะสมคะแนน แยกประวัติข้อสอบ และสลับผู้ใช้งานได้อิสระ</p>
+            <h3 class="font-bold font-heading text-base text-slate-900">โปรไฟล์นักเรียน</h3>
+            <p class="text-xs text-slate-500">สะสมคะแนนแยกรายบุคคล</p>
           </div>
         </div>
-        <button onclick="window.UserProfile.closeProfileModal()" class="text-slate-400 hover:text-slate-600 p-2 rounded-xl text-lg">
+        <button onclick="window.UserProfile.closeProfileModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg text-lg">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Current Active Profile Card -->
+      <!-- Current Profile Card -->
       <div id="profile-active-card"></div>
 
-      <!-- Edit Profile Section -->
-      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
-        <h4 class="text-xs font-bold font-heading text-slate-700 uppercase tracking-wider flex items-center space-x-1.5">
-          <i class="fa-solid fa-wand-magic-sparkles text-horwang-gold"></i>
-          <span>เลือกอวตารตัวการ์ตูนสุดเท่:</span>
-        </h4>
+      <!-- Avatar Selector -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+        <label class="block text-xs font-bold font-heading text-slate-700">เลือกอวตารตัวการ์ตูน:</label>
         <div class="grid grid-cols-4 gap-2" id="profile-avatar-grid"></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อเล่น / ชื่อนักเรียน:</label>
-            <input type="text" id="profile-name-input" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon focus:ring-2 focus:ring-horwang-maroon/20" placeholder="เช่น น้องวินเนอร์ ป.5">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">ชื่อเล่นนักเรียน:</label>
+            <input type="text" id="profile-name-input" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon" placeholder="เช่น น้องวินเนอร์ ป.5">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">เป้าหมายการสอบเข้า:</label>
-            <select id="profile-target-select" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon focus:ring-2 focus:ring-horwang-maroon/20 bg-white">
-              <option value="gifted">🌟 มุ่งสู่ห้อง Gifted / EP หอวัง</option>
-              <option value="regular">🏫 มุ่งสู่ห้องเรียนปกติ หอวัง</option>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">เป้าหมายสอบเข้า:</label>
+            <select id="profile-target-select" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon bg-white">
+              <option value="gifted">🌟 ห้อง Gifted / EP หอวัง</option>
+              <option value="regular">🏫 ห้องเรียนปกติ หอวัง</option>
             </select>
           </div>
         </div>
 
         <div class="pt-2 flex justify-end">
-          <button onclick="window.UserProfile.saveProfileChanges()" class="px-4 py-2 bg-gradient-to-r from-horwang-darkMaroon to-horwang-maroon text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
-            <i class="fa-solid fa-floppy-disk mr-1.5"></i>บันทึกการแก้ไข
+          <button onclick="window.UserProfile.saveProfileChanges()" class="px-4 py-2 bg-horwang-maroon text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">
+            บันทึกการแก้ไข
           </button>
         </div>
       </div>
 
-      <!-- Switch Profile / Add New Student -->
-      <div class="space-y-2.5">
+      <!-- Switch Profile -->
+      <div class="space-y-2">
         <div class="flex items-center justify-between">
-          <h4 class="text-xs font-bold font-heading text-slate-700 uppercase tracking-wider">
-            👥 รายชื่อนักเรียนในเครื่องนี้:
-          </h4>
-          <button onclick="window.UserProfile.createNewProfile()" class="text-xs font-bold text-horwang-maroon hover:underline flex items-center space-x-1">
-            <i class="fa-solid fa-plus-circle"></i>
-            <span>เพิ่มนักเรียนคนใหม่</span>
+          <h4 class="text-xs font-bold font-heading text-slate-700">รายชื่อนักเรียนในเครื่องนี้:</h4>
+          <button onclick="window.UserProfile.createNewProfile()" class="text-xs font-semibold text-horwang-maroon hover:underline">
+            + เพิ่มคนใหม่
           </button>
         </div>
-        <div class="space-y-2 max-h-48 overflow-y-auto" id="profile-switch-list"></div>
+        <div class="space-y-1.5 max-h-40 overflow-y-auto" id="profile-switch-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Post Modal -->
+  <div id="new-post-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-bold font-heading text-base text-slate-900">ตั้งคำถาม / ถามการบ้าน</h3>
+        <button onclick="closeNewPostModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">หมวดวิชา:</label>
+          <select id="post-subject-select" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun bg-white outline-none">
+            <option value="math">📐 คณิตศาสตร์</option>
+            <option value="science">🔬 วิทยาศาสตร์</option>
+            <option value="english">🇬🇧 ภาษาอังกฤษ</option>
+            <option value="thai">🇹🇭 ภาษาไทย</option>
+            <option value="social">🌏 สังคมศึกษา</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">หัวข้อคำถาม:</label>
+          <input type="text" id="post-title-input" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon" placeholder="เช่น ขอวิธีคิดโจทย์ข้อนี้หน่อยครับ">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">รายละเอียดโจทย์:</label>
+          <textarea id="post-content-input" rows="4" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-sarabun outline-none focus:border-horwang-maroon" placeholder="พิมพ์โจทย์หรือข้อสงสัยที่นี่..."></textarea>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-2 pt-2">
+        <button onclick="closeNewPostModal()" class="px-4 py-2 bg-slate-100 text-slate-600 font-semibold text-xs rounded-xl">ยกเลิก</button>
+        <button onclick="submitNewClubPost()" class="px-5 py-2 bg-horwang-maroon text-white font-bold text-xs rounded-xl font-heading shadow btn-kid">โพสต์คำถาม</button>
       </div>
     </div>
   </div>
 
   <div id="printable-exam-sheet" class="hidden"></div>
 
-  <!-- Footer -->
-  <footer class="mt-auto border-t border-slate-200 bg-white py-6 text-slate-500 text-xs">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+  <!-- Clean Minimalist Footer -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-4 text-slate-500 text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
       <div>
-        <strong class="text-horwang-maroon font-heading text-sm">Horwang M.1 Hero (สำหรับน้อง ป.5)</strong>
-        <p class="text-slate-400">ระบบฝึกทำข้อสอบเตรียมสอบเข้า ม.1 โรงเรียนหอวัง</p>
+        <strong class="text-slate-800 font-heading">Horwang M.1 Hero</strong> — คลังข้อสอบมาตรฐาน 500 ข้อ
       </div>
-      <div class="flex items-center space-x-3 text-slate-400 font-medium">
-        <span class="text-emerald-600 font-bold"><i class="fa-solid fa-book-open mr-1"></i>100 ข้อ</span>
-        <span>•</span>
-        <span>Kids Adventure Edition</span>
-        <span>•</span>
-        <span>v3.0</span>
+      <div class="text-slate-400">
+        Grade 5 Entrance Exam Practice Edition
       </div>
     </div>
   </footer>
 
-  <!-- Main Application Glue Logic -->
+  <!-- Application Glue Logic -->
   <script>
     const MASCOT_JOKES = [
-      "🍫 รู้ไหมว่า... ถ้ากินขนมหวานนิดหน่อยก่อนทำโจทย์เลข จะช่วยให้สมองคิดเลขไวขึ้นนะ!",
-      "🎨 ข้อไหนโจทย์ยาวและงง ให้ลองวาดรูปง่ายๆ ในกระดาษทด จะเห็นคำตอบทันที!",
+      "🍫 กินขนมหวานนิดหน่อยก่อนทำเลข จะช่วยให้สมองคิดเลขไวขึ้นนะ!",
+      "🎨 ข้อไหนโจทย์ยาวและงง ให้ลองวาดรูปในกระดาษทด จะเห็นคำตอบทันที!",
       "⭐ ทำผิดไม่ต้องเสียใจนะ! ทุกข้อที่ผิดคือบทเรียนที่จะทำให้เราเก่งขึ้นในห้องสอบจริง ✨",
       "🚀 เทคนิคตัดช้อยส์: ดูช้อยส์ที่ตัวเลขกระโดดแปลกกว่าเพื่อน มักจะไม่ใช่คำตอบ!",
-      "🍀 สู้ๆ นะคนเก่ง! พี่ฮูกเชื่อว่าหนูทำได้แน่นอน รั้ว ม.1 หอวัง รออยู่นะครับ 🦉",
+      "🍀 สู้ๆ นะคนเก่ง! รั้ว ม.1 หอวัง รออยู่นะครับ 🦉",
       "⏱️ ถ้าเจอข้อไหนคิดเกิน 2 นาที ให้ข้ามไปทำข้ออื่นก่อน แล้วค่อยวนกลับมาทำนะ!"
     ];
 
     function tellMascotJoke() {
-      window.SoundEngine.bubblePop();
+      window.SoundEngine.click();
       const quote = MASCOT_JOKES[Math.floor(Math.random() * MASCOT_JOKES.length)];
-      const speech = document.getElementById('mascot-speech-text');
-      if (speech) {
-        speech.innerText = quote;
-        speech.classList.remove('animate-pop');
-        void speech.offsetWidth; // trigger reflow
-        speech.classList.add('animate-pop');
-      }
-      alert(quote);
-    }
-
-    function updateAdventureRank() {
-      const xp = window.APP_STATE.userXp || 0;
-      const rankTitle = document.getElementById('user-rank-title');
-      const adventureRankName = document.getElementById('adventure-rank-name');
-      const adventureXpGoal = document.getElementById('adventure-xp-goal');
-      const progressFill = document.getElementById('adventure-progress-fill');
-
-      let rank = "🐣 ลูกเจี๊ยบนักสำรวจ (Level 1)";
-      let nextGoal = 100;
-      let pct = (xp / 100) * 100;
-
-      if (xp >= 1000) {
-        rank = "👑 ราชาเหรียญทอง Gifted (Level 5)";
-        nextGoal = 1000;
-        pct = 100;
-      } else if (xp >= 600) {
-        rank = "🚀 จอมยุทธ์โจทย์เซียน (Level 4)";
-        nextGoal = 1000;
-        pct = ((xp - 600) / 400) * 100;
-      } else if (xp >= 300) {
-        rank = "🌟 อัศวินฝึกหัด (Level 3)";
-        nextGoal = 600;
-        pct = ((xp - 300) / 300) * 100;
-      } else if (xp >= 100) {
-        rank = "🦉 ผู้ช่วยพี่ฮูกหอวัง (Level 2)";
-        nextGoal = 300;
-        pct = ((xp - 100) / 200) * 100;
-      }
-
-      if (rankTitle) rankTitle.innerText = rank.split(' ')[1] || "นักสำรวจ ป.5";
-      if (adventureRankName) adventureRankName.innerText = rank;
-      if (adventureXpGoal) adventureXpGoal.innerText = `เป้าหมายต่อไป: ${nextGoal} แต้ม`;
-      if (progressFill) progressFill.style.width = `${Math.min(100, Math.max(5, pct))}%`;
+      const speechEl = document.getElementById('mascot-speech-text');
+      if (speechEl) speechEl.innerText = `"${quote}"`;
     }
 
     function switchTab(tabId) {
@@ -1062,8 +674,8 @@
       window.APP_STATE.currentTab = tabId;
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('bg-white/20', 'text-white');
-        btn.classList.add('text-slate-200');
+        btn.classList.remove('bg-horwang-maroon', 'text-white');
+        btn.classList.add('text-slate-600');
       });
 
       const activeTabEl = document.getElementById(`tab-${tabId}`);
@@ -1071,8 +683,8 @@
 
       const navBtn = document.getElementById(`nav-${tabId}`);
       if (navBtn) {
-        navBtn.classList.add('bg-white/20', 'text-white');
-        navBtn.classList.remove('text-slate-200');
+        navBtn.classList.add('bg-horwang-maroon', 'text-white');
+        navBtn.classList.remove('text-slate-600');
       }
 
       if (tabId === 'bank') {
@@ -1101,6 +713,7 @@
       window.SoundEngine.click();
       document.getElementById('exam-result-container')?.classList.add('hidden');
       document.getElementById('exam-config-card')?.classList.remove('hidden');
+      document.getElementById('exam-questions-container').innerHTML = '';
       scrollToTop();
     }
 
@@ -1113,23 +726,11 @@
 
       const questions = window.MegaBankEngine.generateHybridExam(count, subject, track, difficulty, preset);
       const subjName = window.HORWANG_CONFIG.SUBJECTS[subject]?.name || 'รวม 5 วิชา';
-      const presetTitle = preset === 'balanced' ? 'รวมโจทย์ฮิต' : (preset === 'math-speed' ? 'คิดเลขเร็ว' : 'โจทย์ท้าทาย');
-      window.ExamEngine.startExam(questions, `ชุดข้อสอบ ${presetTitle} (${subjName} ${questions.length} ข้อ)`);
+      window.ExamEngine.startExam(questions, `ชุดข้อสอบ (${subjName} ${questions.length} ข้อ)`);
     }
 
     function startCustomHybridExam() {
-      const preset = 'balanced';
-      startHybridExam(preset);
-    }
-
-    function openImportModal() {
-      window.SoundEngine.click();
-      document.getElementById('import-modal').classList.remove('hidden');
-      document.getElementById('import-modal').classList.add('flex');
-    }
-    function closeImportModal() {
-      document.getElementById('import-modal').classList.add('hidden');
-      document.getElementById('import-modal').classList.remove('flex');
+      startHybridExam('balanced');
     }
 
     function openNewPostModal() {
@@ -1158,10 +759,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       if (window.UserProfile && typeof window.UserProfile.init === 'function') {
         window.UserProfile.init();
-      } else {
-        const xpEl = document.getElementById('user-xp-display');
-        if (xpEl) xpEl.innerText = `${window.APP_STATE.userXp} แต้ม`;
-        updateAdventureRank();
       }
       window.CloudflareSync.checkConnection();
     });

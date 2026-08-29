@@ -44,42 +44,30 @@ window.ExamEngine = (function() {
   function renderQuestions(questions) {
     const container = document.getElementById('exam-questions-list');
     if (!container) return;
-
     container.innerHTML = questions.map((q, idx) => {
       const subjConfig = window.HORWANG_CONFIG.SUBJECTS[q.subject] || { name: q.subjectName || "ทั่วไป", badgeClass: "bg-slate-100 text-slate-700" };
-      const hybridBadge = q.hybridBadge || (q.track && q.track.includes("Gifted") ? "🏆 ข้อสอบจริง Gifted หอวัง" : "📚 คลังข้อสอบมาตรฐาน");
-
       return `
-        <div id="question-card-${idx}" class="question-card bg-white rounded-3xl p-6 sm:p-7 shadow-sm border-2 border-slate-200 space-y-4 transition hover:border-horwang-maroon/40 card-kid">
+        <div class="clean-card p-5 sm:p-6 space-y-4" id="question-card-${idx}">
           <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-horwang-darkMaroon to-horwang-maroon text-white font-heading font-black text-sm flex items-center justify-center shadow-md ring-2 ring-horwang-maroon/20">
-                ${idx + 1}
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-0.5 rounded-lg text-xs font-bold font-heading bg-slate-900 text-white">
+                ข้อที่ ${idx + 1}
               </span>
-              <span class="px-3 py-1 rounded-full text-xs font-bold ${subjConfig.badgeClass}">
+              <span class="px-2.5 py-0.5 rounded-lg text-xs font-semibold ${subjConfig.badgeClass}">
                 ${q.subjectName || subjConfig.name}
               </span>
-              <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200">
-                ${hybridBadge}
-              </span>
-              <span class="text-xs text-slate-400 font-medium">ระดับ ${q.difficulty || 2}</span>
+              ${q.topic ? `<span class="text-xs text-slate-500 font-medium hidden sm:inline-block">${q.topic}</span>` : ''}
             </div>
             
             <div class="flex items-center space-x-2">
-              <div class="has-bubble-tip">
-                <button onclick="window.ExamEngine.speakQuestion(${idx})" id="speak-btn-${idx}" class="text-slate-500 hover:text-horwang-maroon px-2.5 py-1.5 rounded-xl hover:bg-rose-50 transition text-xs font-bold flex items-center space-x-1 border border-slate-200 btn-kid">
-                  <i class="fa-solid fa-volume-high text-amber-500"></i>
-                  <span class="hidden sm:inline">ฟังโจทย์</span>
-                </button>
-                <div class="bubble-tip">กดให้พี่ฮูกอ่านโจทย์ให้ฟังนะ 🔊</div>
-              </div>
+              <button onclick="window.ExamEngine.speakQuestion(${idx})" id="speak-btn-${idx}" class="text-slate-500 hover:text-horwang-maroon px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition text-xs font-semibold flex items-center space-x-1 border border-slate-200 btn-kid" title="ฟังเสียงอ่านโจทย์">
+                <i class="fa-solid fa-volume-high text-amber-500"></i>
+                <span class="hidden sm:inline">อ่านโจทย์</span>
+              </button>
 
-              <div class="has-bubble-tip">
-                <button onclick="window.ExamEngine.toggleFlag(${idx})" id="flag-btn-${idx}" class="text-slate-400 hover:text-amber-500 p-2 rounded-xl hover:bg-slate-100 transition text-sm">
-                  <i class="fa-regular fa-bookmark"></i>
-                </button>
-                <div class="bubble-tip">ปักหมุดไว้ทบทวนทีหลัง 🚩</div>
-              </div>
+              <button onclick="window.ExamEngine.toggleFlag(${idx})" id="flag-btn-${idx}" class="text-slate-400 hover:text-amber-500 p-2 rounded-lg hover:bg-slate-100 transition text-sm" title="ปักหมุดไว้ทบทวน">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
             </div>
           </div>
 
@@ -87,10 +75,10 @@ window.ExamEngine = (function() {
             ${window.formatMathText ? window.formatMathText(q.question) : q.question}
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             ${q.options.map((opt, optIdx) => `
-              <button onclick="window.ExamEngine.selectAnswer(${idx}, ${optIdx})" id="opt-${idx}-${optIdx}" class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-horwang-maroon/50 hover:bg-rose-50/50 text-sm sm:text-base font-sarabun text-slate-700 transition flex items-start space-x-3 group">
-                <span id="opt-badge-${idx}-${optIdx}" class="w-8 h-8 rounded-full border-2 border-slate-300 group-hover:border-horwang-maroon text-xs font-black font-heading flex items-center justify-center shrink-0 mt-0.5 text-slate-500 group-hover:text-horwang-maroon bg-white shadow-sm transition">
+              <button onclick="window.ExamEngine.selectAnswer(${idx}, ${optIdx})" id="opt-${idx}-${optIdx}" class="option-btn text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-400 text-sm sm:text-base font-sarabun text-slate-700 transition flex items-start space-x-3 group">
+                <span id="opt-badge-${idx}-${optIdx}" class="opt-badge w-7 h-7 rounded-lg border border-slate-300 group-hover:border-slate-500 text-xs font-bold font-heading flex items-center justify-center shrink-0 mt-0.5 text-slate-600 bg-slate-50 transition">
                   ${String.fromCharCode(65 + optIdx)}
                 </span>
                 <span class="leading-relaxed flex-1">${window.formatMathText ? window.formatMathText(opt) : opt}</span>
@@ -415,46 +403,43 @@ window.ExamEngine = (function() {
       const hybridBadge = q.hybridBadge || "📚 ข้อสอบคัดเลือก";
 
       return `
-        <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border-2 ${isCorrect ? 'border-emerald-200' : 'border-rose-200'} space-y-4 card-kid">
+        <div class="clean-card p-5 sm:p-6 space-y-4 border ${isCorrect ? 'border-emerald-300' : 'border-rose-300'}">
           <div class="flex items-center justify-between border-b border-slate-100 pb-3">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="w-9 h-9 rounded-2xl ${isCorrect ? 'bg-emerald-600' : 'bg-rose-600'} text-white font-heading font-black text-sm flex items-center justify-center shadow-md">
-                ${idx + 1}
+              <span class="px-2.5 py-0.5 rounded-lg ${isCorrect ? 'bg-emerald-600' : 'bg-rose-600'} text-white font-heading font-bold text-xs">
+                ข้อที่ ${idx + 1}
               </span>
-              <span class="px-3 py-1 rounded-full text-xs font-bold ${subjConfig.badgeClass}">
+              <span class="px-2.5 py-0.5 rounded-lg text-xs font-semibold ${subjConfig.badgeClass}">
                 ${q.subjectName || subjConfig.name}
               </span>
-              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
-                ${hybridBadge}
-              </span>
-              <span class="text-xs font-black ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">
-                ${isCorrect ? '<i class="fa-solid fa-circle-check mr-1 text-base"></i>ตอบถูกต้อง' : (isAnswered ? '<i class="fa-solid fa-circle-xmark mr-1 text-base"></i>ตอบผิด' : '<i class="fa-solid fa-circle-minus mr-1 text-base"></i>ไม่ได้ตอบ')}
+              <span class="text-xs font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">
+                ${isCorrect ? '<i class="fa-solid fa-check mr-1"></i>ตอบถูกต้อง' : (isAnswered ? '<i class="fa-solid fa-xmark mr-1"></i>ตอบผิด' : '<i class="fa-solid fa-minus mr-1"></i>ไม่ได้ตอบ')}
               </span>
             </div>
 
-            <button onclick="window.StudyClub.sendQuestionFromExam(${idx})" class="px-3.5 py-1.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 text-xs font-bold font-heading border border-sky-200 transition flex items-center space-x-1.5 btn-kid">
-              <i class="fa-solid fa-paper-plane text-sky-500"></i>
-              <span>ส่งถามเพื่อนในคลับ</span>
+            <button onclick="window.StudyClub.sendQuestionFromExam(${idx})" class="px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center space-x-1 btn-kid">
+              <i class="fa-solid fa-paper-plane text-xs text-slate-500"></i>
+              <span>ถามในชุมชน</span>
             </button>
           </div>
 
-          <div class="text-base sm:text-lg font-bold text-slate-800 font-sarabun">
+          <div class="text-base sm:text-lg font-semibold text-slate-900 font-sarabun">
             ${window.formatMathText ? window.formatMathText(q.question) : q.question}
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base font-sarabun">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm font-sarabun">
             ${q.options.map((opt, optIdx) => {
-              let style = "bg-slate-50 border-slate-200 text-slate-600";
+              let style = "bg-slate-50 border-slate-200 text-slate-700";
               let icon = "";
               if (optIdx === q.correctAnswer) {
-                style = "bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-bold ring-2 ring-emerald-400/30";
-                icon = '<i class="fa-solid fa-check text-emerald-600 text-base ml-auto"></i>';
+                style = "bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-bold";
+                icon = '<i class="fa-solid fa-check text-emerald-600 ml-auto"></i>';
               } else if (optIdx === userChoice && !isCorrect) {
                 style = "bg-rose-50 border-2 border-rose-400 text-rose-950 line-through";
-                icon = '<i class="fa-solid fa-xmark text-rose-500 text-base ml-auto"></i>';
+                icon = '<i class="fa-solid fa-xmark text-rose-500 ml-auto"></i>';
               }
               return `
-                <div class="p-3.5 rounded-2xl border ${style} flex items-center justify-between">
+                <div class="p-3 rounded-xl border ${style} flex items-center justify-between">
                   <span><strong>${String.fromCharCode(65 + optIdx)}.</strong> ${window.formatMathText ? window.formatMathText(opt) : opt}</span>
                   ${icon}
                 </div>
@@ -462,32 +447,24 @@ window.ExamEngine = (function() {
             }).join('')}
           </div>
 
-          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3.5 font-sarabun text-sm sm:text-base">
-            <div class="font-black text-horwang-maroon font-heading flex items-center space-x-2 text-sm">
-              <i class="fa-solid fa-lightbulb text-amber-500 text-base"></i>
-              <span>เฉลยวิธีคิดทีละขั้นตอน (Step-by-step):</span>
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2.5 font-sarabun text-sm">
+            <div class="font-bold text-slate-900 font-heading flex items-center space-x-1.5 text-xs">
+              <i class="fa-solid fa-lightbulb text-amber-500"></i>
+              <span>เฉลยวิธีคิดทีละขั้นตอน:</span>
             </div>
-            <div class="text-slate-700 whitespace-pre-line leading-relaxed pl-3 border-l-4 border-amber-400">
+            <div class="text-slate-700 whitespace-pre-line leading-relaxed pl-3 border-l-2 border-amber-400">
               ${window.formatMathText ? window.formatMathText(q.explanation) : q.explanation}
             </div>
 
             ${q.trap ? `
-              <div class="p-3.5 bg-rose-50/80 border border-rose-200 rounded-2xl text-xs sm:text-sm text-rose-900 space-y-1">
-                <strong class="font-heading flex items-center space-x-1.5 text-rose-950 font-black">
-                  <i class="fa-solid fa-triangle-exclamation text-rose-500"></i>
-                  <span>จุดหลอก / กับดักข้อสอบที่ต้องระวัง:</span>
-                </strong>
-                <p class="leading-relaxed pl-5">${q.trap}</p>
+              <div class="p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-900">
+                <strong class="font-bold">จุดหลอกที่ต้องระวัง:</strong> ${q.trap}
               </div>
             ` : ''}
 
             ${q.shortcutTrick ? `
-              <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs sm:text-sm text-amber-950 space-y-1">
-                <strong class="font-heading flex items-center space-x-1.5 text-amber-900 font-black">
-                  <i class="fa-solid fa-bolt text-amber-500"></i>
-                  <span>สูตรลัดพี่ฮูก / เทคนิคคิดเร็ว:</span>
-                </strong>
-                <p class="leading-relaxed pl-5">${q.shortcutTrick}</p>
+              <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-950">
+                <strong class="font-bold">สูตรลัด / เทคนิคคิดเร็ว:</strong> ${q.shortcutTrick}
               </div>
             ` : ''}
           </div>
