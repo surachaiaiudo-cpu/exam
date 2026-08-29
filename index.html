@@ -97,7 +97,7 @@
           </button>
           <button onclick="switchTab('bank')" id="nav-bank" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
             <i class="fa-solid fa-book-open text-amber-300 text-base"></i>
-            <span>📚 รวมข้อสอบ 100 ข้อ</span>
+            <span>📚 รวมข้อสอบ 500 ข้อ</span>
           </button>
           <button onclick="switchTab('study-club')" id="nav-study-club" class="nav-btn px-4 py-2.5 rounded-2xl text-sm font-bold transition flex items-center space-x-2 text-slate-200 hover:bg-white/10 font-heading">
             <i class="fa-solid fa-comments text-sky-300 text-base"></i>
@@ -230,7 +230,7 @@
               </button>
               <button onclick="switchTab('bank')" class="px-5 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-sm font-heading border border-white/30 flex items-center space-x-2 btn-kid">
                 <i class="fa-solid fa-book-open"></i>
-                <span>ดูข้อสอบทั้งหมด 100 ข้อ</span>
+                <span>ดูข้อสอบทั้งหมด 500 ข้อ</span>
               </button>
             </div>
           </div>
@@ -239,7 +239,7 @@
           <div class="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur-md p-5 rounded-3xl border-2 border-amber-300/30 max-w-xs text-center space-y-2.5">
             <div class="text-6xl animate-float cursor-pointer" onclick="tellMascotJoke()" title="แตะพี่ฮูกเพื่อฟังเคล็ดลับแสนสนุก">🦉</div>
             <div id="mascot-speech-text" class="mascot-bubble p-3 text-slate-800 text-xs font-bold font-sarabun shadow">
-              "สวัสดีคนเก่ง! วันนี้เรามาเก็บแต้มดาว 100 แต้มกันนะ แตะตัวพี่ฮูกเพื่อฟังเคล็ดลับได้เลย! ✨"
+              "สวัสดีคนเก่ง! ตอนนี้มีข้อสอบให้ฝึกถึง 500 ข้อแล้วนะ แตะตัวพี่ฮูกเพื่อฟังเคล็ดลับได้เลย! ✨"
             </div>
             <button onclick="tellMascotJoke()" class="text-[11px] text-amber-200 hover:underline font-heading font-bold">
               💡 แตะเพื่อฟังเคล็ดลับพี่ฮูก
@@ -263,42 +263,42 @@
           <div onclick="selectSubjectCard('all')" id="subj-card-all" class="subject-card active bg-gradient-to-b from-white to-slate-50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🎯</div>
             <div class="font-black font-heading text-xs text-slate-800">รวม 5 วิชา</div>
-            <div class="text-[10px] text-slate-500 font-medium">ครบทุกวิชา</div>
+            <div class="text-[10px] text-slate-500 font-medium">500 ข้อในคลัง</div>
           </div>
 
           <!-- Math -->
           <div onclick="selectSubjectCard('math')" id="subj-card-math" class="subject-card bg-gradient-to-b from-rose-50 to-rose-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mx-auto shadow-inner">📐</div>
             <div class="font-black font-heading text-xs text-rose-900">คณิตศาสตร์</div>
-            <div class="text-[10px] text-rose-600 font-medium">25 ข้อในคลัง</div>
+            <div class="text-[10px] text-rose-600 font-medium">100 ข้อในคลัง</div>
           </div>
 
           <!-- Science -->
           <div onclick="selectSubjectCard('science')" id="subj-card-science" class="subject-card bg-gradient-to-b from-emerald-50 to-emerald-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🔬</div>
             <div class="font-black font-heading text-xs text-emerald-900">วิทยาศาสตร์</div>
-            <div class="text-[10px] text-emerald-600 font-medium">25 ข้อในคลัง</div>
+            <div class="text-[10px] text-emerald-600 font-medium">100 ข้อในคลัง</div>
           </div>
 
           <!-- English -->
           <div onclick="selectSubjectCard('english')" id="subj-card-english" class="subject-card bg-gradient-to-b from-sky-50 to-sky-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🇬🇧</div>
             <div class="font-black font-heading text-xs text-sky-900">ภาษาอังกฤษ</div>
-            <div class="text-[10px] text-sky-600 font-medium">20 ข้อในคลัง</div>
+            <div class="text-[10px] text-sky-600 font-medium">100 ข้อในคลัง</div>
           </div>
 
           <!-- Thai -->
           <div onclick="selectSubjectCard('thai')" id="subj-card-thai" class="subject-card bg-gradient-to-b from-amber-50 to-amber-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto shadow-inner">🇹🇭</div>
             <div class="font-black font-heading text-xs text-amber-900">ภาษาไทย</div>
-            <div class="text-[10px] text-amber-700 font-medium">15 ข้อในคลัง</div>
+            <div class="text-[10px] text-amber-700 font-medium">100 ข้อในคลัง</div>
           </div>
 
           <!-- Social -->
           <div onclick="selectSubjectCard('social')" id="subj-card-social" class="subject-card bg-gradient-to-b from-purple-50 to-purple-100/50 p-4 text-center space-y-2 card-kid border-2 shadow-sm">
             <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mx-auto shadow-inner">🌏</div>
             <div class="font-black font-heading text-xs text-purple-900">สังคมศึกษา</div>
-            <div class="text-[10px] text-purple-600 font-medium">15 ข้อในคลัง</div>
+            <div class="text-[10px] text-purple-600 font-medium">100 ข้อในคลัง</div>
           </div>
         </div>
       </div>
@@ -558,7 +558,7 @@
           <div class="space-y-2">
             <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 px-3.5 py-1 rounded-full text-xs font-bold border border-amber-400/30">
               <i class="fa-solid fa-book-open"></i>
-              <span>รวมข้อสอบจริง 100 ข้อ</span>
+              <span>รวมข้อสอบจริง 500 ข้อ</span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">
               ค้นหาและเลือกข้อสอบทำเอง
@@ -613,7 +613,7 @@
 
         <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
           <div class="text-slate-600 font-bold">
-            มีข้อสอบทั้งหมด <strong id="bank-found-count" class="text-horwang-maroon font-black text-sm">100 ข้อ</strong>
+            มีข้อสอบทั้งหมด <strong id="bank-found-count" class="text-horwang-maroon font-black text-sm">500 ข้อ</strong>
           </div>
           <div class="flex items-center space-x-3">
             <button onclick="window.BankBrowser.selectAllFiltered()" class="text-sky-600 hover:underline font-bold">
