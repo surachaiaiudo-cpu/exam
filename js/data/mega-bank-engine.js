@@ -205,8 +205,9 @@ window.MegaBankEngine = (function() {
     if (subject !== 'all') {
       bankPool = bankPool.filter(q => q.subject === subject);
     }
-    if (difficulty > 0) {
-      const matchDiff = bankPool.filter(q => q.difficulty === difficulty);
+    const diffNum = parseInt(difficulty, 10);
+    if (diffNum > 0) {
+      const matchDiff = bankPool.filter(q => q.difficulty === diffNum || q.level === 'L' + diffNum);
       if (matchDiff.length > 0) bankPool = matchDiff;
     }
     bankPool.sort(() => Math.random() - 0.5);

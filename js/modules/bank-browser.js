@@ -19,7 +19,7 @@ window.BankBrowser = (function() {
       questions = questions.filter(q => q.subject === subject);
     }
     if (difficulty > 0) {
-      questions = questions.filter(q => q.difficulty === difficulty);
+      questions = questions.filter(q => q.difficulty === difficulty || q.level === 'L' + difficulty);
     }
     if (keyword) {
       const kw = keyword.toLowerCase();
@@ -36,6 +36,7 @@ window.BankBrowser = (function() {
     container.innerHTML = questions.map((q, idx) => {
       const isSelected = selectedQuestionIds.has(q.id || `q-${idx}`);
       const subjConfig = window.HORWANG_CONFIG.SUBJECTS[q.subject] || { name: q.subjectName || "ทั่วไป", badgeClass: "bg-slate-100 text-slate-700" };
+      const levelLabel = q.level ? `ระดับ ${q.level}` : `ระดับ ${q.difficulty || 2}`;
 
       return `
         <div class="clean-card p-5 space-y-3.5 border ${isSelected ? 'border-horwang-maroon ring-2 ring-horwang-maroon/20' : 'border-slate-200'}">
@@ -44,7 +45,7 @@ window.BankBrowser = (function() {
               <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${subjConfig.badgeClass}">
                 ${q.subjectName || subjConfig.name}
               </span>
-              <span class="text-xs text-slate-500 font-medium">ระดับ ${q.difficulty || 2}</span>
+              <span class="text-xs bg-slate-900 text-white font-bold px-2 py-0.5 rounded-lg">${levelLabel}</span>
               ${q.topic ? `<span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded">${q.topic}</span>` : ''}
             </div>
             <div class="flex items-center space-x-2">
