@@ -218,7 +218,7 @@ window.MegaBankEngine = (function() {
       });
       if (matchDiff.length > 0) bankPool = matchDiff;
     }
-    bankPool.sort(() => Math.random() - 0.5);
+    bankPool = (window.shuffleArray || (a => a.sort(() => Math.random() - 0.5)))(bankPool);
 
     for (let q of bankPool) {
       if (hybridList.length >= count) break;
@@ -238,7 +238,7 @@ window.MegaBankEngine = (function() {
       hybridList.push(fn());
     }
 
-    return hybridList.sort(() => Math.random() - 0.5);
+    return (window.shuffleArray || (a => a.sort(() => Math.random() - 0.5)))(hybridList);
   }
 
   // Preserve existing methods for backward compatibility
