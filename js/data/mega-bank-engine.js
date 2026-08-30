@@ -178,30 +178,26 @@ window.MegaBankEngine = (function() {
   };
 
   // =========================================================================
-  // 2. HYBRID EXAM COMPOSER: BLENDING RATIOS
+  // 2. HYBRID EXAM COMPOSER: BLENDING RATIOS & STRICT SUBJECT FILTERING
   // =========================================================================
-  function generateHybridExam(count = 20, subject = 'all', track = 'gifted', difficulty = 2, mixPreset = 'balanced') {
-    let proceduralRatio = 0.40; // Default Balanced Blend: 40% procedural + 60% curated master bank
-    if (mixPreset === 'math-speed') proceduralRatio = 0.70;
-    if (mixPreset === 'curated-trap') proceduralRatio = 0.20;
-
-    const proceduralCount = Math.max(2, Math.round(count * proceduralRatio));
-    const bankCount = count - proceduralCount;
-
-    const hybridList = [];
-
-    // 1. Generate Procedural Fresh Questions
-    const proceduralFns = Object.values(proceduralGenerators);
-    for (let i = 0; i < proceduralCount; i++) {
-      const fn = proceduralFns[i % proceduralFns.length];
-      const q = fn();
-      if (subject === 'all' || q.subject === subject) {
-        hybridList.push(q);
+  function generateHybridExam(count = 20, subject = 'all', track = 'gifted', difficulty = [1, 2, 3, 4, 5], mixPreset = 'balanced') {
+    const shuffle = window.shuffleArray || (arr => {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
       }
+      return a;
+    });
+
+    let masterPool = window.MegaBankEngine.getAllBankQuestions();
+
+    // 1. Strict Subject Filter
+    if (subject && subject !== 'all') {
+      masterPool = masterPool.filter(q => q.subject === subject);
     }
 
-    // 2. Fetch Curated Master Bank Questions
-    let bankPool = window.MegaBankEngine.getAllBankQuestions();
+    // 2. Multi-Level Difficulty Filter
     let diffArray = [];
     if (Array.isArray(difficulty)) {
       diffArray = difficulty.map(d => parseInt(d, 10)).filter(d => !isNaN(d) && d > 0);
@@ -211,34 +207,46 @@ window.MegaBankEngine = (function() {
     }
 
     if (diffArray.length > 0 && diffArray.length < 5) {
-      const matchDiff = bankPool.filter(q => {
+      const matchDiff = masterPool.filter(q => {
         const qDiff = parseInt(q.difficulty, 10);
         const qLvl = q.level ? parseInt(q.level.replace('L', ''), 10) : qDiff;
         return diffArray.includes(qDiff) || diffArray.includes(qLvl);
       });
-      if (matchDiff.length > 0) bankPool = matchDiff;
+      if (matchDiff.length > 0) masterPool = matchDiff;
     }
-    bankPool = (window.shuffleArray || (a => a.sort(() => Math.random() - 0.5)))(bankPool);
 
-    for (let q of bankPool) {
-      if (hybridList.length >= count) break;
-      // Attach badge to bank question
-      const enhancedQ = {
+    // 3. Selection Strategy
+    if (subject && subject !== 'all') {
+      // SINGLE SUBJECT EXAM: Only return questions belonging strictly to this subject
+      const shuffled = shuffle(masterPool);
+      return shuffled.slice(0, Math.min(count, shuffled.length)).map(q => ({
         ...q,
         id: q.id || `hybrid-bank-${Date.now()}-${rnd(100, 999)}`,
         hybridType: "curated",
         hybridBadge: q.track && q.track.includes("Gifted") ? "🏆 ข้อสอบจริง: Gifted หอวัง" : "📚 คลังข้อสอบมาตรฐาน"
-      };
-      hybridList.push(enhancedQ);
-    }
+      }));
+    } else {
+      // ALL 5 SUBJECTS COMBINED EXAM: Balanced representation across 5 core subjects
+      const subjects = ['math', 'science', 'thai', 'social', 'english'];
+      const perSubj = Math.floor(count / subjects.length);
+      const rem = count % subjects.length;
+      const combined = [];
 
-    // 3. Fallback filler if still under target count
-    while (hybridList.length < count) {
-      const fn = proceduralFns[hybridList.length % proceduralFns.length];
-      hybridList.push(fn());
-    }
+      subjects.forEach((s, idx) => {
+        let sPool = masterPool.filter(q => q.subject === s);
+        sPool = shuffle(sPool);
+        const take = perSubj + (idx < rem ? 1 : 0);
+        const selected = sPool.slice(0, take).map(q => ({
+          ...q,
+          id: q.id || `hybrid-bank-${Date.now()}-${rnd(100, 999)}`,
+          hybridType: "curated",
+          hybridBadge: q.track && q.track.includes("Gifted") ? "🏆 ข้อสอบจริง: Gifted หอวัง" : "📚 คลังข้อสอบมาตรฐาน"
+        }));
+        combined.push(...selected);
+      });
 
-    return (window.shuffleArray || (a => a.sort(() => Math.random() - 0.5)))(hybridList);
+      return shuffle(combined);
+    }
   }
 
   // Preserve existing methods for backward compatibility
