@@ -343,22 +343,9 @@
             </select>
           </div>
 
-          <!-- Difficulty -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1.5">2. ระดับความยาก:</label>
-            <select id="select-difficulty" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
-              <option value="0" selected>🎲 คละทุกระดับความยาก (ผสมผสาน L1 - L5)</option>
-              <option value="1">🌱 ระดับ 1: พื้นฐาน ป.5 (Level 1 - Classic)</option>
-              <option value="2">🌿 ระดับ 2: มาตรฐานสอบเข้า ม.1 ห้องปกติ (Level 2 - Combined)</option>
-              <option value="3">🌳 ระดับ 3: ห้องพิเศษ Gifted / EP (Level 3 - Novel)</option>
-              <option value="4">🌲 ระดับ 4: Gifted ขั้นสูง / สพฐ. แข่งขัน (Level 4 - Advanced)</option>
-              <option value="5">👑 ระดับ 5: สสวท. / โอลิมปิกวิชาการ (Level 5 - Olympiad)</option>
-            </select>
-          </div>
-
           <!-- Question Count -->
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1.5">3. จำนวนข้อ:</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">2. จำนวนข้อ:</label>
             <select id="select-count" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
               <option value="10">10 ข้อ (ประมาณ 20 นาที)</option>
               <option value="20" selected>20 ข้อ (ประมาณ 40 นาที - แนะนำ)</option>
@@ -366,6 +353,77 @@
               <option value="50">50 ข้อ (ชุดใหญ่จำลองสอบจริง)</option>
             </select>
           </div>
+
+          <!-- Preset Blend -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">3. สไตล์ชุดข้อสอบ:</label>
+            <select id="select-preset" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon">
+              <option value="balanced" selected>⚖️ ผสมผสานมาตรฐาน</option>
+              <option value="math-speed">⚡ เน้นคำนวณ & คิดเร็ว</option>
+              <option value="curated-trap">🎯 เน้นจุดหลอกข้อสอบจริง</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Multi-Select Difficulty Checkbox Chips -->
+        <div class="space-y-2.5 pt-1 border-t border-slate-100">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-bold font-heading text-slate-800 flex items-center space-x-1.5">
+              <i class="fa-solid fa-layer-group text-horwang-maroon"></i>
+              <span>ระดับความยากที่ต้องการฝึก <span class="font-normal text-slate-500">(เลือกผสมได้):</span></span>
+            </label>
+            <button type="button" onclick="toggleAllDifficulties()" id="btn-toggle-all-diff" class="text-xs font-bold text-horwang-maroon hover:underline">
+              ยกเลิกทั้งหมด
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5" id="difficulty-checkbox-group">
+            <!-- L1 -->
+            <label class="diff-chip flex items-center space-x-2.5 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition select-none shadow-sm has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/60 has-[:checked]:ring-2 has-[:checked]:ring-emerald-200">
+              <input type="checkbox" name="diff-check" value="1" checked class="w-4 h-4 rounded text-emerald-600 focus:ring-0 accent-emerald-600 cursor-pointer" onchange="updateDiffChipsUI()" />
+              <div class="flex-1">
+                <div class="text-xs font-bold text-slate-800">🌱 L1: พื้นฐาน</div>
+                <div class="text-[10px] text-slate-500">ป.5 Classic</div>
+              </div>
+            </label>
+
+            <!-- L2 -->
+            <label class="diff-chip flex items-center space-x-2.5 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition select-none shadow-sm has-[:checked]:border-teal-500 has-[:checked]:bg-teal-50/60 has-[:checked]:ring-2 has-[:checked]:ring-teal-200">
+              <input type="checkbox" name="diff-check" value="2" checked class="w-4 h-4 rounded text-teal-600 focus:ring-0 accent-teal-600 cursor-pointer" onchange="updateDiffChipsUI()" />
+              <div class="flex-1">
+                <div class="text-xs font-bold text-slate-800">🌿 L2: ห้องปกติ</div>
+                <div class="text-[10px] text-slate-500">สอบเข้า ม.1</div>
+              </div>
+            </label>
+
+            <!-- L3 -->
+            <label class="diff-chip flex items-center space-x-2.5 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition select-none shadow-sm has-[:checked]:border-sky-500 has-[:checked]:bg-sky-50/60 has-[:checked]:ring-2 has-[:checked]:ring-sky-200">
+              <input type="checkbox" name="diff-check" value="3" checked class="w-4 h-4 rounded text-sky-600 focus:ring-0 accent-sky-600 cursor-pointer" onchange="updateDiffChipsUI()" />
+              <div class="flex-1">
+                <div class="text-xs font-bold text-slate-800">🌳 L3: Gifted</div>
+                <div class="text-[10px] text-slate-500">ห้องพิเศษ EP/SMP</div>
+              </div>
+            </label>
+
+            <!-- L4 -->
+            <label class="diff-chip flex items-center space-x-2.5 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition select-none shadow-sm has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:ring-2 has-[:checked]:ring-amber-200">
+              <input type="checkbox" name="diff-check" value="4" checked class="w-4 h-4 rounded text-amber-600 focus:ring-0 accent-amber-600 cursor-pointer" onchange="updateDiffChipsUI()" />
+              <div class="flex-1">
+                <div class="text-xs font-bold text-slate-800">🌲 L4: แข่งขัน</div>
+                <div class="text-[10px] text-slate-500">สพฐ. / TEDET</div>
+              </div>
+            </label>
+
+            <!-- L5 -->
+            <label class="diff-chip flex items-center space-x-2.5 p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition select-none shadow-sm has-[:checked]:border-purple-500 has-[:checked]:bg-purple-50/60 has-[:checked]:ring-2 has-[:checked]:ring-purple-200">
+              <input type="checkbox" name="diff-check" value="5" checked class="w-4 h-4 rounded text-purple-600 focus:ring-0 accent-purple-600 cursor-pointer" onchange="updateDiffChipsUI()" />
+              <div class="flex-1">
+                <div class="text-xs font-bold text-slate-800">👑 L5: โอลิมปิก</div>
+                <div class="text-[10px] text-slate-500">สสวท. / Olympiad</div>
+              </div>
+            </label>
+          </div>
+        </div>
         </div>
 
         <div class="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100">
@@ -792,20 +850,47 @@
       scrollToTop();
     }
 
+    function getSelectedDifficulties() {
+      const checks = document.querySelectorAll('input[name="diff-check"]:checked');
+      const values = Array.from(checks).map(c => parseInt(c.value, 10));
+      return values.length > 0 ? values : [1, 2, 3, 4, 5];
+    }
+    window.getSelectedDifficulties = getSelectedDifficulties;
+
+    function toggleAllDifficulties() {
+      window.SoundEngine.click();
+      const checks = document.querySelectorAll('input[name="diff-check"]');
+      const allChecked = Array.from(checks).every(c => c.checked);
+      checks.forEach(c => c.checked = !allChecked);
+      updateDiffChipsUI();
+    }
+    window.toggleAllDifficulties = toggleAllDifficulties;
+
+    function updateDiffChipsUI() {
+      const checks = document.querySelectorAll('input[name="diff-check"]');
+      const allChecked = Array.from(checks).every(c => c.checked);
+      const btn = document.getElementById('btn-toggle-all-diff');
+      if (btn) btn.innerText = allChecked ? 'ยกเลิกทั้งหมด' : 'เลือกทั้งหมด';
+    }
+    window.updateDiffChipsUI = updateDiffChipsUI;
+
     function startHybridExam(preset = 'balanced') {
       window.SoundEngine.click();
       const count = parseInt(document.getElementById('select-count')?.value || '20', 10);
       const subject = document.getElementById('select-subject')?.value || 'all';
-      const difficulty = parseInt(document.getElementById('select-difficulty')?.value || '2', 10);
+      const difficulties = getSelectedDifficulties();
       const track = document.getElementById('select-track')?.value || 'gifted';
+      const chosenPreset = document.getElementById('select-preset')?.value || preset;
 
-      const questions = window.MegaBankEngine.generateHybridExam(count, subject, track, difficulty, preset);
+      const questions = window.MegaBankEngine.generateHybridExam(count, subject, track, difficulties, chosenPreset);
       const subjName = window.HORWANG_CONFIG.SUBJECTS[subject]?.name || 'รวม 5 วิชา';
-      window.ExamEngine.startExam(questions, `ชุดข้อสอบ (${subjName} ${questions.length} ข้อ)`);
+      const diffLabel = difficulties.length === 5 ? 'คละ L1-L5' : `L${difficulties.join(', L')}`;
+      window.ExamEngine.startExam(questions, `ชุดข้อสอบ (${subjName} • ${diffLabel} • ${questions.length} ข้อ)`);
     }
 
     function startCustomHybridExam() {
-      startHybridExam('balanced');
+      const chosenPreset = document.getElementById('select-preset')?.value || 'balanced';
+      startHybridExam(chosenPreset);
     }
 
     function openNewPostModal() {

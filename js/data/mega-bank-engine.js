@@ -202,12 +202,20 @@ window.MegaBankEngine = (function() {
 
     // 2. Fetch Curated Master Bank Questions
     let bankPool = window.MegaBankEngine.getAllBankQuestions();
-    if (subject !== 'all') {
-      bankPool = bankPool.filter(q => q.subject === subject);
+    let diffArray = [];
+    if (Array.isArray(difficulty)) {
+      diffArray = difficulty.map(d => parseInt(d, 10)).filter(d => !isNaN(d) && d > 0);
+    } else {
+      const diffNum = parseInt(difficulty, 10);
+      if (!isNaN(diffNum) && diffNum > 0) diffArray = [diffNum];
     }
-    const diffNum = parseInt(difficulty, 10);
-    if (diffNum > 0) {
-      const matchDiff = bankPool.filter(q => q.difficulty === diffNum || q.level === 'L' + diffNum);
+
+    if (diffArray.length > 0 && diffArray.length < 5) {
+      const matchDiff = bankPool.filter(q => {
+        const qDiff = parseInt(q.difficulty, 10);
+        const qLvl = q.level ? parseInt(q.level.replace('L', ''), 10) : qDiff;
+        return diffArray.includes(qDiff) || diffArray.includes(qLvl);
+      });
       if (matchDiff.length > 0) bankPool = matchDiff;
     }
     bankPool.sort(() => Math.random() - 0.5);
