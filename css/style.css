@@ -229,3 +229,11 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   header, footer, nav, #sticky-exam-bar, .no-print { display: none !important; }
   #printable-exam-sheet { display: block !important; }
 }
+
+/* Mobile Safe Bottom Padding */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
