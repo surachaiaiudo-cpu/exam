@@ -202,9 +202,6 @@
     <!-- ======================================================== -->
     <!-- TAB 1: EXAM GENERATOR & PRESET HUB                      -->
     <!-- ======================================================== -->
-    <!-- ======================================================== -->
-    <!-- TAB 1: EXAM GENERATOR & PRESET HUB                      -->
-    <!-- ======================================================== -->
     <section id="tab-generator" class="tab-content space-y-6">
       
       <!-- Elevated & Focused Hero Welcome Banner -->
@@ -391,7 +388,7 @@
             <!-- Question Count -->
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">จำนวนข้อสอบ:</label>
-              <select id="select-count" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
+              <select id="select-count" onchange="updateExamSummaryCTA()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
                 <option value="10">10 ข้อ (ประมาณ 20 นาที)</option>
                 <option value="20" selected>20 ข้อ (ประมาณ 40 นาที - แนะนำ)</option>
                 <option value="30">30 ข้อ (ประมาณ 60 นาที)</option>
@@ -402,7 +399,7 @@
             <!-- Track -->
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">แผนการเรียนเป้าหมาย:</label>
-              <select id="select-track" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
+              <select id="select-track" onchange="updateExamSummaryCTA()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
                 <option value="gifted" selected>🌟 ห้อง Gifted / EP / SMP</option>
                 <option value="regular">🏫 ห้องเรียนปกติ หอวัง</option>
               </select>
@@ -411,7 +408,7 @@
             <!-- Preset Blend -->
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1.5">สไตล์ชุดข้อสอบ:</label>
-              <select id="select-preset" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
+              <select id="select-preset" onchange="updateExamSummaryCTA()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 outline-none focus:border-horwang-maroon font-medium">
                 <option value="balanced" selected>⚖️ ผสมผสานมาตรฐาน</option>
                 <option value="math-speed">⚡ เน้นคำนวณ & คิดเร็ว</option>
                 <option value="curated-trap">🎯 เน้นจุดหลอกข้อสอบจริง</option>
@@ -425,9 +422,9 @@
           <div class="text-xs text-slate-500 text-center sm:text-left">
             ✨ สุ่มข้อสอบจากคลัง 776 ข้อ พร้อมระบบจับเวลา OMR เสมือนจริง และเฉลย ๓ มิติ
           </div>
-          <button onclick="startCustomHybridExam()" class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-horwang-maroon via-rose-900 to-horwang-darkMaroon hover:from-horwang-darkMaroon hover:to-slate-950 text-white font-bold text-sm sm:text-base font-heading rounded-2xl shadow-lg transition btn-kid flex items-center justify-center space-x-2.5">
+          <button onclick="startCustomHybridExam()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-horwang-maroon via-rose-900 to-horwang-darkMaroon hover:from-horwang-darkMaroon hover:to-slate-950 text-white font-bold text-sm sm:text-base font-heading rounded-2xl shadow-lg hover:shadow-xl transition btn-kid flex items-center justify-center space-x-2.5">
             <i class="fa-solid fa-play text-sm text-amber-300"></i>
-            <span>เริ่มทำข้อสอบทันที</span>
+            <span id="cta-btn-summary-text">เริ่มทำข้อสอบทันที (20 ข้อ)</span>
           </button>
         </div>
       </div>
@@ -850,6 +847,7 @@
       if (card) card.classList.add('active');
       const select = document.getElementById('select-subject');
       if (select) select.value = subject;
+      updateExamSummaryCTA();
     }
 
     function scrollToTop() {
@@ -900,8 +898,23 @@
       const allChecked = Array.from(checks).every(c => c.checked);
       const btn = document.getElementById('btn-toggle-all-diff');
       if (btn) btn.innerText = allChecked ? 'ยกเลิกทั้งหมด' : 'เลือกทั้งหมด';
+      updateExamSummaryCTA();
     }
     window.updateDiffChipsUI = updateDiffChipsUI;
+
+    function updateExamSummaryCTA() {
+      const subj = document.getElementById('select-subject')?.value || 'all';
+      const count = document.getElementById('select-count')?.value || '20';
+      const diffs = getSelectedDifficulties();
+      const subjName = window.HORWANG_CONFIG?.SUBJECTS[subj]?.name || 'รวม 5 วิชา';
+      const diffLabel = diffs.length === 5 ? 'คละ L1-L5' : (diffs.length === 0 ? 'เลือกความยาก' : `L${diffs.join(', L')}`);
+      
+      const ctaText = document.getElementById('cta-btn-summary-text');
+      if (ctaText) {
+        ctaText.innerText = `เริ่มทำข้อสอบ (${subjName} • ${diffLabel} • ${count} ข้อ)`;
+      }
+    }
+    window.updateExamSummaryCTA = updateExamSummaryCTA;
 
     function startHybridExam(preset = 'balanced') {
       window.SoundEngine.click();
