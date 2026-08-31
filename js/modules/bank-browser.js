@@ -67,15 +67,57 @@ window.BankBrowser = (function() {
             `).join('')}
           </div>
 
-          <!-- Solution Accordion -->
-          <details class="text-xs sm:text-sm font-sarabun text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-200 cursor-pointer">
-            <summary class="font-bold text-horwang-maroon font-heading outline-none">
-              <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i>ดูเฉลยละเอียดและเทคนิคคิดเร็ว
+          <!-- 3-Pillar Interactive Solution Details -->
+          <details class="text-xs sm:text-sm font-sarabun text-slate-600 bg-slate-50/80 rounded-2xl border border-slate-200 overflow-hidden">
+            <summary class="font-bold text-horwang-maroon font-heading p-3.5 cursor-pointer hover:bg-slate-100/60 transition flex items-center justify-between outline-none">
+              <span class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                <span>ดูเฉลย ๓ มิติ (💡 วิธีคิด | 📝 วิธีทำ | ⚡ สูตรลัด)</span>
+              </span>
+              <span class="text-xs text-slate-400 font-normal">แตะเพื่อเปิด/ปิด</span>
             </summary>
-            <div class="pt-2.5 pl-2 space-y-2 border-t border-slate-200 mt-2">
-              <div class="whitespace-pre-line text-slate-700 leading-relaxed"><strong>วิธีคิด:</strong>\n${window.formatMathText ? window.formatMathText(q.explanation) : q.explanation}</div>
-              ${q.trap ? `<div class="text-rose-700 bg-rose-50 p-2 rounded-lg border border-rose-200"><strong>จุดหลอก:</strong> ${q.trap}</div>` : ''}
-              ${q.shortcutTrick ? `<div class="text-amber-900 bg-amber-50 p-2 rounded-lg border border-amber-200"><strong>สูตรลัด:</strong> ${q.shortcutTrick}</div>` : ''}
+            
+            <div class="p-3.5 pt-0 space-y-3 border-t border-slate-200 bg-white">
+              <!-- Solution Tab Navigation -->
+              <div class="flex items-center bg-slate-100 p-1 rounded-xl gap-1 overflow-x-auto text-xs font-heading font-bold select-none mt-2">
+                <button type="button" onclick="window.BankBrowser.switchTab('${idx}', 'concept')" id="bank-sol-btn-${idx}-concept" class="px-2.5 py-1 rounded-lg transition bg-amber-400 text-slate-950 shadow-sm text-xs">
+                  💡 วิธีคิด
+                </button>
+                <button type="button" onclick="window.BankBrowser.switchTab('${idx}', 'steps')" id="bank-sol-btn-${idx}-steps" class="px-2.5 py-1 rounded-lg transition text-slate-600 hover:bg-slate-200 text-xs">
+                  📝 วิธีทำละเอียด
+                </button>
+                <button type="button" onclick="window.BankBrowser.switchTab('${idx}', 'hack')" id="bank-sol-btn-${idx}-hack" class="px-2.5 py-1 rounded-lg transition text-slate-600 hover:bg-slate-200 text-xs">
+                  ⚡ สูตรลัด & จุดหลอก
+                </button>
+              </div>
+
+              <!-- Content 1: Concept -->
+              <div id="bank-sol-content-${idx}-concept" class="space-y-1.5 text-xs sm:text-sm">
+                <div class="font-bold text-amber-950 text-xs">💡 วิธีคิด & ตรรกะเบื้องหลัง:</div>
+                <div class="text-slate-800 bg-amber-50/70 p-3 rounded-xl border border-amber-200/80 leading-relaxed">
+                  ${window.formatMathText ? window.formatMathText(q.thinkingConcept || `ทำความเข้าใจแก่น Concept ของหัวข้อ ${q.topic || 'บทเรียน'}: วิเคราะห์ความสัมพันธ์ของสิ่งที่โจทย์กำหนดให้เพื่อวางแผนขั้นตอนการแก้ปัญหา`) : q.thinkingConcept}
+                </div>
+              </div>
+
+              <!-- Content 2: Steps -->
+              <div id="bank-sol-content-${idx}-steps" class="hidden space-y-1.5 text-xs sm:text-sm">
+                <div class="font-bold text-sky-950 text-xs">📝 ขั้นตอนแสดงวิธีทำมาตรฐาน:</div>
+                <div class="text-slate-800 bg-sky-50/70 p-3 rounded-xl border border-sky-200/80 leading-relaxed whitespace-pre-line">
+                  ${window.formatMathText ? window.formatMathText(q.formalSteps || q.explanation) : (q.formalSteps || q.explanation)}
+                </div>
+              </div>
+
+              <!-- Content 3: Hacks & Traps -->
+              <div id="bank-sol-content-${idx}-hack" class="hidden space-y-2 text-xs sm:text-sm">
+                <div class="p-2.5 bg-emerald-50/80 border border-emerald-300 rounded-xl text-emerald-950 space-y-1">
+                  <strong class="font-bold text-emerald-800 block text-xs">⚡ สูตรลัด 15 วิ / ทริกตัดช้อยส์:</strong>
+                  <div>${window.formatMathText ? window.formatMathText(q.shortcutTrick || 'สังเกตคีย์เวิร์ดสำคัญและตัดตัวเลือกที่ไม่สอดคล้องออกทันที') : q.shortcutTrick}</div>
+                </div>
+                <div class="p-2.5 bg-rose-50/80 border border-rose-300 rounded-xl text-rose-950 space-y-1">
+                  <strong class="font-bold text-rose-800 block text-xs">⚠️ จุดหลอกที่ต้องระวัง:</strong>
+                  <div>${window.formatMathText ? window.formatMathText(q.trap || 'ระวังการสับสนคำที่มีความหมายใกล้เคียง หรือลืมตรวจทานเงื่อนไข') : q.trap}</div>
+                </div>
+              </div>
             </div>
           </details>
         </div>
@@ -144,12 +186,42 @@ window.BankBrowser = (function() {
     dlAnchorElem.click();
   }
 
+  function switchTab(idx, tabName) {
+    window.SoundEngine.click();
+    const tabs = ['concept', 'steps', 'hack'];
+    const btns = {
+      concept: document.getElementById(`bank-sol-btn-${idx}-concept`),
+      steps: document.getElementById(`bank-sol-btn-${idx}-steps`),
+      hack: document.getElementById(`bank-sol-btn-${idx}-hack`)
+    };
+
+    tabs.forEach(t => {
+      const content = document.getElementById(`bank-sol-content-${idx}-${t}`);
+      const btn = btns[t];
+      if (t === tabName) {
+        content?.classList.remove('hidden');
+        if (btn) {
+          const bgColors = {
+            concept: 'bg-amber-400 text-slate-950 shadow-sm',
+            steps: 'bg-sky-500 text-white shadow-sm',
+            hack: 'bg-emerald-600 text-white shadow-sm'
+          };
+          btn.className = `px-2.5 py-1 rounded-lg transition ${bgColors[t]} text-xs font-bold`;
+        }
+      } else {
+        content?.classList.add('hidden');
+        if (btn) btn.className = 'px-2.5 py-1 rounded-lg transition text-slate-600 hover:bg-slate-200 text-xs font-bold';
+      }
+    });
+  }
+
   return {
     renderView,
     toggleSelectQuestion,
     selectAllFiltered,
     clearSelection,
     startSelectedExam,
-    exportBankAsJson
+    exportBankAsJson,
+    switchTab
   };
 })();

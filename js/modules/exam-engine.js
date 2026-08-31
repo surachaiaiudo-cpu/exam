@@ -447,26 +447,76 @@ window.ExamEngine = (function() {
             }).join('')}
           </div>
 
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2.5 font-sarabun text-sm">
-            <div class="font-bold text-slate-900 font-heading flex items-center space-x-1.5 text-xs">
-              <i class="fa-solid fa-lightbulb text-amber-500"></i>
-              <span>เฉลยวิธีคิดทีละขั้นตอน:</span>
-            </div>
-            <div class="text-slate-700 whitespace-pre-line leading-relaxed pl-3 border-l-2 border-amber-400">
-              ${window.formatMathText ? window.formatMathText(q.explanation) : q.explanation}
+          <!-- 3-Pillar Interactive Solution Hub -->
+          <div class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm bg-white">
+            <!-- Solution Tab Navigation -->
+            <div class="flex items-center border-b border-slate-200 bg-slate-100/90 p-1.5 gap-1.5 overflow-x-auto text-xs font-heading font-bold select-none">
+              <button type="button" onclick="window.ExamEngine.switchSolutionTab('${idx}', 'concept')" id="sol-tab-btn-${idx}-concept" class="sol-tab-btn px-3 py-1.5 rounded-xl transition flex items-center space-x-1.5 bg-amber-400 text-slate-950 shadow-sm">
+                <span>💡 วิธีคิด (Concept)</span>
+              </button>
+              <button type="button" onclick="window.ExamEngine.switchSolutionTab('${idx}', 'steps')" id="sol-tab-btn-${idx}-steps" class="sol-tab-btn px-3 py-1.5 rounded-xl transition flex items-center space-x-1.5 text-slate-600 hover:bg-slate-200">
+                <span>📝 วิธีทำละเอียด (Steps)</span>
+              </button>
+              <button type="button" onclick="window.ExamEngine.switchSolutionTab('${idx}', 'hack')" id="sol-tab-btn-${idx}-hack" class="sol-tab-btn px-3 py-1.5 rounded-xl transition flex items-center space-x-1.5 text-slate-600 hover:bg-slate-200">
+                <span>⚡ สูตรลัด & จุดหลอก</span>
+              </button>
+              <button type="button" onclick="window.ExamEngine.switchSolutionTab('${idx}', 'all')" id="sol-tab-btn-${idx}-all" class="sol-tab-btn ml-auto px-2.5 py-1.5 rounded-xl transition text-slate-500 hover:bg-slate-200 text-[11px]">
+                <span>ดูทั้งหมด</span>
+              </button>
             </div>
 
-            ${q.trap ? `
-              <div class="p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-900">
-                <strong class="font-bold">จุดหลอกที่ต้องระวัง:</strong> ${q.trap}
+            <!-- Solution Contents -->
+            <div class="p-4 sm:p-5 space-y-3.5 font-sarabun text-sm">
+              <!-- Pillar 1: Concept & Thinking Process -->
+              <div id="sol-content-${idx}-concept" class="sol-tab-content space-y-2">
+                <div class="font-bold text-amber-950 font-heading flex items-center space-x-1.5 text-xs">
+                  <span class="w-5 h-5 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center text-xs">💡</span>
+                  <span>๑. วิธีคิด & ตรรกะเบื้องหลัง (Thinking Process & Concept):</span>
+                </div>
+                <div class="text-slate-800 leading-relaxed bg-amber-50/70 p-3.5 rounded-xl border border-amber-200/80">
+                  ${window.formatMathText ? window.formatMathText(q.thinkingConcept || `วิเคราะห์แก่นหลักของหัวข้อ ${q.topic || 'บทเรียน'}: ทำความเข้าใจความสัมพันธ์ของข้อมูลในโจทย์เพื่อวางแผนแก้ปัญหาอย่างเป็นระบบ`) : q.thinkingConcept}
+                </div>
               </div>
-            ` : ''}
 
-            ${q.shortcutTrick ? `
-              <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-950">
-                <strong class="font-bold">สูตรลัด / เทคนิคคิดเร็ว:</strong> ${q.shortcutTrick}
+              <!-- Pillar 2: Formal Step-by-Step Procedure -->
+              <div id="sol-content-${idx}-steps" class="sol-tab-content hidden space-y-2">
+                <div class="font-bold text-sky-950 font-heading flex items-center space-x-1.5 text-xs">
+                  <span class="w-5 h-5 rounded-md bg-sky-500 text-white flex items-center justify-center text-xs">📝</span>
+                  <span>๒. ขั้นตอนการแสดงวิธีทำมาตรฐาน (Formal Procedure):</span>
+                </div>
+                <div class="text-slate-800 leading-relaxed bg-sky-50/70 p-3.5 rounded-xl border border-sky-200/80 whitespace-pre-line">
+                  ${window.formatMathText ? window.formatMathText(q.formalSteps || q.explanation) : (q.formalSteps || q.explanation)}
+                </div>
               </div>
-            ` : ''}
+
+              <!-- Pillar 3: Exam Hacks & Trap Alert -->
+              <div id="sol-content-${idx}-hack" class="sol-tab-content hidden space-y-2.5">
+                <div class="font-bold text-emerald-950 font-heading flex items-center space-x-1.5 text-xs">
+                  <span class="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center text-xs">⚡</span>
+                  <span>๓. เทคนิคลัด 15 วิ & จุดหลอกห้องสอบ (Exam Hacks & Traps):</span>
+                </div>
+                
+                <div class="p-3 bg-emerald-50/80 border border-emerald-300 rounded-xl text-emerald-950 space-y-1">
+                  <div class="font-bold text-xs flex items-center space-x-1.5 text-emerald-800">
+                    <i class="fa-solid fa-bolt text-emerald-600"></i>
+                    <span>สูตรลัด / ทริกตัดช้อยส์เร็ว:</span>
+                  </div>
+                  <div class="leading-relaxed text-sm">
+                    ${window.formatMathText ? window.formatMathText(q.shortcutTrick || 'สังเกตคีย์เวิร์ดสำคัญในโจทย์และตัดตัวเลือกที่ไม่สมเหตุสมผลออกทันที') : q.shortcutTrick}
+                  </div>
+                </div>
+
+                <div class="p-3 bg-rose-50/80 border border-rose-300 rounded-xl text-rose-950 space-y-1">
+                  <div class="font-bold text-xs flex items-center space-x-1.5 text-rose-800">
+                    <i class="fa-solid fa-triangle-exclamation text-rose-600"></i>
+                    <span>จุดหลอกที่พบบ่อย (Trap Alert):</span>
+                  </div>
+                  <div class="leading-relaxed text-sm">
+                    ${window.formatMathText ? window.formatMathText(q.trap || 'ระวังการอ่านเงื่อนไขของโจทย์ไม่ครบถ้วน หรือลืมตรวจทานหน่วย') : q.trap}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       `;
@@ -475,6 +525,48 @@ window.ExamEngine = (function() {
     if (window.renderAllMath) {
       window.renderAllMath(container);
     }
+  }
+
+  function switchSolutionTab(idx, tabName) {
+    window.SoundEngine.click();
+    const tabs = ['concept', 'steps', 'hack'];
+    const btns = {
+      concept: document.getElementById(`sol-tab-btn-${idx}-concept`),
+      steps: document.getElementById(`sol-tab-btn-${idx}-steps`),
+      hack: document.getElementById(`sol-tab-btn-${idx}-hack`),
+      all: document.getElementById(`sol-tab-btn-${idx}-all`)
+    };
+
+    if (tabName === 'all') {
+      tabs.forEach(t => {
+        document.getElementById(`sol-content-${idx}-${t}`)?.classList.remove('hidden');
+      });
+      tabs.forEach(t => {
+        if (btns[t]) btns[t].className = 'sol-tab-btn px-2.5 py-1.5 rounded-xl transition text-slate-600 hover:bg-slate-200 text-xs font-heading font-bold';
+      });
+      if (btns.all) btns.all.className = 'sol-tab-btn ml-auto px-2.5 py-1.5 rounded-xl transition bg-slate-800 text-white shadow-sm text-xs font-heading font-bold';
+      return;
+    }
+
+    tabs.forEach(t => {
+      const content = document.getElementById(`sol-content-${idx}-${t}`);
+      const btn = btns[t];
+      if (t === tabName) {
+        content?.classList.remove('hidden');
+        if (btn) {
+          const bgStyles = {
+            concept: 'bg-amber-400 text-slate-950 shadow-sm',
+            steps: 'bg-sky-500 text-white shadow-sm',
+            hack: 'bg-emerald-600 text-white shadow-sm'
+          };
+          btn.className = `sol-tab-btn px-3 py-1.5 rounded-xl transition flex items-center space-x-1.5 ${bgStyles[t]} text-xs font-heading font-bold`;
+        }
+      } else {
+        content?.classList.add('hidden');
+        if (btn) btn.className = 'sol-tab-btn px-3 py-1.5 rounded-xl transition flex items-center space-x-1.5 text-slate-600 hover:bg-slate-200 text-xs font-heading font-bold';
+      }
+    });
+    if (btns.all) btns.all.className = 'sol-tab-btn ml-auto px-2.5 py-1.5 rounded-xl transition text-slate-500 hover:bg-slate-200 text-[11px] font-heading font-bold';
   }
 
   function toggleOmrPanel() {
@@ -507,7 +599,8 @@ window.ExamEngine = (function() {
     confirmSubmit,
     submitExam,
     toggleOmrPanel,
-    shuffleArray
+    shuffleArray,
+    switchSolutionTab
   };
 })();
 
